@@ -10,11 +10,14 @@ export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
     <header className="header">
-      <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-        <strong>{shop.name}</strong>
-      </NavLink>
-      <HeaderMenu menu={menu} viewport="desktop" />
-      <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      <div className="max-w-[1536px] m-auto flex items-center justify-between w-full leading-none gap-8">
+        <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
+          <strong>{shop.name}</strong>
+        </NavLink>
+        <HeaderMenu menu={menu} viewport="desktop" />
+        <HeaderMenuMobileToggle />
+        {/* <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} /> */}
+      </div>
     </header>
   );
 }
@@ -84,11 +87,11 @@ function HeaderCtas({
   return (
     <nav className="header-ctas" role="navigation">
       <HeaderMenuMobileToggle />
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
+      {/* <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
         {isLoggedIn ? 'Account' : 'Sign in'}
       </NavLink>
       <SearchToggle />
-      <CartToggle cart={cart} />
+      <CartToggle cart={cart} /> */}
     </nav>
   );
 }
@@ -96,7 +99,7 @@ function HeaderCtas({
 function HeaderMenuMobileToggle() {
   return (
     <a className="header-menu-mobile-toggle" href="#mobile-menu-aside">
-      <h3>☰</h3>
+      <h3 className="text-white">☰</h3>
     </a>
   );
 }
@@ -172,7 +175,10 @@ function activeLinkStyle({
   isPending: boolean;
 }) {
   return {
-    fontWeight: isActive ? 'bold' : undefined,
-    color: isPending ? 'grey' : 'black',
+    fontWeight: isActive ? '900' : undefined,
+    color: isPending ? 'grey' : 'white',
+    borderBottom: isActive ? '2px solid var(--color-secondary)' : 'none',
+    textDecoration: 'none',
+    paddingBottom: '0.70rem',
   };
 }

@@ -6,6 +6,8 @@
   --header-height: 64px;
   --color-dark: #000;
   --color-light: #fff;
+  --color-main: #0c1c37;
+  --color-secondary: #2be1e4;
 }
 
 img {
@@ -31,7 +33,7 @@ aside {
 
 aside header {
   align-items: center;
-  border-bottom: 1px solid var(--color-dark);
+  border-bottom: 1px solid white;
   display: flex;
   height: var(--header-height);
   justify-content: space-between;
@@ -129,13 +131,16 @@ aside li {
 */
 .header {
   align-items: center;
-  background: #fff;
+  background: var(--color-main);
   display: flex;
   height: var(--header-height);
   padding: 0 1rem;
   position: sticky;
   top: 0;
   z-index: 1;
+}
+.header-menu-item:hover{
+  border-bottom: 2px solid var(--color-secondary) !important;
 }
 
 .header-menu-mobile-toggle {
