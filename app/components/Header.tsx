@@ -177,8 +177,8 @@ function activeLinkStyle({
   return {
     fontWeight: isActive ? '900' : undefined,
     color: isPending ? 'grey' : 'white',
-    borderBottom: isActive ? '2px solid var(--color-secondary)' : 'none',
+    borderBottom: isActive ? '0.70rem solid var(--color-secondary)' : 'none',
     textDecoration: 'none',
-    paddingBottom: '0.70rem',
+    padding: '0.70rem',
   };
 }
