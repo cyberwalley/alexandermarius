@@ -11,6 +11,7 @@ import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
+import Hero from '~/components/Hero/Hero';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
@@ -29,8 +30,7 @@ export default function Homepage() {
   const data = useLoaderData<typeof loader>();
   return (
     <div className="home">
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
+      <Hero collection={data.featuredCollection} />
     </div>
   );
 }
@@ -53,6 +53,7 @@ function FeaturedCollection({
         </div>
       )}
       <h1>{collection.title}</h1>
+      <p>{collection.description}</p>
     </Link>
   );
 }
@@ -99,6 +100,7 @@ const FEATURED_COLLECTION_QUERY = `#graphql
   fragment FeaturedCollection on Collection {
     id
     title
+    description
     image {
       id
       url
