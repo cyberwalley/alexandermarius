@@ -109,6 +109,19 @@ const FEATURED_COLLECTION_QUERY = `#graphql
       height
     }
     handle
+    products(first: 20) {
+      edges {
+        node {
+          id
+          title
+          featuredImage {
+            id
+            url
+            altText
+          }
+        }
+      }
+    }
   }
   query FeaturedCollection($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
