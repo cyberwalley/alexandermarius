@@ -7,39 +7,9 @@ import Marquee from '../Marque';
 const Hero = ({collection}: {collection: FeaturedCollectionFragment}) => {
   if (!collection) return null;
   const image = collection?.image;
-  const content = [
-    {
-      title: 'Webflow',
-    },
-    {
-      title: 'Shopify',
-    },
-    {
-      title: 'Squarespace',
-    },
-    {
-      title: 'Wix',
-    },
-    {
-      title: 'Woocommerce',
-    },
-    {
-      title: 'Squarespace',
-    },
-    {
-      title: 'Webflow',
-    },
-    {
-      title: 'Wix',
-    },
-    {
-      title: 'Oxygen',
-    },
-    {
-      title: 'Contentful',
-    },
-  ];
+
   console.log(collection?.products.edges);
+
   return (
     <section
       className={`relative overflow-hidden bg-contain bg-no-repeat md:bg-cover p-4 md:p-0`}
@@ -54,17 +24,15 @@ const Hero = ({collection}: {collection: FeaturedCollectionFragment}) => {
             <p className="text-md md:text-[1.375rem] text-[var(--color-main)] pt-2">
               {collection.description}
             </p>
-            {/* <div>{collection?.products?.edges[0].node?.title}</div> */}
           </div>
           <div className="flex gap-y-sm flex-wrap gap-x-sm justify-start">
             <Button>Get in touch</Button>
           </div>
         </div>
-        <div className="col-span-4 xs:col-span-4 md:col-span-5 xs:col-start-1 md:col-start-8 flex flex-row gap-[1rem] my-auto sm:col-start-1 sm:col-span-8">
+        <div className="col-span-4 xs:col-span-4 md:col-span-5 xs:col-start-1 flex flex-row gap-[1rem] my-auto sm:col-start-1 sm:col-span-8">
           <Marquee
             content={collection}
             contentType="text"
-            divider={true}
             orientation="vertical"
             variant="double"
             reverse

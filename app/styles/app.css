@@ -530,8 +530,6 @@ aside li {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: var(--gap);
   min-width: 100%;
   animation: scroll-x var(--duration) linear infinite;
 }
@@ -591,7 +589,7 @@ aside li {
 }
 
 .marquee--vertical .marquee__item  {
-  aspect-ratio: 1;
+
   width: calc(var(--size) / 1.5);
   padding: calc(var(--size) / 6);
 }
@@ -677,10 +675,4 @@ aside li {
     opacity: 0;
     visibility: hidden;
   }
-}
-
-.marquee__group img {
-  max-width: clamp(10rem, 1rem + 28vmin, 20rem);
-  aspect-ratio: 1;
-  object-fit: cover;
 }

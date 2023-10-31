@@ -1,7 +1,8 @@
 import type {FeaturedCollectionFragment} from 'storefrontapi.generated';
-import {Image, Money} from '@shopify/hydrogen';
+import {Image} from '@shopify/hydrogen';
+import {Await, type V2_MetaFunction} from '@remix-run/react';
 import People from './People';
-
+import {Suspense} from 'react';
 interface MarqueeProps {
   content: FeaturedCollectionFragment;
   contentType: 'text' | 'image';
@@ -23,11 +24,16 @@ const Marquee = ({
   const productDetails = collectionData?.map((product) => (
     <div
       key={product?.node?.id}
-      className="shadow-3xl w-auto sm:rotate-2 border-2 border-black rounded-xl p-2 bg-white h-auto"
+      className="shadow-3xl sm:rotate-2 border-2 border-black rounded-xl p-2 bg-white h-auto w-[18rem]"
     >
-      <People
+      {/* <People
         imgSrc={product?.node?.featuredImage?.url}
         altText={product?.node?.featuredImage?.altText || undefined}
+      /> */}
+      <Image
+        data={product?.node?.featuredImage || undefined}
+        aspectRatio="1/1"
+        sizes="50vw"
       />
       <div className="px-2 py-3">
         <p className="text-black font-normal text-sm">{product?.node?.title}</p>
@@ -50,25 +56,29 @@ const Marquee = ({
             className={`marquee ${
               reverse ? 'marquee--reverse' : ''
             } text-white  ${
-              orientation === 'vertical' ? 'marquee--vertical pr-8' : ''
+              orientation === 'vertical' ? 'marquee--vertical' : ''
             }`}
           >
-            <div className="marquee__group p-6 md:p-4">
+            <div className="marquee__group p-8">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
               >
-                {productDetails}
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Await resolve={collectionData}>{productDetails}</Await>
+                </Suspense>
               </div>
             </div>
-            <div aria-hidden="true" className="marquee__group  p-6 md:p-4">
+            <div aria-hidden="true" className="marquee__group p-8">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
               >
-                {productDetails}
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Await resolve={collectionData}>{productDetails}</Await>
+                </Suspense>
               </div>
             </div>
           </div>
@@ -86,7 +96,7 @@ const Marquee = ({
               orientation === 'vertical' ? 'marquee--vertical' : ''
             }`}
           >
-            <div className="marquee__group  p-6 md:p-4">
+            <div className="marquee__group p-8">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
@@ -95,7 +105,7 @@ const Marquee = ({
                 {productDetails}
               </div>
             </div>
-            <div aria-hidden="true" className="marquee__group p-6 md:p-4">
+            <div aria-hidden="true" className="marquee__group p-8">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
@@ -112,7 +122,7 @@ const Marquee = ({
               orientation === 'vertical' ? 'marquee--vertical' : ''
             }`}
           >
-            <div className="marquee__group  p-6 md:p-4">
+            <div className="marquee__group p-8">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
@@ -121,7 +131,7 @@ const Marquee = ({
                 {productDetails}
               </div>
             </div>
-            <div aria-hidden="true" className="marquee__group  p-6 md:p-4">
+            <div aria-hidden="true" className="marquee__group p-8">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
