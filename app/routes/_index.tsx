@@ -114,6 +114,7 @@ const FEATURED_COLLECTION_QUERY = `#graphql
         node {
           id
           title
+          description
           featuredImage {
             id
             url

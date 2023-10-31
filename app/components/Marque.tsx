@@ -1,20 +1,8 @@
 import type {FeaturedCollectionFragment} from 'storefrontapi.generated';
 import {Image, Money} from '@shopify/hydrogen';
+import People from './People';
 
 interface MarqueeProps {
-  /* content: {
-    node: {
-      title: string;
-      id: string;
-      featuredImage: {
-        id: string;
-        url: string;
-        altText: string;
-        width: number;
-        height: number;
-      };
-    };
-  }[]; */
   content: FeaturedCollectionFragment;
   contentType: 'text' | 'image';
   orientation: 'horizontal' | 'vertical';
@@ -33,22 +21,21 @@ const Marquee = ({
 }: MarqueeProps) => {
   const collectionData = content?.products.edges;
   const productDetails = collectionData?.map((product) => (
-    <>
-      <h3 className="mx-8 md:mx-10 lg:mx-12 inline-block">
-        {product.node?.title}
-      </h3>
-      {console.log(product?.node?.featuredImage?.url)}
-      <img
-        src={product?.node?.featuredImage?.url}
-        alt={product?.node?.featuredImage?.altText || undefined}
+    <div
+      key={product?.node?.id}
+      className="shadow-3xl w-auto sm:rotate-2 border-2 border-black rounded-xl p-2 bg-white h-auto"
+    >
+      <People
+        imgSrc={product?.node?.featuredImage?.url}
+        altText={product?.node?.featuredImage?.altText || undefined}
       />
-      {/* <Image
-        data={product?.node?.featuredImage?.url}
-        aspectRatio="1/1"
-        sizes="(min-width: 45em) 20vw, 50vw"
-      /> */}
-      {divider && <div className="start-icon w-10 h-1 mr-1 bg-white"></div>}
-    </>
+      <div className="px-2 py-3">
+        <p className="text-black font-normal text-sm">{product?.node?.title}</p>
+        <div className="text-gray-500 font-normal text-sm">
+          {product?.node?.description}
+        </div>
+      </div>
+    </div>
   ));
 
   return (
@@ -62,11 +49,11 @@ const Marquee = ({
           <div
             className={`marquee ${
               reverse ? 'marquee--reverse' : ''
-            } bg-[#0115a8] text-white  ${
-              orientation === 'vertical' ? 'marquee--vertical' : ''
+            } text-white  ${
+              orientation === 'vertical' ? 'marquee--vertical pr-8' : ''
             }`}
           >
-            <div className="marquee__group">
+            <div className="marquee__group p-6 md:p-4">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
@@ -75,7 +62,7 @@ const Marquee = ({
                 {productDetails}
               </div>
             </div>
-            <div aria-hidden="true" className="marquee__group">
+            <div aria-hidden="true" className="marquee__group  p-6 md:p-4">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
@@ -95,52 +82,52 @@ const Marquee = ({
         >
           <div
             className={`marquee 
-              bg-[#0115a8] text-white ${
-                orientation === 'vertical' ? 'marquee--vertical' : ''
-              }`}
+            text-white ${
+              orientation === 'vertical' ? 'marquee--vertical' : ''
+            }`}
           >
-            <div className="marquee__group">
+            <div className="marquee__group  p-6 md:p-4">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
               >
-                {contentInfo}
+                {productDetails}
               </div>
             </div>
-            <div aria-hidden="true" className="marquee__group">
+            <div aria-hidden="true" className="marquee__group p-6 md:p-4">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
               >
-                {contentInfo}
+                {productDetails}
               </div>
             </div>
           </div>
           <div
             className={` marquee ${
               reverse ? 'marquee--reverse' : ''
-            } bg-[#0115a8] text-white ${
+            } text-white ${
               orientation === 'vertical' ? 'marquee--vertical' : ''
             }`}
           >
-            <div className="marquee__group">
+            <div className="marquee__group  p-6 md:p-4">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
               >
-                {contentInfo}
+                {productDetails}
               </div>
             </div>
-            <div aria-hidden="true" className="marquee__group">
+            <div aria-hidden="true" className="marquee__group  p-6 md:p-4">
               <div
                 className={` ${
                   orientation === 'vertical' ? 'marquee__item' : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
               >
-                {contentInfo}
+                {productDetails}
               </div>
             </div>
           </div>

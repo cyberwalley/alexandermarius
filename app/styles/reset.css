@@ -72,13 +72,6 @@ body > main {
   margin: 0 1rem 1rem 1rem;
 }
 
-section {
-  padding: 1rem 0;
-  @media (min-width: 768px) {
-    padding: 2rem 0;
-  }
-}
-
 fieldset {
   display: flex;
   flex-direction: column;
