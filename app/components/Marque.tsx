@@ -3,6 +3,7 @@ import {Image} from '@shopify/hydrogen';
 import {Await, type V2_MetaFunction} from '@remix-run/react';
 import People from './People';
 import {Suspense} from 'react';
+import {useMediaQuery} from '~/Hooks/useMediaQuery';
 interface MarqueeProps {
   content: FeaturedCollectionFragment;
   contentType: 'text' | 'image';
@@ -20,11 +21,13 @@ const Marquee = ({
   reverse,
   variant = 'single',
 }: MarqueeProps) => {
+  const isMediumLargeDevice = useMediaQuery('(min-width: 768px)');
+
   const collectionData = content?.products.edges;
   const productDetails = collectionData?.map((product) => (
     <div
       key={product?.node?.id}
-      className="shadow-3xl sm:rotate-2 border-2 border-black rounded-xl p-2 bg-white h-auto w-[18rem]"
+      className="shadow-3xl sm:rotate-2 border-2 border-black rounded-xl p-2 bg-white h-auto w-[18rem] "
     >
       {/* <People
         imgSrc={product?.node?.featuredImage?.url}
@@ -115,32 +118,34 @@ const Marquee = ({
               </div>
             </div>
           </div>
-          <div
-            className={` marquee ${
-              reverse ? 'marquee--reverse' : ''
-            } text-white ${
-              orientation === 'vertical' ? 'marquee--vertical' : ''
-            }`}
-          >
-            <div className="marquee__group p-8">
-              <div
-                className={` ${
-                  orientation === 'vertical' ? 'marquee__item' : ''
-                } flex justify-center items-center gap-10 text-[5rem] font-bold`}
-              >
-                {productDetails}
+          {isMediumLargeDevice && (
+            <div
+              className={` marquee ${
+                reverse ? 'marquee--reverse' : ''
+              } text-white ${
+                orientation === 'vertical' ? 'marquee--vertical' : ''
+              }`}
+            >
+              <div className="marquee__group p-8">
+                <div
+                  className={` ${
+                    orientation === 'vertical' ? 'marquee__item' : ''
+                  } flex justify-center items-center gap-10 text-[5rem] font-bold`}
+                >
+                  {productDetails}
+                </div>
+              </div>
+              <div aria-hidden="true" className="marquee__group p-8">
+                <div
+                  className={` ${
+                    orientation === 'vertical' ? 'marquee__item' : ''
+                  } flex justify-center items-center gap-10 text-[5rem] font-bold`}
+                >
+                  {productDetails}
+                </div>
               </div>
             </div>
-            <div aria-hidden="true" className="marquee__group p-8">
-              <div
-                className={` ${
-                  orientation === 'vertical' ? 'marquee__item' : ''
-                } flex justify-center items-center gap-10 text-[5rem] font-bold`}
-              >
-                {productDetails}
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       )}
     </>
