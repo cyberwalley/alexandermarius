@@ -11,8 +11,6 @@ const Hero = ({collection}: {collection: FeaturedCollectionFragment}) => {
   if (!collection) return null;
   const image = collection?.image;
 
-  console.log(collection?.products.edges);
-
   return (
     <section
       className={`relative overflow-hidden bg-contain bg-repeat md:bg-no-repeat md:bg-cover p-4 md:p-0`}
@@ -20,8 +18,8 @@ const Hero = ({collection}: {collection: FeaturedCollectionFragment}) => {
     >
       <div className="relative mx-auto max-w-[1536px] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-x-[1.5rem] gap-y-[2rem]">
         <div className="col-span-4 xs:col-span-4 md:col-span-6 col-start-1 flex flex-col pt-3xl sm:col-span-6 my-auto md:py-[5rem] gap-y-[3rem]">
-          <div className="text-left text-black z-10">
-            <h1 className="text-[1.5rem] text-center md:text-left mb-4 mt-0 md:text-[4.2rem] text-[var(--color-main)] font-extrabold md:font-black leading-tight md:leading-[1.3]">
+          <div className="text-left text-black z-[2]">
+            <h1 className="text-[1.865rem] text-center md:text-left mb-4 mt-0 md:text-[4.2rem] text-[var(--color-main)] font-extrabold md:font-black leading-tight md:leading-[1.3]">
               {collection.title}
             </h1>
             <p className="text-md text-center md:text-left  md:text-[1.175rem] text-[var(--color-main)] pt-2 line-clamp-5 md:line-clamp-3">

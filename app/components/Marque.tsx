@@ -17,7 +17,7 @@ const Marquee = ({
   content,
   contentType,
   divider,
-  orientation = 'horizontal',
+  orientation = 'vertical',
   reverse,
   variant = 'single',
 }: MarqueeProps) => {
@@ -92,7 +92,7 @@ const Marquee = ({
           <div
             className={`marquee 
             text-white ${
-              orientation === 'vertical' && isMediumLargeDevice
+              orientation === 'vertical' || isMediumLargeDevice
                 ? 'marquee--vertical'
                 : ''
             }`}
@@ -100,7 +100,7 @@ const Marquee = ({
             <div className="marquee__group p-8">
               <div
                 className={` ${
-                  orientation === 'vertical' && isMediumLargeDevice
+                  orientation === 'vertical' || isMediumLargeDevice
                     ? 'marquee__item'
                     : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
@@ -111,7 +111,7 @@ const Marquee = ({
             <div aria-hidden="true" className="marquee__group p-8">
               <div
                 className={` ${
-                  orientation === 'vertical' && isMediumLargeDevice
+                  orientation === 'vertical' || isMediumLargeDevice
                     ? 'marquee__item'
                     : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
