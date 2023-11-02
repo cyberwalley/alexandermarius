@@ -29,10 +29,6 @@ const Marquee = ({
       key={product?.node?.id}
       className="shadow-3xl sm:rotate-2 border-2 border-black rounded-xl p-2 bg-white h-auto w-[18rem] "
     >
-      {/* <People
-        imgSrc={product?.node?.featuredImage?.url}
-        altText={product?.node?.featuredImage?.altText || undefined}
-      /> */}
       <Image
         data={product?.node?.featuredImage || undefined}
         aspectRatio="1/1"
@@ -96,13 +92,17 @@ const Marquee = ({
           <div
             className={`marquee 
             text-white ${
-              orientation === 'vertical' ? 'marquee--vertical' : ''
+              orientation === 'vertical' && isMediumLargeDevice
+                ? 'marquee--vertical'
+                : ''
             }`}
           >
             <div className="marquee__group p-8">
               <div
                 className={` ${
-                  orientation === 'vertical' ? 'marquee__item' : ''
+                  orientation === 'vertical' && isMediumLargeDevice
+                    ? 'marquee__item'
+                    : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
               >
                 {productDetails}
@@ -111,7 +111,9 @@ const Marquee = ({
             <div aria-hidden="true" className="marquee__group p-8">
               <div
                 className={` ${
-                  orientation === 'vertical' ? 'marquee__item' : ''
+                  orientation === 'vertical' && isMediumLargeDevice
+                    ? 'marquee__item'
+                    : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
               >
                 {productDetails}

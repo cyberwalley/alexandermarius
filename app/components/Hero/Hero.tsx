@@ -6,7 +6,7 @@ import Marquee from '../Marque';
 import {useMediaQuery} from '~/Hooks/useMediaQuery';
 
 const Hero = ({collection}: {collection: FeaturedCollectionFragment}) => {
-  const isSmallDevice = useMediaQuery('(max-width: 768px)');
+  const isMediumLargeDevice = useMediaQuery('(min-width: 768px)');
 
   if (!collection) return null;
   const image = collection?.image;
@@ -20,16 +20,16 @@ const Hero = ({collection}: {collection: FeaturedCollectionFragment}) => {
     >
       <div className="relative mx-auto max-w-[1536px] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-x-[1.5rem] gap-y-[2rem]">
         <div className="col-span-4 xs:col-span-4 md:col-span-6 col-start-1 flex flex-col pt-3xl sm:col-span-6 my-auto md:py-[5rem] gap-y-[3rem]">
-          <div className="text-left text-black">
-            <h1 className="text-[3.7rem] mb-4 mt-0 md:text-[4.2rem] text-[var(--color-main)] font-extrabold md:font-black leading-tight md:leading-[1.3]">
+          <div className="text-left text-black z-10">
+            <h1 className="text-[1.5rem] text-center md:text-left mb-4 mt-0 md:text-[4.2rem] text-[var(--color-main)] font-extrabold md:font-black leading-tight md:leading-[1.3]">
               {collection.title}
             </h1>
-            <p className="text-md md:text-[1.175rem] text-[var(--color-main)] pt-2 line-clamp-5 md:line-clamp-3">
+            <p className="text-md text-center md:text-left  md:text-[1.175rem] text-[var(--color-main)] pt-2 line-clamp-5 md:line-clamp-3">
               {collection.description}
             </p>
-            <div className="w-full mt-4">
+            <div className="w-full mt-4 text-center md:text-left">
               <a href="/pages/about-us" className="group">
-                <span className="mb-2 underline hover:no-underline text-lg font-medium">
+                <span className="mb-2 text-center md:text-left  underline hover:no-underline text-lg font-medium">
                   Read more about us
                   <svg
                     viewBox="0 0 20 20"
@@ -61,10 +61,10 @@ const Hero = ({collection}: {collection: FeaturedCollectionFragment}) => {
                 Get Insights
               </button>
             </div>
-            <div className="mt-4 px-2 h-8 text-xs text-black flex">
+            <div className="mt-4 text-center md:text-left justify-center md:justify-start  px-2 h-8 text-xs text-black flex">
               Subscribe for weekly insights
             </div>
-            <div className="mt-4 px-2 h-8 text-xs text-red-700 flex">
+            <div className="mt-4 px-2 h-8 text-center justify-center md:justify-start md:text-left  text-xs text-red-700 flex">
               No empty field
             </div>
           </div>
@@ -73,7 +73,7 @@ const Hero = ({collection}: {collection: FeaturedCollectionFragment}) => {
           <Marquee
             content={collection}
             contentType="text"
-            orientation={isSmallDevice ? 'horizontal' : 'vertical'}
+            orientation={isMediumLargeDevice ? 'vertical' : 'horizontal'}
             variant="double"
             reverse
           />
