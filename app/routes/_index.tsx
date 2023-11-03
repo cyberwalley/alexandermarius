@@ -13,6 +13,7 @@ import type {
 } from 'storefrontapi.generated';
 import Hero from '~/components/Hero/Hero';
 import SectionBanner from '~/components/SectionBanner';
+import ServiceSection from '~/components/ServiceSection';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
@@ -32,6 +33,7 @@ export default function Homepage() {
   return (
     <div className="home">
       <Hero collection={data.featuredCollection} />
+      <ServiceSection />
       <SectionBanner />
     </div>
   );
