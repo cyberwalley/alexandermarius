@@ -1,11 +1,11 @@
 const ServiceSection = () => {
   return (
     <section className="bg-[--color-main] px-[1rem]">
-      <div className="grid gap-y-[4rem] p-8 md:p-0 md:pt-[4rem]">
+      <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pb-0">
         <div className="relative mx-auto max-w-[1536px] w-full grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-y-2xl">
           <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-10 lg:col-span-8 xl:col-span-8 col-start-1 pt-xl">
             <div className="text-left text-white">
-              <h2 className="text-[3rem] font-bold leading-[3.5rem]">
+              <h2 className="text-[3rem] font-[900] leading-[3.5rem]">
                 Services
               </h2>
               <p className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem]">
@@ -37,15 +37,15 @@ const ServiceSection = () => {
                       <h2 className="text-[1.57rem] font-bold">
                         Business Management and Consulting
                       </h2>
-                      <p className="text-body-base pt-sm line-clamp-4">
+                      <p className="leading-[2rem] pt-sm line-clamp-4">
                         Our Business Restructuring Services are designed to help
                         you transform your organization, streamline operations,
                         and enhance profitability. Whether youre looking to
                         optimize your resources
                       </p>
-                      <div className="w-full mt-4 text-center md:text-left">
+                      <div className="w-full mt-4 text-left">
                         <a href="/pages/about-us" className="group text-white">
-                          <span className="mb-2 text-left  underline hover:no-underline text-lg font-medium">
+                          <span className="mb-2 text-left underline hover:no-underline text-lg font-medium">
                             Read more
                             <svg
                               viewBox="0 0 20 20"
@@ -76,12 +76,12 @@ const ServiceSection = () => {
                       <h2 className="text-[1.57rem] font-bold">
                         Manpower Management
                       </h2>
-                      <p className="text-body-base pt-sm line-clamp-4">
+                      <p className="leading-[2rem] pt-sm line-clamp-4">
                         In the dynamic world of business, your most valuable
                         asset is your people. Finding, hiring, and retaining top
                         talent is essential for success.
                       </p>
-                      <div className="w-full mt-4 text-center md:text-left">
+                      <div className="w-full mt-4 text-left">
                         <a href="/pages/about-us" className="group text-white">
                           <span className="mb-2 text-left  underline hover:no-underline text-lg font-medium">
                             Read more
