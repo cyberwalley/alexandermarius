@@ -3,6 +3,44 @@
 /* eslint-disable */
 import * as StorefrontAPI from '@shopify/hydrogen/storefront-api-types';
 
+export type HeroCollectionQueryVariables = StorefrontAPI.Exact<{
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  handle: StorefrontAPI.Scalars['String'];
+}>;
+
+export type HeroCollectionQuery = {
+  collection?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Collection, 'id' | 'title' | 'description'> & {
+      image?: StorefrontAPI.Maybe<
+        Pick<StorefrontAPI.Image, 'id' | 'altText' | 'url'>
+      >;
+      products: {
+        edges: Array<{
+          node: Pick<StorefrontAPI.Product, 'id' | 'title' | 'description'> & {
+            featuredImage?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'id' | 'url' | 'altText'>
+            >;
+          };
+        }>;
+      };
+    }
+  >;
+};
+
+export type PageSectionQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+}>;
+
+export type PageSectionQuery = {
+  pages: {
+    edges: Array<{
+      node: Pick<StorefrontAPI.Page, 'id' | 'title' | 'handle' | 'bodySummary'>;
+    }>;
+  };
+};
+
 export type MenuItemFragment = Pick<
   StorefrontAPI.MenuItem,
   'id' | 'resourceId' | 'tags' | 'title' | 'type' | 'url'
@@ -146,59 +184,6 @@ export type SitemapQuery = {
   pages: {
     nodes: Array<
       Pick<StorefrontAPI.Page, 'updatedAt' | 'handle' | 'onlineStoreUrl'>
-    >;
-  };
-};
-
-export type FeaturedCollectionFragment = Pick<
-  StorefrontAPI.Collection,
-  'id' | 'title' | 'description' | 'handle'
-> & {
-  image?: StorefrontAPI.Maybe<
-    Pick<StorefrontAPI.Image, 'id' | 'url' | 'altText' | 'width' | 'height'>
-  >;
-  products: {
-    edges: Array<{
-      node: Pick<StorefrontAPI.Product, 'id' | 'title' | 'description'> & {
-        featuredImage?: StorefrontAPI.Maybe<
-          Pick<StorefrontAPI.Image, 'id' | 'url' | 'altText'>
-        >;
-      };
-    }>;
-  };
-};
-
-export type FeaturedCollectionQueryVariables = StorefrontAPI.Exact<{
-  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
-  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
-}>;
-
-export type FeaturedCollectionQuery = {
-  collections: {
-    nodes: Array<
-      Pick<
-        StorefrontAPI.Collection,
-        'id' | 'title' | 'description' | 'handle'
-      > & {
-        image?: StorefrontAPI.Maybe<
-          Pick<
-            StorefrontAPI.Image,
-            'id' | 'url' | 'altText' | 'width' | 'height'
-          >
-        >;
-        products: {
-          edges: Array<{
-            node: Pick<
-              StorefrontAPI.Product,
-              'id' | 'title' | 'description'
-            > & {
-              featuredImage?: StorefrontAPI.Maybe<
-                Pick<StorefrontAPI.Image, 'id' | 'url' | 'altText'>
-              >;
-            };
-          }>;
-        };
-      }
     >;
   };
 };
@@ -1791,6 +1776,14 @@ export type CartApiQueryFragment = Pick<
 };
 
 interface GeneratedQueryTypes {
+  '#graphql\n query HeroCollection($country: CountryCode, $language: LanguageCode, $handle: String!)\n    @inContext(country: $country, language: $language) {\n    collection(handle: $handle) {\n        id\n        title\n        description\n        image {\n        id\n        altText\n        url\n        }\n        products(first: 20) {\n        edges {\n            node {\n            id\n            title\n            description\n            featuredImage {\n                id\n                url\n                altText\n            }\n            }\n        }\n        }\n    }\n  }\n': {
+    return: HeroCollectionQuery;
+    variables: HeroCollectionQueryVariables;
+  };
+  '#graphql\n  query PageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    pages(first:20){\n    edges {\n      node {\n        id\n        title\n        handle\n        bodySummary\n      }\n    }\n  }\n  }\n': {
+    return: PageSectionQuery;
+    variables: PageSectionQueryVariables;
+  };
   '#graphql\n  fragment Shop on Shop {\n    id\n    name\n    description\n    primaryDomain {\n      url\n    }\n    brand {\n      logo {\n        image {\n          url\n        }\n      }\n    }\n  }\n  query Header(\n    $country: CountryCode\n    $headerMenuHandle: String!\n    $language: LanguageCode\n  ) @inContext(language: $language, country: $country) {\n    shop {\n      ...Shop\n    }\n    menu(handle: $headerMenuHandle) {\n      ...Menu\n    }\n  }\n  #graphql\n  fragment MenuItem on MenuItem {\n    id\n    resourceId\n    tags\n    title\n    type\n    url\n  }\n  fragment ChildMenuItem on MenuItem {\n    ...MenuItem\n  }\n  fragment ParentMenuItem on MenuItem {\n    ...MenuItem\n    items {\n      ...ChildMenuItem\n    }\n  }\n  fragment Menu on Menu {\n    id\n    items {\n      ...ParentMenuItem\n    }\n  }\n\n': {
     return: HeaderQuery;
     variables: HeaderQueryVariables;
@@ -1806,10 +1799,6 @@ interface GeneratedQueryTypes {
   '#graphql\n  query Sitemap($urlLimits: Int, $language: LanguageCode)\n  @inContext(language: $language) {\n    products(\n      first: $urlLimits\n      query: "published_status:\'online_store:visible\'"\n    ) {\n      nodes {\n        updatedAt\n        handle\n        onlineStoreUrl\n        title\n        featuredImage {\n          url\n          altText\n        }\n      }\n    }\n    collections(\n      first: $urlLimits\n      query: "published_status:\'online_store:visible\'"\n    ) {\n      nodes {\n        updatedAt\n        handle\n        onlineStoreUrl\n      }\n    }\n    pages(first: $urlLimits, query: "published_status:\'published\'") {\n      nodes {\n        updatedAt\n        handle\n        onlineStoreUrl\n      }\n    }\n  }\n': {
     return: SitemapQuery;
     variables: SitemapQueryVariables;
-  };
-  '#graphql\n  fragment FeaturedCollection on Collection {\n    id\n    title\n    description\n    image {\n      id\n      url\n      altText\n      width\n      height\n    }\n    handle\n    products(first: 20) {\n      edges {\n        node {\n          id\n          title\n          description\n          featuredImage {\n            id\n            url\n            altText\n          }\n        }\n      }\n    }\n  }\n  query FeaturedCollection($country: CountryCode, $language: LanguageCode)\n    @inContext(country: $country, language: $language) {\n    collections(first: 1, sortKey: UPDATED_AT, reverse: true) {\n      nodes {\n        ...FeaturedCollection\n      }\n    }\n  }\n': {
-    return: FeaturedCollectionQuery;
-    variables: FeaturedCollectionQueryVariables;
   };
   '#graphql\n  fragment RecommendedProduct on Product {\n    id\n    title\n    handle\n    priceRange {\n      minVariantPrice {\n        amount\n        currencyCode\n      }\n    }\n    images(first: 1) {\n      nodes {\n        id\n        url\n        altText\n        width\n        height\n      }\n    }\n  }\n  query RecommendedProducts ($country: CountryCode, $language: LanguageCode)\n    @inContext(country: $country, language: $language) {\n    products(first: 4, sortKey: UPDATED_AT, reverse: true) {\n      nodes {\n        ...RecommendedProduct\n      }\n    }\n  }\n': {
     return: RecommendedProductsQuery;

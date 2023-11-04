@@ -1,11 +1,13 @@
-import type {FeaturedCollectionFragment} from 'storefrontapi.generated';
+import {useLoaderData} from '@remix-run/react';
+import type {loader} from '~/routes/_index';
 import {Image} from '@shopify/hydrogen';
 import Button from '../Button';
 import Marquee from '../Marque';
 import {useMediaQuery} from '~/Hooks/useMediaQuery';
 
-const Hero = ({collection}: {collection: FeaturedCollectionFragment}) => {
+const Hero = () => {
   const isMediumLargeDevice = useMediaQuery('(min-width: 768px)');
+  const {collection} = useLoaderData<typeof loader>();
 
   if (!collection) return null;
   const image = collection?.image;

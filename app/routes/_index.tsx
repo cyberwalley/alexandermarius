@@ -7,13 +7,15 @@ import {
 } from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
-import type {
+/* import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
-} from 'storefrontapi.generated';
-import Hero from '~/components/Hero/Hero';
+} from 'storefrontapi.generated'; */
+import Hero from '~/components/hero/Hero';
 import SectionBanner from '~/components/SectionBanner';
-import ServiceSection from '~/components/ServiceSection';
+import ServiceSection from '~/components/services/ServiceSection';
+import {PAGES_QUERY} from '~/components/services/graphql/PagesQuery';
+import {HERO_COLLECTION_QUERY} from '~/components/hero/graphql/HeroCollectionQuery';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
@@ -21,25 +23,31 @@ export const meta: V2_MetaFunction = () => {
 
 export async function loader({context}: LoaderArgs) {
   const {storefront} = context;
-  const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
-  const featuredCollection = collections.nodes[0];
+  //const {collections} = await storefront.query(HERO_COLLECTION_QUERY);
+  const {collection} = await storefront.query(HERO_COLLECTION_QUERY, {
+    variables: {
+      handle: 'transforming-business-empowering-workforces',
+    },
+  });
+  //const collection = collections.nodes[0];
   const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
+  const {pages} = await storefront.query(PAGES_QUERY);
 
-  return defer({featuredCollection, recommendedProducts});
+  return defer({collection, recommendedProducts, pages});
 }
 
 export default function Homepage() {
-  const data = useLoaderData<typeof loader>();
+  //const data = useLoaderData<typeof loader>();
   return (
     <div className="home">
-      <Hero collection={data.featuredCollection} />
+      <Hero />
       <ServiceSection />
       <SectionBanner />
     </div>
   );
 }
 
-function FeaturedCollection({
+/* function FeaturedCollection({
   collection,
 }: {
   collection: FeaturedCollectionFragment;
@@ -60,9 +68,9 @@ function FeaturedCollection({
       <p>{collection.description}</p>
     </Link>
   );
-}
+} */
 
-function RecommendedProducts({
+/* function RecommendedProducts({
   products,
 }: {
   products: Promise<RecommendedProductsQuery>;
@@ -98,45 +106,7 @@ function RecommendedProducts({
       <br />
     </div>
   );
-}
-
-const FEATURED_COLLECTION_QUERY = `#graphql
-  fragment FeaturedCollection on Collection {
-    id
-    title
-    description
-    image {
-      id
-      url
-      altText
-      width
-      height
-    }
-    handle
-    products(first: 20) {
-      edges {
-        node {
-          id
-          title
-          description
-          featuredImage {
-            id
-            url
-            altText
-          }
-        }
-      }
-    }
-  }
-  query FeaturedCollection($country: CountryCode, $language: LanguageCode)
-    @inContext(country: $country, language: $language) {
-    collections(first: 1, sortKey: UPDATED_AT, reverse: true) {
-      nodes {
-        ...FeaturedCollection
-      }
-    }
-  }
-` as const;
+} */
 
 const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   fragment RecommendedProduct on Product {
