@@ -14,7 +14,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
   const publicStoreDomain = root?.data?.publicStoreDomain;
   return (
     <nav
-      className="relative mx-auto max-w-[1536px] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-x-[1.5rem] gap-y-[2rem] p-4"
+      className="relative mx-auto max-w-[1536px] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-y-[2rem] p-4"
       role="navigation"
     >
       <div className="pt-4 px-4 col-span-4 xs:col-span-4 md:col-span-4 col-start-1 flex flex-col pt-3xl sm:col-span-6 my-auto md:py-[5rem] md:px-10 gap-y-[1rem] text-[1.2rem] md:text-[1.5rem]">
@@ -178,7 +178,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
         </div>
       </div>
       <div className="col-span-12 px-0 md:px-10 py-10 border-t-2 border-gray-700 flex justify-between flex-col md:flex-row">
-        <ul className="flex gap-4">
+        <ul className="flex flex-col md:flex-row gap-4">
           <li>
             <Link
               className="text-white text-sm"

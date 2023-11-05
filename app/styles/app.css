@@ -600,7 +600,7 @@ aside li {
   flex-direction: column;
   gap: var(--gap);
   margin: auto;
-  max-width: 100vw;
+  max-width: 100%;
 }
 
 .wrapper--vertical {
