@@ -26,7 +26,7 @@ const Marquee = ({
   const productDetails = collectionData?.map((product) => (
     <div
       key={product?.node?.id}
-      className="shadow-3xl sm:rotate-2 border-2 border-black rounded-xl p-2 bg-white h-auto w-[18rem] "
+      className="shadow-3xl sm:rotate-2 border-2 border-black rounded-xl p-2 bg-white h-auto w-[15rem] sm:w-[9rem] md:w-[7rem] lg:w-[11rem] xl:w-[15rem] "
     >
       <Image
         data={product?.node?.featuredImage || undefined}
