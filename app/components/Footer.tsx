@@ -4,7 +4,7 @@ import FacebookIcon from '~/assets/svg/FacebookIcon';
 import InstagramIcon from '~/assets/svg/InstagramIcon';
 import LinkedInIcon from '~/assets/svg/LinkedInIcon';
 import XIcon from '~/assets/svg/XIcon';
-import HeartIcon from '~/assets/svg/heartIcon';
+import HeartIcon from '~/assets/svg/HeartIcon';
 
 export function Footer({menu}: FooterQuery) {
   return (
