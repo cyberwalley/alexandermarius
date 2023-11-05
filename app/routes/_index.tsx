@@ -13,10 +13,10 @@ import {Image, Money} from '@shopify/hydrogen';
 } from 'storefrontapi.generated'; */
 import Hero from '~/components/Hero';
 import SectionBanner from '~/components/SectionBanner';
-import ServiceSection from '~/components/services/ServiceSection';
-import {PAGES_QUERY} from '~/components/services/graphql/PagesQuery';
+import ServiceSection from '~/components/ServiceSection';
+import {PAGES_QUERY} from '~/components/PagesQuery';
 import {HERO_COLLECTION_QUERY} from '~/components/HeroCollectionQuery';
-import {GET_SINGLE_PAGE_QUERY} from '~/components/services/graphql/GetSinglePageQuery';
+import {GET_SINGLE_PAGE_QUERY} from '~/components/GetSinglePageQuery';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
