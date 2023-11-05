@@ -3,7 +3,7 @@ import {Image} from '@shopify/hydrogen';
 import {Await, type V2_MetaFunction} from '@remix-run/react';
 import People from './People';
 import {Suspense} from 'react';
-import {useMediaQuery} from '~/hooks/useMediaQuery';
+import {useMediaQuery} from '~/components/useMediaQuery';
 interface MarqueeProps {
   content: HeroCollectionQuery['collection'];
   contentType: 'text' | 'image';
