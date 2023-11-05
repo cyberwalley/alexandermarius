@@ -16,6 +16,7 @@ import SectionBanner from '~/components/SectionBanner';
 import ServiceSection from '~/components/services/ServiceSection';
 import {PAGES_QUERY} from '~/components/services/graphql/PagesQuery';
 import {HERO_COLLECTION_QUERY} from '~/components/hero/graphql/HeroCollectionQuery';
+import {GET_SINGLE_PAGE_QUERY} from '~/components/services/graphql/GetSinglePageQuery';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
@@ -32,12 +33,16 @@ export async function loader({context}: LoaderArgs) {
   //const collection = collections.nodes[0];
   const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
   const {pages} = await storefront.query(PAGES_QUERY);
+  const {page} = await storefront.query(GET_SINGLE_PAGE_QUERY, {
+    variables: {
+      handle: 'services',
+    },
+  });
 
-  return defer({collection, recommendedProducts, pages});
+  return defer({collection, recommendedProducts, pages, page});
 }
 
 export default function Homepage() {
-  //const data = useLoaderData<typeof loader>();
   return (
     <div className="home">
       <Hero />

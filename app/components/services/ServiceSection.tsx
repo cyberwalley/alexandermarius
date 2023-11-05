@@ -4,13 +4,10 @@ import ServiceItem from './ServiceItem';
 import type {PageSectionQuery} from 'storefrontapi.generated';
 import ConsultingIcon from '~/assets/svg/ConsultingIcon';
 import HumanCapital from '~/assets/svg/HumanCapital';
-import {useState} from 'react';
 
 const ServiceSection = () => {
-  const [servicePageCount, setServicePageCount] = useState<number>(0);
-  const {pages} = useLoaderData<typeof loader>();
-  const page: PageSectionQuery['pages']['edges'] = pages?.edges;
-
+  const {pages, page} = useLoaderData<typeof loader>();
+  const allPages: PageSectionQuery['pages']['edges'] = pages?.edges;
   return (
     <section className="bg-[--color-main] px-[1rem]">
       <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pb-0">
@@ -18,11 +15,10 @@ const ServiceSection = () => {
           <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-10 lg:col-span-8 xl:col-span-8 col-start-1 pt-xl">
             <div className="text-left text-white">
               <h2 className="text-[3rem] font-[900] leading-[3.5rem]">
-                Services
+                {page?.title}
               </h2>
               <p className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem]">
-                Our services cater to a wide range of local and global clients
-                with diverse needs, and are market leaders in their own rights.
+                {page?.bodySummary}
               </p>
             </div>
           </div>
@@ -40,7 +36,7 @@ const ServiceSection = () => {
           <div className="sm:px-0 md:px-0 lg:px-[4rem] col-span-4 xs:col-span-4 md:col-span-6 xs:col-start-1 sm:col-start-1 md:col-start-7 flex flex-col gap-y-xl sm:col-span-6">
             <div className="grid gap-y-[2.5rem] pb-[4rem]">
               <div className="grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem]">
-                {page?.map((page, index) => {
+                {allPages?.map((page, index) => {
                   if (page.node.handle === 'manpower-management') {
                     return (
                       <ServiceItem

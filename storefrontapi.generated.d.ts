@@ -28,6 +28,18 @@ export type HeroCollectionQuery = {
   >;
 };
 
+export type SinglePageSectionQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+  handle: StorefrontAPI.Scalars['String'];
+}>;
+
+export type SinglePageSectionQuery = {
+  page?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Page, 'id' | 'title' | 'bodySummary'>
+  >;
+};
+
 export type PageSectionQueryVariables = StorefrontAPI.Exact<{
   language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
   country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
@@ -1779,6 +1791,10 @@ interface GeneratedQueryTypes {
   '#graphql\n query HeroCollection($country: CountryCode, $language: LanguageCode, $handle: String!)\n    @inContext(country: $country, language: $language) {\n    collection(handle: $handle) {\n        id\n        title\n        description\n        image {\n        id\n        altText\n        url\n        }\n        products(first: 20) {\n        edges {\n            node {\n            id\n            title\n            description\n            featuredImage {\n                id\n                url\n                altText\n            }\n            }\n        }\n        }\n    }\n  }\n': {
     return: HeroCollectionQuery;
     variables: HeroCollectionQueryVariables;
+  };
+  '#graphql\n  query SinglePageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n    id\n    title\n    bodySummary\n  }\n  }\n': {
+    return: SinglePageSectionQuery;
+    variables: SinglePageSectionQueryVariables;
   };
   '#graphql\n  query PageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    pages(first:20){\n    edges {\n      node {\n        id\n        title\n        handle\n        bodySummary\n      }\n    }\n  }\n  }\n': {
     return: PageSectionQuery;
