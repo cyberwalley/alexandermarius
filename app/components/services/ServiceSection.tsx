@@ -2,10 +2,15 @@ import {useLoaderData} from '@remix-run/react';
 import type {loader} from '~/routes/_index';
 import ServiceItem from './ServiceItem';
 import type {PageSectionQuery} from 'storefrontapi.generated';
+import ConsultingIcon from '~/assets/svg/ConsultingIcon';
+import HumanCapital from '~/assets/svg/HumanCapital';
+import {useState} from 'react';
 
 const ServiceSection = () => {
+  const [servicePageCount, setServicePageCount] = useState<number>(0);
   const {pages} = useLoaderData<typeof loader>();
   const page: PageSectionQuery['pages']['edges'] = pages?.edges;
+
   return (
     <section className="bg-[--color-main] px-[1rem]">
       <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pb-0">
@@ -23,11 +28,11 @@ const ServiceSection = () => {
           </div>
         </div>
         <div className="mx-auto max-w-[1536px] w-full grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-[1.5rem] gap-y-[2.5rem]">
-          <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 flex flex-col gap-y-[2.5rem]">
+          <div className="col-span-4 md:relative xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 flex flex-col gap-y-[2.5rem]">
             <picture>
               <img
                 alt="A person at a store check-out, using the Shopify point of sale tablet to complete their purchase."
-                className="mx-auto ml-0 w-full"
+                className="mx-auto ml-0 w-full md:absolute bottom-0"
                 src="https://cdn.shopify.com/s/files/1/0687/9913/5766/files/triangle.png?v=1698992900 3x"
               />
             </picture>
@@ -36,12 +41,31 @@ const ServiceSection = () => {
             <div className="grid gap-y-[2.5rem] pb-[4rem]">
               <div className="grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem]">
                 {page?.map((page, index) => {
+                  if (page.node.handle === 'manpower-management') {
+                    return (
+                      <ServiceItem
+                        //@ts-ignore
+                        page={page}
+                        key={page.node.id}
+                        className="service-item"
+                        icon={
+                          <HumanCapital className=" w-10 h-10 text-gray-800 dark:text-white" />
+                        }
+                      />
+                    );
+                  }
                   if (
-                    page.node.handle === 'manpower-management' ||
                     page.node.handle === 'business-management-and-consulting'
-                  )
-                    //@ts-ignore
-                    return <ServiceItem page={page} />;
+                  ) {
+                    return (
+                      <ServiceItem
+                        //@ts-ignore
+                        page={page}
+                        key={page.node.id}
+                        icon={<ConsultingIcon className="w-10 h-10" />}
+                      />
+                    );
+                  }
                   return null;
                 })}
               </div>

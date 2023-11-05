@@ -3,7 +3,7 @@ import {Image} from '@shopify/hydrogen';
 import {Await, type V2_MetaFunction} from '@remix-run/react';
 import People from './People';
 import {Suspense} from 'react';
-import {useMediaQuery} from '~/Hooks/useMediaQuery';
+import {useMediaQuery} from '~/hooks/useMediaQuery';
 interface MarqueeProps {
   content: HeroCollectionQuery['collection'];
   contentType: 'text' | 'image';
@@ -63,7 +63,9 @@ const Marquee = ({
                   orientation === 'vertical' ? 'marquee__item' : ''
                 } flex justify-center items-center gap-10 text-[5rem] font-bold`}
               >
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense
+                  fallback={<div className="text-black">Loading...</div>}
+                >
                   <Await resolve={collectionData}>{productDetails}</Await>
                 </Suspense>
               </div>

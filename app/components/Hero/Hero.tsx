@@ -3,7 +3,7 @@ import type {loader} from '~/routes/_index';
 import {Image} from '@shopify/hydrogen';
 import Button from '../Button';
 import Marquee from '../Marque';
-import {useMediaQuery} from '~/Hooks/useMediaQuery';
+import {useMediaQuery} from '~/hooks/useMediaQuery';
 
 const Hero = () => {
   const isMediumLargeDevice = useMediaQuery('(min-width: 768px)');

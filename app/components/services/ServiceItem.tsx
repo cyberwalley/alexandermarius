@@ -1,19 +1,20 @@
-import type {loader} from '~/routes/_index';
 import {Link} from '@remix-run/react';
-
 import type {PageSectionQuery} from 'storefrontapi.generated';
+interface ServiceItemProps {
+  page: Pick<PageSectionQuery, 'pages'>;
+}
+
 //@ts-ignore
-const ServiceItem = ({page}: Pick<PageSectionQuery, 'pages'>) => {
+const ServiceItem = ({page, icon}: Pick<PageSectionQuery, 'pages'>) => {
   return (
-    <div
-      key={page.node.id}
-      className="rounded-2xl ring-0 ring-black/20 border-black p-0"
-    >
+    <div className="rounded-2xl ring-0 ring-black/20 border-black p-0">
       <div>
         <div className="text-left text-white">
-          <span className="inline-block mb-4 p-1 lg:p-2 leading-[1] bg-[#DBF3C9] border-4 lg:border-8 border-[#edf9e4] rounded-full">
-            💚
-          </span>
+          {icon && (
+            <span className="inline-block mb-4 p-1 lg:p-2 leading-[1] border-2 lg:border-4 border-[#edf9e4] rounded-full">
+              {icon}
+            </span>
+          )}
           <h2 className="text-[1.57rem] font-bold">{page.node.title}</h2>
           <p className="leading-[2rem] pt-sm line-clamp-4">
             {page.node.bodySummary}
