@@ -11,7 +11,7 @@ import {Image, Money} from '@shopify/hydrogen';
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated'; */
-import Hero from '~/components/hero/Hero';
+import Hero from '~/components/Hero';
 import SectionBanner from '~/components/SectionBanner';
 import ServiceSection from '~/components/services/ServiceSection';
 import {PAGES_QUERY} from '~/components/services/graphql/PagesQuery';
