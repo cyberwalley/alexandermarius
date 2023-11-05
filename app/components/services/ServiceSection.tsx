@@ -1,4 +1,4 @@
-import {useLoaderData} from '@remix-run/react';
+import {Link, useLoaderData} from '@remix-run/react';
 import type {loader} from '~/routes/_index';
 import ServiceItem from './ServiceItem';
 import type {PageSectionQuery} from 'storefrontapi.generated';
@@ -15,7 +15,12 @@ const ServiceSection = () => {
           <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-10 lg:col-span-8 xl:col-span-8 col-start-1 pt-xl">
             <div className="text-left text-white">
               <h2 className="text-[3rem] font-[900] leading-[3.5rem]">
-                {page?.title}
+                <Link
+                  className="text-white no-underline hover:no-underline"
+                  to={`pages/${page?.title}`}
+                >
+                  {page?.title}
+                </Link>
               </h2>
               <p className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem]">
                 {page?.bodySummary}
@@ -27,7 +32,7 @@ const ServiceSection = () => {
           <div className="col-span-4 md:relative xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 flex flex-col gap-y-[2.5rem]">
             <picture>
               <img
-                alt="A person at a store check-out, using the Shopify point of sale tablet to complete their purchase."
+                alt="Alexander Marius abstract triangle illustration"
                 className="mx-auto ml-0 w-full md:absolute bottom-0"
                 src="https://cdn.shopify.com/s/files/1/0687/9913/5766/files/triangle.png?v=1698992900 3x"
               />

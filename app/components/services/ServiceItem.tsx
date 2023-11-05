@@ -15,7 +15,7 @@ const ServiceItem = ({page, icon}: Pick<PageSectionQuery, 'pages'>) => {
               {icon}
             </span>
           )}
-          <h2 className="text-[1.57rem] font-bold">{page.node.title}</h2>
+          <h3 className="text-[1.57rem] font-bold">{page.node.title}</h3>
           <p className="leading-[2rem] pt-sm line-clamp-4">
             {page.node.bodySummary}
           </p>
