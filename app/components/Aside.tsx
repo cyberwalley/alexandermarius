@@ -1,3 +1,5 @@
+import CloseIcon from '~/assets/svg/CloseIcon';
+
 /**
  * A side bar component with Overlay that works without JavaScript.
  * @example
@@ -41,7 +43,7 @@ function CloseAside() {
   return (
     /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
     <a className="close text-white" href="#" onChange={() => history.go(-1)}>
-      &times;
+      <CloseIcon />
     </a>
   );
 }

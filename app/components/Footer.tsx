@@ -17,7 +17,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
       className="relative mx-auto max-w-[1536px] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-x-[1.5rem] gap-y-[2rem] p-4"
       role="navigation"
     >
-      <div className="pt-4 col-span-4 xs:col-span-4 md:col-span-4 col-start-1 flex flex-col pt-3xl sm:col-span-6 my-auto md:py-[5rem] md:px-10 gap-y-[1rem] text-[1.2rem] md:text-[1.5rem]">
+      <div className="pt-4 px-4 col-span-4 xs:col-span-4 md:col-span-4 col-start-1 flex flex-col pt-3xl sm:col-span-6 my-auto md:py-[5rem] md:px-10 gap-y-[1rem] text-[1.2rem] md:text-[1.5rem]">
         <h3 className="text-white text-[2rem] md:text-[3rem] font-[300]">
           {"Let's connect"}
         </h3>
@@ -52,7 +52,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
           );
         })}
       </div>
-      <div className="col-span-4 xs:col-span-4 md:col-span-8 col-start-1 gap-[1rem] my-auto sm:col-start-1 sm:col-span-8 text-white grid grid-cols-1 md:grid-cols-3 md:mb-10">
+      <div className="px-4 col-span-4 xs:col-span-4 md:col-span-8 col-start-1 gap-[1rem] my-auto sm:col-start-1 sm:col-span-8 text-white grid grid-cols-1 md:grid-cols-3 md:mb-10">
         <div className="col-start-1 md:col-start-2">
           <div className="col-span-3">
             <div className="mb-4 mt-4 md:mt-0 ">Follow us</div>
@@ -202,11 +202,11 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
           Site designed and developed by{' '}
           <a
             className="text-red-500"
-            href="https://www.axxd.com/?utm_source=alexandermarius&utm_medium=web&utm_campaign=referral"
+            href="https://www.ax.digital/?utm_source=alexandermarius&utm_medium=web&utm_campaign=referral"
             target="_blank"
             rel="noreferrer"
           >
-            AXXD
+            AxDigital
           </a>
         </div>
       </div>

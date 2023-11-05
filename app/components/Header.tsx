@@ -1,6 +1,7 @@
 import {Await, NavLink, useMatches} from '@remix-run/react';
 import {Suspense} from 'react';
 import type {LayoutProps} from './Layout';
+import HamburgerIcon from '~/assets/svg/HamburgerIcon';
 
 type HeaderProps = Pick<LayoutProps, 'header' | 'cart' | 'isLoggedIn'>;
 
@@ -99,7 +100,9 @@ function HeaderCtas({
 function HeaderMenuMobileToggle() {
   return (
     <a className="header-menu-mobile-toggle" href="#mobile-menu-aside">
-      <h3 className="text-white">☰</h3>
+      <h3 className="text-white">
+        <HamburgerIcon />
+      </h3>
     </a>
   );
 }
