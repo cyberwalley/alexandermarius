@@ -11,6 +11,7 @@ const HeartIcon = ({className = 'w-6 h-6'}) => {
       strokeWidth={1.5}
       stroke="currentColor"
       className={className}
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"
