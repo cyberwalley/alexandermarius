@@ -17,6 +17,7 @@ import ServiceSection from '~/components/ServiceSection';
 import {PAGES_QUERY} from '~/components/PagesQuery';
 import {HERO_COLLECTION_QUERY} from '~/components/HeroCollectionQuery';
 import {GET_SINGLE_PAGE_QUERY} from '~/components/GetSinglePageQuery';
+import InsightsSection from '~/components/InsightsSection';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
@@ -39,7 +40,13 @@ export async function loader({context}: LoaderArgs) {
     },
   });
 
-  return defer({collection, recommendedProducts, pages, page});
+  const {blog} = await storefront.query(GET_BLOG_QUERY, {
+    variables: {
+      handle: 'insights',
+    },
+  });
+
+  return defer({collection, recommendedProducts, pages, page, blog});
 }
 
 export default function Homepage() {
@@ -48,6 +55,7 @@ export default function Homepage() {
       <Hero />
       <ServiceSection />
       <SectionBanner />
+      <InsightsSection />
     </div>
   );
 }
@@ -141,5 +149,40 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
         ...RecommendedProduct
       }
     }
+  }
+` as const;
+
+const GET_BLOG_QUERY = `#graphql
+  query BlogSection(
+    $language: LanguageCode,
+    $country: CountryCode,
+    $handle: String!
+  )
+  @inContext(language: $language, country: $country) {
+    blog(handle: $handle) {
+    id
+    title
+    handle
+    articles (first: 5) {
+      edges {
+        node {
+          id
+          title
+          content
+          contentHtml
+          handle
+          image {
+            id
+            width
+            altText
+            url
+          }
+        }
+      }
+    }
+    seo {
+      description
+    }
+  }
   }
 ` as const;
