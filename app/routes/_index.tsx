@@ -18,6 +18,7 @@ import {PAGES_QUERY} from '~/components/PagesQuery';
 import {HERO_COLLECTION_QUERY} from '~/components/HeroCollectionQuery';
 import {GET_SINGLE_PAGE_QUERY} from '~/components/GetSinglePageQuery';
 import InsightsSection from '~/components/InsightsSection';
+import CaseStudySection from '~/components/CaseStudySection';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
@@ -56,6 +57,7 @@ export default function Homepage() {
       <ServiceSection />
       <SectionBanner />
       <InsightsSection />
+      <CaseStudySection />
     </div>
   );
 }
