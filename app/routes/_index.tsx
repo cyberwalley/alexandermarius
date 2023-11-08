@@ -165,7 +165,7 @@ const GET_BLOG_QUERY = `#graphql
     id
     title
     handle
-    articles (first: 5) {
+    articles (first: 2) {
       edges {
         node {
           id
