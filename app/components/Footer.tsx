@@ -137,7 +137,7 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
             <HeartIcon className="w-6 h-6 text-red-700" /> by{' '}
             <a
               className="text-[--color-secondary]"
-              href="https://www.ax.digital/?utm_source=alexandermarius&utm_medium=web&utm_campaign=referral"
+              href="https://www.madebyax.com/?utm_source=alexandermarius&utm_medium=web&utm_campaign=referral"
               target="_blank"
               rel="noreferrer"
             >

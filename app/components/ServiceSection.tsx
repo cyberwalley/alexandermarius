@@ -29,18 +29,9 @@ const ServiceSection = () => {
           </div>
         </div>
         <div className="mx-auto max-w-[1536px] w-full grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-[1.5rem] gap-y-[2.5rem]">
-          <div className="col-span-4 md:relative xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 flex flex-col gap-y-[2.5rem]">
-            <picture>
-              <img
-                alt="Alexander Marius abstract triangle illustration"
-                className="mx-auto ml-0 w-full md:absolute bottom-0"
-                src="https://cdn.shopify.com/s/files/1/0687/9913/5766/files/triangle.png?v=1698992900 3x"
-              />
-            </picture>
-          </div>
-          <div className="sm:px-0 md:px-0 lg:px-[4rem] col-span-4 xs:col-span-4 md:col-span-6 xs:col-start-1 sm:col-start-1 md:col-start-7 flex flex-col gap-y-xl sm:col-span-6">
-            <div className="grid gap-y-[2.5rem] pb-[4rem]">
-              <div className="grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem]">
+          <div className="sm:px-0 md:px-0  col-span-4 xs:col-span-4 md:col-span-6 xs:col-start-1 sm:col-start-1 md:col-start-1 flex flex-col gap-y-xl sm:col-span-6">
+            <div className="grid gap-y-[2.5rem] pb-[6rem] md:pb-[8rem]">
+              <div className="grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem] lg:flex">
                 {allPages?.map((page, index) => {
                   if (page.node.handle === 'manpower-management') {
                     return (
@@ -71,6 +62,15 @@ const ServiceSection = () => {
                 })}
               </div>
             </div>
+          </div>
+          <div className="col-span-4 md:relative xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 md:col-start-7  flex flex-col gap-y-[2.5rem]">
+            <picture>
+              <img
+                alt="Alexander Marius abstract triangle illustration"
+                className="mx-auto ml-0 w-full md:absolute bottom-0"
+                src="https://cdn.shopify.com/s/files/1/0687/9913/5766/files/triangle.png?v=1698992900 3x"
+              />
+            </picture>
           </div>
         </div>
       </div>

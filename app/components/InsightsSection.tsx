@@ -27,7 +27,7 @@ const InsightsSection = () => {
             </div>
           </div>
         </div>
-        <div className="mx-auto max-w-[1536px]">
+        <div className="mx-auto">
           {articles?.map((article, _index) => {
             if (_index % 2 == 0) {
               return (
