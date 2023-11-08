@@ -56,8 +56,8 @@ export default function Homepage() {
       <Hero />
       <ServiceSection />
       <SectionBanner />
-      <InsightsSection />
       <CaseStudySection />
+      <InsightsSection />
     </div>
   );
 }

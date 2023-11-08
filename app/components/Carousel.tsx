@@ -2,11 +2,14 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import {useMediaQuery} from './useMediaQuery';
+import {motion} from 'framer-motion';
+import {useRef} from 'react';
 
 const Carousel = () => {
   const isExtraLargeDevice = useMediaQuery('(min-width: 1201px)');
   const isLargeDevice = useMediaQuery('(min-width: 993px)');
   const isMediumDevice = useMediaQuery('(min-width: 769px)');
+  const carousel = useRef<HTMLDivElement>(null);
   const Images = [
     {
       id: 1,
@@ -47,6 +50,14 @@ const Carousel = () => {
       description:
         '0 to 100 km/h (0 to 62 mph) takes 3.0 seconds and the Spider is capable of a top speed of 400 km/h (249 mph).',
     },
+    {
+      id: 6,
+      src: 'https://cdn.shopify.com/s/files/1/0687/9913/5766/articles/cop28-page-thumb_1536x1536_66c13104-15c3-4f13-913a-a28ab91f05e2.jpg?v=1699257427',
+      alt: 'Image 5',
+      title: 'Ford Mustang',
+      description:
+        '0 to 100 km/h (0 to 62 mph) takes 3.0 seconds and the Spider is capable of a top speed of 400 km/h (249 mph).',
+    },
   ];
 
   /*   const settings = {
@@ -76,7 +87,10 @@ const Carousel = () => {
   }; */
 
   return (
-    <div>
+    <motion.div
+      ref={carousel}
+      className="carousel cursor-grab overflow-hidden col-span-12  flex flex-row gap-[1rem] my-auto "
+    >
       {/* <Slider {...settings}>
         {Images.map((item) => (
           <div key={item.id}>
@@ -91,7 +105,33 @@ const Carousel = () => {
           </div>
         ))}
       </Slider> */}
-    </div>
+      <motion.div
+        drag="x"
+        dragConstraints={carousel}
+        whileTap={{cursor: 'grabbing'}}
+        className="inner-carousel flex gap-10 p-10"
+      >
+        {Images.map((image, index) => {
+          return (
+            <motion.div
+              key={image.id}
+              whileTap={{cursor: 'grabbing'}}
+              className="item min-h-[20rem] w-[20rem] md:w-[20rem] lg:w-[29rem] xl:w-[35rem] bg-white  p-4 shadow-4xl border-2  border-[--color-secondary] rounded-xl"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full object-cover rounded-xl pointer-events-none"
+              />
+
+              <div className="px-2 py-3">
+                <p className="text-black font-normal text-sm">title</p>
+              </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </motion.div>
   );
 };
 
