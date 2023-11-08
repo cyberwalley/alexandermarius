@@ -1,10 +1,9 @@
 import {Link} from '@remix-run/react';
 import Carousel from './Carousel';
-
 const CaseStudySection = () => {
   return (
     <section className="bg-[--color-main] px-[1rem]">
-      <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pt-[7rem] md:pb-0">
+      <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:p-[7rem]">
         <div className="relative mx-auto max-w-[1536px] w-full grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-y-2xl">
           <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-10 lg:col-span-8 xl:col-span-8 col-start-1 pt-xl">
             <div className="text-left text-white">
@@ -22,7 +21,7 @@ const CaseStudySection = () => {
             </div>
           </div>
         </div>
-        <div className="mx-auto max-w-[1536px] overflow-hidden">
+        <div className="mx-auto w-full md:max-w-[1536px] overflow-hidden">
           <Carousel />
         </div>
       </div>
