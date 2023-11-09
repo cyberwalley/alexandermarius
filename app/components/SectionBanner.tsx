@@ -16,9 +16,11 @@ const SectionBanner = () => {
               </p>
             </div>
             <div className="mt-md">
-              <div className="flex gap-y-sm flex-wrap gap-x-sm justify-center">
+              <div className="flex gap-y-sm flex-wrap gap-x-sm justify-center mt-10">
                 <Link to={'/pages/contact'}>
-                  <Button>Get in touch</Button>
+                  <Button variant="primary" shadow>
+                    Get in touch
+                  </Button>
                 </Link>
               </div>
             </div>

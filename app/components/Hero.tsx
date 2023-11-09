@@ -46,25 +46,35 @@ const Hero = () => {
                 </a>
               </div>
             </div>
-            <div className="w-full lg:w-[80%]">
-              <div className="flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
+            <div className="w-full lg:w-[90%] xl:w-[80%]">
+              <div className="hidden lg:flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
                 <input
                   className="flex-1 pr-1 outline-none mr-2 min-w-0 bg-transparent text-black "
                   placeholder="Type your email"
                   data-testid="handle-input"
                   value=""
                 />
-                <button
-                  className="bg-[--color-secondary] whitespace-nowrap rounded-full bg-green-yellow disabled:bg-slate-200 disabled:text-slate-400 font-bold leading-none p-[0.938rem] text-[0.75rem] md:p-[1.125rem] md:text-[1rem]"
-                  data-testid="sign-up-button-hero"
-                >
-                  Get Insights
-                </button>
+                <Button variant="primary">Get insights</Button>
               </div>
-              <div className="mt-4 text-left justify-start  px-2 h-8 text-xs text-black flex">
+              <div className="lg:hidden ">
+                <div className="flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
+                  <input
+                    className="flex-1 pr-1 outline-none mr-2 min-w-0 bg-transparent text-black "
+                    placeholder="Type your email"
+                    data-testid="handle-input"
+                    value=""
+                  />
+                </div>
+                <div className="mt-6 sm:mt-10">
+                  <Button className="w-full" variant="primary" shadow>
+                    Get insights
+                  </Button>
+                </div>
+              </div>
+              <div className="mt-4 text-left justify-start  px-2 h-8 text-lg text-black flex">
                 Subscribe for weekly insights
               </div>
-              <div className="mt-4 px-2 h-8 text-left justify-start  text-xs text-red-700 flex">
+              <div className="mt-4 px-2 h-8 text-left justify-start  text-lg text-red-700 flex">
                 No empty field
               </div>
             </div>
