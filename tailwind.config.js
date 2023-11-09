@@ -12,6 +12,7 @@ export default {
         darkHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.4)',
         lightHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.05)',
         '3xl': '9px 9px 0 0 #000',
+        '4xl': '9px 9px 0 0 #2be1e4',
         '5px': '-5px 5px 0px black',
       },
     },

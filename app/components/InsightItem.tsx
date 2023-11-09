@@ -1,18 +1,38 @@
 import {Link} from '@remix-run/react';
-import {Image} from '@shopify/hydrogen';
+import type {Image} from '@shopify/hydrogen';
+import type {Article, Maybe} from '@shopify/hydrogen/storefront-api-types';
 import type {BlogSectionQuery} from 'storefrontapi.generated';
 
 interface InsightItemProps {
-  direction?: 'row' | 'row-reverse';
-  article: 'gg';
+  direction?: 'row-reverse' | 'row';
+  blog: string | undefined;
+  article: BlogSectionQuery;
 }
+
+/* ({
+  direction = 'row-reverse',
+  blog,
+  article,
+}: {
+  article: BlogSectionQuery;
+  direction?: 'row' | 'row-reverse';
+  blog: string | undefined;
+})  */
 
 const InsightItem = ({
   direction = 'row-reverse',
   blog,
   article,
 }: {
-  article: BlogSectionQuery;
+  article: {
+    node: Pick<
+      Article,
+      'title' | 'content' | 'handle' | 'id' | 'contentHtml'
+    > & {
+      image?: //@ts-ignore
+      Maybe<Pick<Image, 'altText' | 'url' | 'id' | 'width'>> | undefined;
+    };
+  };
   direction?: 'row' | 'row-reverse';
   blog: string | undefined;
 }) => {
@@ -25,9 +45,9 @@ const InsightItem = ({
       <div className="flex basis-1/2 place-content-end">
         <picture>
           <img
-            alt={article.node?.image.altText}
+            alt={article?.node?.image?.altText}
             className="w-full h-full grow object-cover"
-            src={article.node?.image.url}
+            src={article?.node?.image?.url}
           />
         </picture>
       </div>
@@ -35,14 +55,14 @@ const InsightItem = ({
         <div className="w-full p-4">
           <div className="grid grid-cols-1 gap-10 items-start">
             <h3 className="text-[2.2rem] md:text-[3.2rem] md:leading-[4rem] font-medium line-clamp-3">
-              {article.node?.title}
+              {article?.node?.title}
             </h3>
             <div className="leading-[2rem] text-[1.125rem] line-clamp-2">
-              {article.node?.content}
+              {article?.node?.content}
             </div>
             <div>
               <Link
-                to={`blogs/${blog}/${article.node?.handle}`}
+                to={`blogs/${blog}/${article?.node?.handle}`}
                 className="group text-black"
               >
                 <span className="mb-2 text-left underline hover:no-underline text-lg font-medium">

@@ -11,6 +11,7 @@ export const PAGES_QUERY = `#graphql
         title
         handle
         bodySummary
+        body
       }
     }
   }

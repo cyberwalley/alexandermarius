@@ -9,6 +9,7 @@ export const GET_SINGLE_PAGE_QUERY = `#graphql
     id
     title
     bodySummary
+    body
   }
   }
 ` as const;
