@@ -1,13 +1,17 @@
 import {Link, useLoaderData} from '@remix-run/react';
 import type {loader} from '~/routes/_index';
 import ServiceItem from './ServiceItem';
-import type {PageSectionQuery} from 'storefrontapi.generated';
+import type {
+  PageSectionQuery,
+  SinglePageSectionQuery,
+} from 'storefrontapi.generated';
 import ConsultingIcon from '~/assets/svg/ConsultingIcon';
 import HumanCapital from '~/assets/svg/HumanCapital';
 
 const ServiceSection = () => {
-  const {pages, page} = useLoaderData<typeof loader>();
-  const allPages: PageSectionQuery['pages']['edges'] = pages?.edges;
+  const {pages}: PageSectionQuery = useLoaderData<typeof loader>();
+  const {page}: SinglePageSectionQuery = useLoaderData<typeof loader>();
+  const allPages = pages?.edges;
   return (
     <section className="bg-[--color-main] px-[1rem]">
       <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pt-[7rem] md:pb-0">
@@ -22,9 +26,12 @@ const ServiceSection = () => {
                   {page?.title}
                 </Link>
               </h2>
-              <p className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem]">
-                {page?.bodySummary}
-              </p>
+
+              <div
+                // @ts-ignore
+                dangerouslySetInnerHTML={{__html: page?.body}}
+                className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem] line-clamp-3"
+              ></div>
             </div>
           </div>
         </div>

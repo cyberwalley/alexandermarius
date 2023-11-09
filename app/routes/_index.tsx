@@ -47,7 +47,9 @@ export async function loader({context}: LoaderArgs) {
     },
   });
 
-  return defer({collection, recommendedProducts, pages, page, blog});
+  const {blogs} = await storefront.query(GET_ALL_BLOGS_QUERY);
+
+  return defer({collection, recommendedProducts, pages, page, blog, blogs});
 }
 
 export default function Homepage() {
@@ -184,6 +186,46 @@ const GET_BLOG_QUERY = `#graphql
     }
     seo {
       description
+    }
+  }
+  }
+` as const;
+
+const GET_ALL_BLOGS_QUERY = `#graphql
+  query AllBlogs(
+    $language: LanguageCode,
+    $country: CountryCode,
+  )
+  @inContext(language: $language, country: $country) {
+    blogs(first: 5) {
+    edges {
+      node {
+        id
+        title
+        handle
+        articles(first: 10) {
+          edges {
+            node {
+              id
+              title
+              content
+              handle
+              publishedAt
+              image {
+                id
+                altText
+                url
+              }
+              authorV2 {
+                firstName
+              }
+            }
+          }
+        }
+        seo {
+          description
+        }
+      }
     }
   }
   }

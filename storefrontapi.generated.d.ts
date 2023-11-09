@@ -11,7 +11,7 @@ export type SinglePageSectionQueryVariables = StorefrontAPI.Exact<{
 
 export type SinglePageSectionQuery = {
   page?: StorefrontAPI.Maybe<
-    Pick<StorefrontAPI.Page, 'id' | 'title' | 'bodySummary'>
+    Pick<StorefrontAPI.Page, 'id' | 'title' | 'bodySummary' | 'body'>
   >;
 };
 
@@ -48,7 +48,10 @@ export type PageSectionQueryVariables = StorefrontAPI.Exact<{
 export type PageSectionQuery = {
   pages: {
     edges: Array<{
-      node: Pick<StorefrontAPI.Page, 'id' | 'title' | 'handle' | 'bodySummary'>;
+      node: Pick<
+        StorefrontAPI.Page,
+        'id' | 'title' | 'handle' | 'bodySummary' | 'body'
+      >;
     }>;
   };
 };
@@ -249,7 +252,6 @@ export type BlogSectionQueryVariables = StorefrontAPI.Exact<{
 }>;
 
 export type BlogSectionQuery = {
-  [x: string]: any;
   blog?: StorefrontAPI.Maybe<
     Pick<StorefrontAPI.Blog, 'id' | 'title' | 'handle'> & {
       articles: {
@@ -267,6 +269,36 @@ export type BlogSectionQuery = {
       seo?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Seo, 'description'>>;
     }
   >;
+};
+
+export type AllBlogsQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+}>;
+
+export type AllBlogsQuery = {
+  blogs: {
+    edges: Array<{
+      node: Pick<StorefrontAPI.Blog, 'id' | 'title' | 'handle'> & {
+        articles: {
+          edges: Array<{
+            node: Pick<
+              StorefrontAPI.Article,
+              'id' | 'title' | 'content' | 'handle' | 'publishedAt'
+            > & {
+              image?: StorefrontAPI.Maybe<
+                Pick<StorefrontAPI.Image, 'id' | 'altText' | 'url'>
+              >;
+              authorV2?: StorefrontAPI.Maybe<
+                Pick<StorefrontAPI.ArticleAuthor, 'firstName'>
+              >;
+            };
+          }>;
+        };
+        seo?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Seo, 'description'>>;
+      };
+    }>;
+  };
 };
 
 export type CustomerAddressUpdateMutationVariables = StorefrontAPI.Exact<{
@@ -1815,7 +1847,7 @@ export type CartApiQueryFragment = Pick<
 };
 
 interface GeneratedQueryTypes {
-  '#graphql\n  query SinglePageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n    id\n    title\n    bodySummary\n  }\n  }\n': {
+  '#graphql\n  query SinglePageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n    id\n    title\n    bodySummary\n    body\n  }\n  }\n': {
     return: SinglePageSectionQuery;
     variables: SinglePageSectionQueryVariables;
   };
@@ -1823,7 +1855,7 @@ interface GeneratedQueryTypes {
     return: HeroCollectionQuery;
     variables: HeroCollectionQueryVariables;
   };
-  '#graphql\n  query PageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    pages(first:20){\n    edges {\n      node {\n        id\n        title\n        handle\n        bodySummary\n      }\n    }\n  }\n  }\n': {
+  '#graphql\n  query PageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    pages(first:20){\n    edges {\n      node {\n        id\n        title\n        handle\n        bodySummary\n        body\n      }\n    }\n  }\n  }\n': {
     return: PageSectionQuery;
     variables: PageSectionQueryVariables;
   };
@@ -1847,9 +1879,13 @@ interface GeneratedQueryTypes {
     return: RecommendedProductsQuery;
     variables: RecommendedProductsQueryVariables;
   };
-  '#graphql\n  query BlogSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    blog(handle: $handle) {\n    id\n    title\n    handle\n    articles (first: 5) {\n      edges {\n        node {\n          id\n          title\n          content\n          contentHtml\n          handle\n          image {\n            id\n            width\n            altText\n            url\n          }\n        }\n      }\n    }\n    seo {\n      description\n    }\n  }\n  }\n': {
+  '#graphql\n  query BlogSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    blog(handle: $handle) {\n    id\n    title\n    handle\n    articles (first: 2) {\n      edges {\n        node {\n          id\n          title\n          content\n          contentHtml\n          handle\n          image {\n            id\n            width\n            altText\n            url\n          }\n        }\n      }\n    }\n    seo {\n      description\n    }\n  }\n  }\n': {
     return: BlogSectionQuery;
     variables: BlogSectionQueryVariables;
+  };
+  '#graphql\n  query AllBlogs(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    blogs(first: 5) {\n    edges {\n      node {\n        id\n        title\n        handle\n        articles(first: 10) {\n          edges {\n            node {\n              id\n              title\n              content\n              handle\n              publishedAt\n              image {\n                id\n                altText\n                url\n              }\n              authorV2 {\n                firstName\n              }\n            }\n          }\n        }\n        seo {\n          description\n        }\n      }\n    }\n  }\n  }\n': {
+    return: AllBlogsQuery;
+    variables: AllBlogsQueryVariables;
   };
   '#graphql\n  fragment OrderMoney on MoneyV2 {\n    amount\n    currencyCode\n  }\n  fragment AddressFull on MailingAddress {\n    address1\n    address2\n    city\n    company\n    country\n    countryCodeV2\n    firstName\n    formatted\n    id\n    lastName\n    name\n    phone\n    province\n    provinceCode\n    zip\n  }\n  fragment DiscountApplication on DiscountApplication {\n    value {\n      __typename\n      ... on MoneyV2 {\n        ...OrderMoney\n      }\n      ... on PricingPercentageValue {\n        percentage\n      }\n    }\n  }\n  fragment OrderLineProductVariant on ProductVariant {\n    id\n    image {\n      altText\n      height\n      url\n      id\n      width\n    }\n    price {\n      ...OrderMoney\n    }\n    product {\n      handle\n    }\n    sku\n    title\n  }\n  fragment OrderLineItemFull on OrderLineItem {\n    title\n    quantity\n    discountAllocations {\n      allocatedAmount {\n        ...OrderMoney\n      }\n      discountApplication {\n        ...DiscountApplication\n      }\n    }\n    originalTotalPrice {\n      ...OrderMoney\n    }\n    discountedTotalPrice {\n      ...OrderMoney\n    }\n    variant {\n      ...OrderLineProductVariant\n    }\n  }\n  fragment Order on Order {\n    id\n    name\n    orderNumber\n    statusUrl\n    processedAt\n    fulfillmentStatus\n    totalTaxV2 {\n      ...OrderMoney\n    }\n    totalPriceV2 {\n      ...OrderMoney\n    }\n    subtotalPriceV2 {\n      ...OrderMoney\n    }\n    shippingAddress {\n      ...AddressFull\n    }\n    discountApplications(first: 100) {\n      nodes {\n        ...DiscountApplication\n      }\n    }\n    lineItems(first: 100) {\n      nodes {\n        ...OrderLineItemFull\n      }\n    }\n  }\n  query Order(\n    $country: CountryCode\n    $language: LanguageCode\n    $orderId: ID!\n  ) @inContext(country: $country, language: $language) {\n    order: node(id: $orderId) {\n      ... on Order {\n        ...Order\n      }\n    }\n  }\n': {
     return: OrderQuery;

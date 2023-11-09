@@ -2,9 +2,10 @@ import {Link, useLoaderData} from '@remix-run/react';
 import InsightItem from './InsightItem';
 import Button from './Button';
 import type {loader} from '~/routes/_index';
+import type {BlogSectionQuery} from 'storefrontapi.generated';
 
 const InsightsSection = () => {
-  const {blog} = useLoaderData<typeof loader>();
+  const {blog}: BlogSectionQuery = useLoaderData<typeof loader>();
 
   const articles = blog?.articles?.edges;
   return (
@@ -21,7 +22,7 @@ const InsightsSection = () => {
                   {blog?.title}
                 </h2>
               </Link>
-              <p className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem]">
+              <p className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem] line-clamp-3">
                 {blog?.seo?.description}
               </p>
             </div>
@@ -33,7 +34,7 @@ const InsightsSection = () => {
               return (
                 <InsightItem
                   key={article.node.id}
-                  blog={blog?.title}
+                  blog={blog?.handle}
                   article={article}
                   direction="row"
                 />
@@ -42,7 +43,7 @@ const InsightsSection = () => {
             return (
               <InsightItem
                 key={article.node.id}
-                blog={blog?.title}
+                blog={blog?.handle}
                 article={article}
               />
             );
