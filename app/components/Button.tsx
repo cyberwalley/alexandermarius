@@ -1,16 +1,22 @@
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary';
+  variant: 'primary' | 'secondary';
+  shadow?: boolean;
+  className?: string;
 }
 
-const Button = ({children, variant}: ButtonProps) => {
+const Button = ({children, variant, shadow, className}: ButtonProps) => {
   return (
     <button
-      className={`ease-in-out hover:translate-x-[-5px] hover:translate-y-[5px] transition hover:shadow-none font-bold shadow-3xl border-2  border-black rounded-full min-w-[150px] text-center py-2 h-11 bg-[var(--color-secondary)] whitespace-nowrap inline-block text-[var(--color-main)] mt-6 md:mt-5 md:mb-5 ${
+      className={`${
         variant === 'secondary'
-          ? 'border-solid border-2 border-white  ease-in-out duration-300 delay-150 '
+          ? 'bg-white border-2'
+          : 'bg-[var(--color-secondary)]'
+      }  ${
+        shadow
+          ? 'hover:translate-x-[-5px] transition  hover:translate-y-[5px] hover:shadow-none shadow-3xl border-2  ease-in-out'
           : ''
-      }'}`}
+      } ${className} inline-block self-center overflow-hidden max-w-full px-5 py-2 ring-inset rounded-full text-base border-black font-bold tracking-tight transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-state-focus focus-visible:outline hover:ring-1 disabled:hover-ring-0 md:px-6 md:py-3 md:text-lg`}
     >
       {children}
     </button>

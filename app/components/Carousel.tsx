@@ -40,19 +40,23 @@ const Carousel = ({blogs}: {blogs: AllBlogsQuery}) => {
                       className="pointer-events-none"
                     />
                     <div className="px-2 py-3">
-                      <h3 className="text-black font-bold text-xl uppercase">
+                      <h3 className="text-black font-bold text-xl uppercase text-center min-h-[56px] xs:min-h-0 line-clamp-2">
                         {
                           //@ts-ignore
                           article?.node?.title
                         }
                       </h3>
                       <div>
-                        <Link
-                          //@ts-ignore
-                          to={`blogs/${blog?.node?.handle}/${article?.node?.handle}`}
-                        >
-                          <Button>Read success story</Button>
-                        </Link>
+                        <div className="flex justify-center mt-10 mb-10 ">
+                          <Link
+                            //@ts-ignore
+                            to={`blogs/${blog?.node?.handle}/${article?.node?.handle}`}
+                          >
+                            <Button variant="primary">
+                              Read success story
+                            </Button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </motion.div>

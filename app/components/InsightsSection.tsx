@@ -49,13 +49,7 @@ const InsightsSection = () => {
             );
           })}
           <div className="flex justify-center mt-10 mb-10 ">
-            <Link
-              to={`blogs/${blog?.handle}`}
-              className="inline-block self-center overflow-hidden max-w-full px-5 py-2 ring-inset rounded-full text-base border-black font-bold tracking-tight transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-state-focus focus-visible:outline hover:ring-1 disabled:hover-ring-0 md:px-6 md:py-3 md:text-lg border-2"
-              data-component-name="view-all-sales-channel-apps"
-            >
-              View all insights
-            </Link>
+            <Button variant="secondary">View all insights</Button>
           </div>
         </div>
       </div>
