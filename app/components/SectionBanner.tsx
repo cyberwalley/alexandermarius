@@ -4,7 +4,7 @@ import Button from './Button';
 const SectionBanner = () => {
   return (
     <section className="px-[1rem] bg-[--color-secondary]">
-      <div className="grid gap-y-[4rem] pb-20 pt-20">
+      <div className="grid gap-y-[4rem] pb-20 pt-20 md:pb-[8rem] md:pt-[8rem]">
         <div className="mx-auto grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-[1.5rem] gap-y-[4rem]">
           <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-10 lg:col-span-8 xl:col-span-8 xs:col-start-1 sm:col-start-1 md:col-start-2 lg:col-start-3 xl:col-start-3">
             <div className="text-center text-black">

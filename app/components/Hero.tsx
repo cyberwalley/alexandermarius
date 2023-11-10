@@ -47,7 +47,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="w-full lg:w-[90%] xl:w-[80%]">
-              <div className="hidden lg:flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
+              <div className="desktop hidden lg:flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
                 <input
                   className="flex-1 pr-1 outline-none mr-2 min-w-0 bg-transparent text-black "
                   placeholder="Type your email"
@@ -56,7 +56,7 @@ const Hero = () => {
                 />
                 <Button variant="primary">Get insights</Button>
               </div>
-              <div className="lg:hidden ">
+              <div className="mobile lg:hidden ">
                 <div className="flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
                   <input
                     className="flex-1 pr-1 outline-none mr-2 min-w-0 bg-transparent text-black "

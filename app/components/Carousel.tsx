@@ -48,14 +48,13 @@ const Carousel = ({blogs}: {blogs: AllBlogsQuery}) => {
                       </h3>
                       <div>
                         <div className="flex justify-center mt-10 mb-10 ">
-                          <Link
+                          <Button
                             //@ts-ignore
                             to={`blogs/${blog?.node?.handle}/${article?.node?.handle}`}
+                            variant="primary"
                           >
-                            <Button variant="primary">
-                              Read success story
-                            </Button>
-                          </Link>
+                            Read success story
+                          </Button>
                         </div>
                       </div>
                     </div>
