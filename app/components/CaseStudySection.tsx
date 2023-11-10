@@ -7,7 +7,7 @@ const CaseStudySection = () => {
   const {blogs}: AllBlogsQuery = useLoaderData<typeof loader>();
 
   return (
-    <section className="rounded-b-[2rem] xs:rounded-b-[2rem] bg-[--color-main]">
+    <section className="rounded-b-[1.3rem] md:rounded-b-[2rem] bg-[--color-main]">
       <div className="grid gap-y-[4rem] pt-[3rem] md:py-[7rem]">
         <div className="relative px-8 xl:px-0 mx-auto max-w-[1536px] w-full grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-y-2xl">
           <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-10 lg:col-span-8 xl:col-span-8 col-start-1 pt-xl">

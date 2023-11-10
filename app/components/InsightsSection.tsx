@@ -49,7 +49,9 @@ const InsightsSection = () => {
             );
           })}
           <div className="flex justify-center mt-10 mb-10 ">
-            <Button variant="secondary">View all insights</Button>
+            <Button to={`blogs/${blog?.handle}`} variant="secondary">
+              View all insights
+            </Button>
           </div>
         </div>
       </div>
