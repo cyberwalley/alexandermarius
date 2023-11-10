@@ -51,7 +51,7 @@ const InsightItem = ({
           />
         </picture>
       </div>
-      <div className="grid basis-1/2 sm:place-content-center gap-y-md p-8 md:p-10 lg:p-16">
+      <div className="grid basis-1/2 sm:place-content-center gap-y-md py-[2rem] md:p-10 lg:p-16">
         <div className="w-full p-4">
           <div className="grid grid-cols-1 gap-10 items-start">
             <h3 className="text-[2.2rem] md:text-[3.2rem] md:leading-[4rem] font-medium line-clamp-3">

@@ -11,11 +11,11 @@ const ServiceItem = ({page, icon}: Pick<PageSectionQuery, 'pages'>) => {
       <div>
         <div className="text-left text-white">
           {icon && (
-            <span className="inline-block mb-4 p-1 lg:p-2 leading-[1] border-2 lg:border-4 border-[#edf9e4] rounded-full">
+            <span className="inline-block mb-8 p-1 lg:p-2 leading-[1] border-2 lg:border-4 border-[#edf9e4] rounded-full">
               {icon}
             </span>
           )}
-          <h3 className="text-[1.57rem] font-bold">{page.node.title}</h3>
+          <h3 className="text-[1.57rem] mb-8 font-bold">{page.node.title}</h3>
           <p className="leading-[2rem] pt-sm line-clamp-4">
             {page.node.bodySummary}
           </p>
