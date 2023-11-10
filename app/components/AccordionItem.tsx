@@ -18,7 +18,7 @@ const AccordionItem = ({title, content}: AccordionItemProps) => {
   return (
     <div className="border-b-black border-b-2 last:border-0">
       <button
-        className="w-full text-left flex justify-between gap-10 align-center relative pr-16 items-center px-6 focus:outline-none pt-8 py-xl pb-8 md:p-10 leading-[1.6] "
+        className="w-full text-left flex justify-between gap-10 align-center relative md:pr-16 items-center md:px-6 focus:outline-none pt-8 py-xl pb-8 md:p-10 leading-[1.6] "
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
@@ -44,7 +44,7 @@ const AccordionItem = ({title, content}: AccordionItemProps) => {
             style={{overflow: 'hidden'}}
             aria-hidden={!isOpen}
           >
-            <div className=" py-xl px-8 md:px-10 pb-10 mr-16 text-xl leading-7 md:text-[1.125rem] md:leading-[1.625rem] richtext">
+            <div className=" py-xl  md:px-10 pb-10 md:mr-16 text-xl leading-7 md:text-[1.125rem] md:leading-[1.625rem] richtext">
               {content}
             </div>
           </motion.div>
