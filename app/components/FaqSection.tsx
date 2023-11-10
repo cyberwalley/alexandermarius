@@ -4,6 +4,7 @@ import Accordion from './Accordion';
 const FaqSection = () => {
   const accordionData = [
     {
+      id: '1',
       title: 'How long will the hiring process take?',
       content: `For Entry level and Junior roles, we deliver within 4 weeks. While for Mid-level roles, we guarantee
       a delivery within 5-weeks. However for senior roles like Team Lead and Executive recruitments, the
@@ -11,6 +12,7 @@ const FaqSection = () => {
       the most realistic timeline suited to your recruitment project.`,
     },
     {
+      id: '2',
       title:
         'What happens if I find a candidate through a different source? Do I get my payment back?',
       content: `If we are contacted and informed at least 5 working days prior to the commencement of the
@@ -18,11 +20,13 @@ const FaqSection = () => {
       equivalent value.`,
     },
     {
+      id: '3',
       title:
         'What happens if I am not happy with the candidates? Can I get a refund?',
       content: `If you are not pleased with the initial recommendations, we will another set of recommendations`,
     },
     {
+      id: '4',
       title:
         'What happens if the candidate leaves after 2-3 months on the job?',
       content: `If the candidate is released based on poor performance, a proof of communicated and agreed

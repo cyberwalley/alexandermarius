@@ -3,7 +3,12 @@ import {motion, AnimatePresence} from 'framer-motion';
 import PlusIcon from '~/assets/svg/PlusIcon';
 import MinusIcon from '~/assets/svg/MinusIcon';
 
-const AccordionItem = ({title, content}) => {
+interface AccordionItemProps {
+  title: string;
+  content: string;
+}
+
+const AccordionItem = ({title, content}: AccordionItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const variants = {
     open: {opacity: 1, height: 'auto'},

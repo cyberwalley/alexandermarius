@@ -1,11 +1,22 @@
 import {useState} from 'react';
 import AccordionItem from './AccordionItem';
 
-const Accordion = ({data}) => {
+interface AccordionProps {
+  data: {
+    id: string;
+    title: string;
+    content: string;
+  }[];
+}
+const Accordion = ({data}: AccordionProps) => {
   return (
     <div className="accordion" role="region" aria-label="Accordion">
       {data.map((item, index) => (
-        <AccordionItem key={item} title={item.title} content={item.content} />
+        <AccordionItem
+          key={item.id}
+          title={item.title}
+          content={item.content}
+        />
       ))}
     </div>
   );
