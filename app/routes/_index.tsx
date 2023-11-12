@@ -20,6 +20,7 @@ import {GET_SINGLE_PAGE_QUERY} from '~/components/GetSinglePageQuery';
 import InsightsSection from '~/components/InsightsSection';
 import CaseStudySection from '~/components/CaseStudySection';
 import FaqSection from '~/components/FaqSection';
+import CareersSection from '~/components/CareersSection';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
@@ -62,6 +63,7 @@ export default function Homepage() {
       <CaseStudySection />
       <InsightsSection />
       <FaqSection />
+      <CareersSection />
     </div>
   );
 }
