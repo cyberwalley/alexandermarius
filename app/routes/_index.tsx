@@ -20,6 +20,7 @@ import {GET_SINGLE_PAGE_QUERY} from '~/components/GetSinglePageQuery';
 import InsightsSection from '~/components/InsightsSection';
 import CaseStudySection from '~/components/CaseStudySection';
 import FaqSection from '~/components/FaqSection';
+import CareersSection from '~/components/CareersSection';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
@@ -62,6 +63,7 @@ export default function Homepage() {
       <CaseStudySection />
       <InsightsSection />
       <FaqSection />
+      <CareersSection />
     </div>
   );
 }
@@ -199,13 +201,13 @@ const GET_ALL_BLOGS_QUERY = `#graphql
     $country: CountryCode,
   )
   @inContext(language: $language, country: $country) {
-    blogs(first: 5) {
+    blogs(first: 20) {
     edges {
       node {
         id
         title
         handle
-        articles(first: 10) {
+        articles(first: 50) {
           edges {
             node {
               id
@@ -217,6 +219,11 @@ const GET_ALL_BLOGS_QUERY = `#graphql
                 id
                 altText
                 url
+              }
+              metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){
+                id
+                value
+                
               }
               authorV2 {
                 firstName
