@@ -1,23 +1,41 @@
-const JobItem = () => {
+import {Link} from '@remix-run/react';
+import type {AllBlogsQuery} from 'storefrontapi.generated';
+
+interface JobItemProps {
+  blogName: string;
+  article: AllBlogsQuery;
+}
+
+const JobItem = ({blogName, article}: JobItemProps) => {
   return (
     <li className="py-[2rem] border-t border-gray-300">
       <div className="flex flex-wrap justify-between gap-5 items-center">
         <div className="xs:w-6-cols md:w-2-cols lg:w-2-cols mt-spacing-4 md:mt-0 md:text-right">
-          <a
-            href="/careers/senior-manager-of-procure-to-pay-operations"
-            className="group inline-block"
+          <Link
+            //@ts-ignore
+            to={`blogs/${blogName}/${article?.node?.handle}`}
+            className="group inline-block text-left"
           >
             <h3 className="text-[1.125rem] text-left font-semibold  group-hover:underline underline-transparent underline-thickness-1 underline-offset-2 group-hover:underline-text-primary">
-              Senior Manager of Procure to Pay Operations
+              {
+                //@ts-ignore
+                article?.node?.title
+              }
             </h3>
             <span className="text-[1.125rem] text-left hover:no-underline">
-              San Francisco, California, United States — Finance
+              {
+                //@ts-ignore
+                article?.node?.metafields?.[0]?.value
+              }
             </span>
-          </a>
+          </Link>
         </div>
         <div className="xs:w-6-cols md:w-2-cols lg:w-2-cols mt-spacing-4 md:mt-0 md:text-right">
           <a
-            href="https://boards.greenhouse.io/openai/jobs/4990797004#app"
+            href={
+              //@ts-ignore
+              article?.node?.metafields?.[1]?.value
+            }
             rel="noreferrer"
             target="_blank"
             aria-label="Apply now"

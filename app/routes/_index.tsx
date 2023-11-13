@@ -201,13 +201,13 @@ const GET_ALL_BLOGS_QUERY = `#graphql
     $country: CountryCode,
   )
   @inContext(language: $language, country: $country) {
-    blogs(first: 5) {
+    blogs(first: 20) {
     edges {
       node {
         id
         title
         handle
-        articles(first: 10) {
+        articles(first: 50) {
           edges {
             node {
               id
@@ -219,6 +219,11 @@ const GET_ALL_BLOGS_QUERY = `#graphql
                 id
                 altText
                 url
+              }
+              metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){
+                id
+                value
+                
               }
               authorV2 {
                 firstName

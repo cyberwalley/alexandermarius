@@ -289,6 +289,11 @@ export type AllBlogsQuery = {
               image?: StorefrontAPI.Maybe<
                 Pick<StorefrontAPI.Image, 'id' | 'altText' | 'url'>
               >;
+              metafields: Array<
+                StorefrontAPI.Maybe<
+                  Pick<StorefrontAPI.Metafield, 'id' | 'value'>
+                >
+              >;
               authorV2?: StorefrontAPI.Maybe<
                 Pick<StorefrontAPI.ArticleAuthor, 'firstName'>
               >;
@@ -1883,7 +1888,7 @@ interface GeneratedQueryTypes {
     return: BlogSectionQuery;
     variables: BlogSectionQueryVariables;
   };
-  '#graphql\n  query AllBlogs(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    blogs(first: 5) {\n    edges {\n      node {\n        id\n        title\n        handle\n        articles(first: 10) {\n          edges {\n            node {\n              id\n              title\n              content\n              handle\n              publishedAt\n              image {\n                id\n                altText\n                url\n              }\n              authorV2 {\n                firstName\n              }\n            }\n          }\n        }\n        seo {\n          description\n        }\n      }\n    }\n  }\n  }\n': {
+  '#graphql\n  query AllBlogs(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    blogs(first: 20) {\n    edges {\n      node {\n        id\n        title\n        handle\n        articles(first: 50) {\n          edges {\n            node {\n              id\n              title\n              content\n              handle\n              publishedAt\n              image {\n                id\n                altText\n                url\n              }\n              metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){\n                id\n                value\n                \n              }\n              authorV2 {\n                firstName\n              }\n            }\n          }\n        }\n        seo {\n          description\n        }\n      }\n    }\n  }\n  }\n': {
     return: AllBlogsQuery;
     variables: AllBlogsQueryVariables;
   };
