@@ -1,5 +1,5 @@
 import {Link} from '@remix-run/react';
-import Button from './Button';
+import Button from '../components/Button';
 
 const SectionBanner = () => {
   return (

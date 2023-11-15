@@ -2,13 +2,15 @@ import {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import PlusIcon from '~/assets/svg/PlusIcon';
 import MinusIcon from '~/assets/svg/MinusIcon';
+import type {AllBlogsQuery} from 'storefrontapi.generated';
 
-interface AccordionItemProps {
-  title: string;
-  content: string;
-}
-
-const AccordionItem = ({title, content}: AccordionItemProps) => {
+const AccordionItem = ({
+  title,
+  content,
+}: {
+  content: AllBlogsQuery['blogs']['edges'][0]['node']['articles']['edges'][0]['node']['content'];
+  title: AllBlogsQuery['blogs']['edges'][0]['node']['articles']['edges'][0]['node']['title'];
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const variants = {
     open: {opacity: 1, height: 'auto'},

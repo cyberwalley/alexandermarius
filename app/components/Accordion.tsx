@@ -1,23 +1,23 @@
-import {useState} from 'react';
 import AccordionItem from './AccordionItem';
+import type {AllBlogsQuery} from 'storefrontapi.generated';
 
-interface AccordionProps {
-  data: {
-    id: string;
-    title: string;
-    content: string;
-  }[];
-}
-const Accordion = ({data}: AccordionProps) => {
+const Accordion = ({blogs}: AllBlogsQuery) => {
   return (
     <div className="accordion" role="region" aria-label="Accordion">
-      {data.map((item, index) => (
-        <AccordionItem
-          key={item.id}
-          title={item.title}
-          content={item.content}
-        />
-      ))}
+      {blogs?.edges?.map((blog) => {
+        if (blog?.node?.handle === 'faq') {
+          return blog?.node?.articles?.edges?.map((article) => {
+            return (
+              <AccordionItem
+                key={article?.node?.id}
+                title={article?.node?.title}
+                content={article?.node?.content}
+              />
+            );
+          });
+        }
+        return null;
+      })}
     </div>
   );
 };

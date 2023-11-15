@@ -1,5 +1,5 @@
 import {Image} from '@shopify/hydrogen';
-import {useMediaQuery} from './useMediaQuery';
+import {useMediaQuery} from '../hooks/useMediaQuery';
 import {motion} from 'framer-motion';
 import {useRef} from 'react';
 import type {AllBlogsQuery} from 'storefrontapi.generated';
