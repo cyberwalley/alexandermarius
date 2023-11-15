@@ -7,10 +7,6 @@ import {
 } from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
-/* import type {
-  FeaturedCollectionFragment,
-  RecommendedProductsQuery,
-} from 'storefrontapi.generated'; */
 import Hero from '~/components/Hero';
 import SectionBanner from '~/sections/SectionBanner';
 import ServiceSection from '~/sections/ServiceSection';
@@ -28,30 +24,16 @@ export const meta: V2_MetaFunction = () => {
 
 export async function loader({context}: LoaderArgs) {
   const {storefront} = context;
-  //const {collections} = await storefront.query(HERO_COLLECTION_QUERY);
   const {collection} = await storefront.query(HERO_COLLECTION_QUERY, {
     variables: {
       handle: 'transforming-business-empowering-workforces',
     },
   });
-  //const collection = collections.nodes[0];
   const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
   const {pages} = await storefront.query(PAGES_QUERY);
-  const {page} = await storefront.query(GET_SINGLE_PAGE_QUERY, {
-    variables: {
-      handle: 'services',
-    },
-  });
-
-  const {blog} = await storefront.query(GET_BLOG_QUERY, {
-    variables: {
-      handle: 'insights',
-    },
-  });
-
   const {blogs} = await storefront.query(GET_ALL_BLOGS_QUERY);
 
-  return defer({collection, recommendedProducts, pages, page, blog, blogs});
+  return defer({collection, recommendedProducts, pages, blogs});
 }
 
 export default function Homepage() {
