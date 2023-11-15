@@ -3,7 +3,7 @@ import type {AllBlogsQuery} from 'storefrontapi.generated';
 
 interface JobItemProps {
   blogName: string;
-  article: AllBlogsQuery;
+  article: AllBlogsQuery['blogs']['edges'][0]['node']['articles']['edges'][0];
 }
 
 const JobItem = ({blogName, article}: JobItemProps) => {
@@ -12,30 +12,20 @@ const JobItem = ({blogName, article}: JobItemProps) => {
       <div className="flex flex-wrap justify-between gap-5 items-center">
         <div className="xs:w-6-cols md:w-2-cols lg:w-2-cols mt-spacing-4 md:mt-0 md:text-right">
           <Link
-            //@ts-ignore
             to={`blogs/${blogName}/${article?.node?.handle}`}
             className="group inline-block text-left"
           >
             <h3 className="text-[1.125rem] text-left font-semibold  group-hover:underline underline-transparent underline-thickness-1 underline-offset-2 group-hover:underline-text-primary">
-              {
-                //@ts-ignore
-                article?.node?.title
-              }
+              {article?.node?.title}
             </h3>
             <span className="text-[1.125rem] text-left hover:no-underline">
-              {
-                //@ts-ignore
-                article?.node?.metafields?.[0]?.value
-              }
+              {article?.node?.metafields?.[0]?.value}
             </span>
           </Link>
         </div>
         <div className="xs:w-6-cols md:w-2-cols lg:w-2-cols mt-spacing-4 md:mt-0 md:text-right">
           <a
-            href={
-              //@ts-ignore
-              article?.node?.metafields?.[1]?.value
-            }
+            href={article?.node?.metafields?.[1]?.value}
             rel="noreferrer"
             target="_blank"
             aria-label="Apply now"

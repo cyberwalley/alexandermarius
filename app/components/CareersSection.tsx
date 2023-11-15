@@ -16,7 +16,7 @@ const CareersSection = () => {
               <h2 className="text-[3rem] font-[900] leading-[3.5rem]">
                 <Link
                   className="text-black no-underline hover:no-underline"
-                  to={`blogs/careers`}
+                  to="blogs/careers"
                 >
                   Careers
                 </Link>
@@ -38,7 +38,6 @@ const CareersSection = () => {
                     <JobItem
                       key={article?.node?.id}
                       blogName={blog?.node?.handle}
-                      //@ts-ignore
                       article={article}
                     />
                   );
@@ -48,7 +47,7 @@ const CareersSection = () => {
             })}
           </ul>
           <div className="flex justify-center mt-10 md:mt-[4rem] mb-10">
-            <Button to={`blogs/`} variant="secondary">
+            <Button to="blogs/careers" variant="secondary">
               View all open roles
             </Button>
           </div>

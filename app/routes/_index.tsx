@@ -19,7 +19,7 @@ import {HERO_COLLECTION_QUERY} from '~/components/HeroCollectionQuery';
 import {GET_SINGLE_PAGE_QUERY} from '~/components/GetSinglePageQuery';
 import InsightsSection from '~/components/InsightsSection';
 import CaseStudySection from '~/components/CaseStudySection';
-import FaqSection from '~/components/FaqSection';
+import FaqSection from '~/sections/FaqSection';
 import CareersSection from '~/components/CareersSection';
 
 export const meta: V2_MetaFunction = () => {
@@ -207,7 +207,7 @@ const GET_ALL_BLOGS_QUERY = `#graphql
         id
         title
         handle
-        articles(first: 50) {
+        articles(first: 50 sortKey: UPDATED_AT, reverse: true) {
           edges {
             node {
               id
