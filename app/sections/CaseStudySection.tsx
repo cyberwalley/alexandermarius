@@ -1,5 +1,5 @@
 import {Link, useLoaderData} from '@remix-run/react';
-import Carousel from './Carousel';
+import Carousel from '../components/Carousel';
 import type {loader} from '~/routes/_index';
 import type {AllBlogsQuery} from 'storefrontapi.generated';
 

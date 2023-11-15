@@ -12,15 +12,15 @@ import {Image, Money} from '@shopify/hydrogen';
   RecommendedProductsQuery,
 } from 'storefrontapi.generated'; */
 import Hero from '~/components/Hero';
-import SectionBanner from '~/components/SectionBanner';
-import ServiceSection from '~/components/ServiceSection';
+import SectionBanner from '~/sections/SectionBanner';
+import ServiceSection from '~/sections/ServiceSection';
 import {PAGES_QUERY} from '~/components/PagesQuery';
 import {HERO_COLLECTION_QUERY} from '~/components/HeroCollectionQuery';
 import {GET_SINGLE_PAGE_QUERY} from '~/components/GetSinglePageQuery';
-import InsightsSection from '~/components/InsightsSection';
-import CaseStudySection from '~/components/CaseStudySection';
-import FaqSection from '~/sections/FaqSection';
-import CareersSection from '~/components/CareersSection';
+import InsightsSection from '~/sections/InsightsSection';
+import CaseStudySection from '~/sections/CaseStudySection';
+import FaqSection from '~/sections/FaqSection/FaqSection';
+import CareersSection from '~/sections/CareersSection';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];

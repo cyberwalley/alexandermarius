@@ -1,6 +1,6 @@
 import {Link, useLoaderData} from '@remix-run/react';
 import InsightItem from './InsightItem';
-import Button from './Button';
+import Button from '../components/Button';
 import type {loader} from '~/routes/_index';
 import type {BlogSectionQuery} from 'storefrontapi.generated';
 
