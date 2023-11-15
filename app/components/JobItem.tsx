@@ -9,7 +9,7 @@ interface JobItemProps {
 const JobItem = ({blogName, article}: JobItemProps) => {
   return (
     <li className="py-[2rem] border-t border-gray-300">
-      <div className="flex flex-wrap justify-between gap-5 items-center">
+      <div className="flex flex-col md:flex-row md:justify-between gap-5 items-start md:items-center">
         <div className="xs:w-6-cols md:w-2-cols lg:w-2-cols mt-spacing-4 md:mt-0 md:text-right">
           <Link
             to={`blogs/${blogName}/${article?.node?.handle}`}
