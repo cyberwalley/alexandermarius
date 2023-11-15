@@ -43,10 +43,8 @@ const ServiceSection = () => {
                   if (page.node.handle === 'manpower-management') {
                     return (
                       <ServiceItem
-                        //@ts-ignore
                         page={page}
                         key={page.node.id}
-                        className="service-item"
                         icon={
                           <HumanCapital className=" w-10 h-10 text-gray-800 dark:text-white" />
                         }
@@ -58,7 +56,6 @@ const ServiceSection = () => {
                   ) {
                     return (
                       <ServiceItem
-                        //@ts-ignore
                         page={page}
                         key={page.node.id}
                         icon={<ConsultingIcon className="w-10 h-10" />}
