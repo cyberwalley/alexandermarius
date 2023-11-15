@@ -19,8 +19,8 @@ import {HERO_COLLECTION_QUERY} from '~/components/HeroCollectionQuery';
 import {GET_SINGLE_PAGE_QUERY} from '~/components/GetSinglePageQuery';
 import InsightsSection from '~/sections/InsightsSection';
 import CaseStudySection from '~/sections/CaseStudySection';
-import FaqSection from '~/sections/FaqSection/FaqSection';
 import CareersSection from '~/sections/CareersSection';
+import FaqSection from '~/sections/FaqSection';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
