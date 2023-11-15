@@ -4,13 +4,19 @@ import {Image} from '@shopify/hydrogen';
 import Button from './Button';
 import Marquee from './Marque';
 import {useMediaQuery} from '~/hooks/useMediaQuery';
+import {useState} from 'react';
 
 const Hero = () => {
+  const [email, setEmail] = useState('');
   const isMediumLargeDevice = useMediaQuery('(min-width: 768px)');
   const {collection} = useLoaderData<typeof loader>();
 
   if (!collection) return null;
   const image = collection?.image;
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
 
   return (
     <section
@@ -47,14 +53,23 @@ const Hero = () => {
               </div>
             </div>
             <div className="w-full lg:w-[90%] xl:w-[80%]">
-              <div className="desktop hidden lg:flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
-                <input
-                  className="flex-1 pr-1 outline-none mr-2 min-w-0 bg-transparent text-black "
-                  placeholder="Type your email"
-                  data-testid="handle-input"
-                  value=""
-                />
-                <Button variant="primary">Get insights</Button>
+              <div className="desktop">
+                <form>
+                  <div className='"desktop hidden lg:flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl'>
+                    <input
+                      className="flex-1 pr-1 outline-none mr-2 min-w-0 bg-transparent text-black "
+                      placeholder="Your email"
+                      aria-label="Your email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={handleEmailChange}
+                    />
+                    <Button submit variant="primary">
+                      Get insights
+                    </Button>
+                  </div>
+                </form>
               </div>
               <div className="mobile lg:hidden ">
                 <div className="flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
@@ -66,7 +81,7 @@ const Hero = () => {
                   />
                 </div>
                 <div className="mt-6 sm:mt-10">
-                  <Button className="w-full" variant="primary" shadow>
+                  <Button submit className="w-full" variant="primary" shadow>
                     Get insights
                   </Button>
                 </div>
