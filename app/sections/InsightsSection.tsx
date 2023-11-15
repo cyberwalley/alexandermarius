@@ -2,12 +2,11 @@ import {Link, useLoaderData} from '@remix-run/react';
 import InsightItem from './InsightItem';
 import Button from '../components/Button';
 import type {loader} from '~/routes/_index';
-import type {BlogSectionQuery} from 'storefrontapi.generated';
+import type {AllBlogsQuery} from 'storefrontapi.generated';
 
 const InsightsSection = () => {
-  const {blog}: BlogSectionQuery = useLoaderData<typeof loader>();
-
-  const articles = blog?.articles?.edges;
+  const {blogs}: AllBlogsQuery = useLoaderData<typeof loader>();
+  const SIZE = 2;
   return (
     <section className="bg-white px-[1rem]">
       <div className="grid gap-y-[4rem] pt-[3rem] md:py-[7rem] md:pb-[7rem]">
@@ -16,40 +15,50 @@ const InsightsSection = () => {
             <div className="text-left text-black">
               <Link
                 className="text-black no-underline hover:no-underline"
-                to={`blogs/${blog?.handle}`}
+                to="blogs/insights"
               >
                 <h2 className="text-[3rem] font-[900] leading-[3.5rem]">
-                  {blog?.title}
+                  Trending insights
                 </h2>
               </Link>
               <p className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem] line-clamp-3">
-                {blog?.seo?.description}
+                Navigate the Now with Next-Level Insights. Tap into the pulse of
+                industry innovation and future-forward strategies. Discover the
+                trends that will define tomorrow—today.
               </p>
             </div>
           </div>
         </div>
         <div className="mx-auto">
-          {articles?.map((article, _index) => {
-            if (_index % 2 == 0) {
-              return (
-                <InsightItem
-                  key={article.node.id}
-                  blog={blog?.handle}
-                  article={article}
-                  direction="row"
-                />
-              );
+          {blogs?.edges?.map((blog) => {
+            if (blog?.node?.handle === 'insights') {
+              return blog?.node?.articles?.edges
+                ?.slice(0, SIZE)
+                .map((article, _index) => {
+                  if (_index % 2 == 0) {
+                    return (
+                      <InsightItem
+                        key={article?.node?.id}
+                        blog={blog?.node?.handle}
+                        article={article}
+                        direction="row"
+                      />
+                    );
+                  }
+                  return (
+                    <InsightItem
+                      key={article?.node?.id}
+                      blog={blog?.node?.handle}
+                      article={article}
+                    />
+                  );
+                });
             }
-            return (
-              <InsightItem
-                key={article.node.id}
-                blog={blog?.handle}
-                article={article}
-              />
-            );
+            return null;
           })}
+
           <div className="flex justify-center mt-10 md:mt-[4rem] mb-10">
-            <Button to={`blogs/${blog?.handle}`} variant="secondary">
+            <Button to="blogs/insights" variant="secondary">
               View all insights
             </Button>
           </div>

@@ -1,41 +1,19 @@
 import {Link} from '@remix-run/react';
 import type {Image} from '@shopify/hydrogen';
 import type {Article, Maybe} from '@shopify/hydrogen/storefront-api-types';
-import type {BlogSectionQuery} from 'storefrontapi.generated';
+import type {AllBlogsQuery} from 'storefrontapi.generated';
 
 interface InsightItemProps {
   direction?: 'row-reverse' | 'row';
   blog: string | undefined;
-  article: BlogSectionQuery;
+  article: AllBlogsQuery['blogs']['edges'][0]['node']['articles']['edges'][0];
 }
-
-/* ({
-  direction = 'row-reverse',
-  blog,
-  article,
-}: {
-  article: BlogSectionQuery;
-  direction?: 'row' | 'row-reverse';
-  blog: string | undefined;
-})  */
 
 const InsightItem = ({
   direction = 'row-reverse',
   blog,
   article,
-}: {
-  article: {
-    node: Pick<
-      Article,
-      'title' | 'content' | 'handle' | 'id' | 'contentHtml'
-    > & {
-      image?: //@ts-ignore
-      Maybe<Pick<Image, 'altText' | 'url' | 'id' | 'width'>> | undefined;
-    };
-  };
-  direction?: 'row' | 'row-reverse';
-  blog: string | undefined;
-}) => {
+}: InsightItemProps) => {
   return (
     <div
       className={`w-full relative flex flex-col overflow-hidden ${
@@ -43,13 +21,15 @@ const InsightItem = ({
       } `}
     >
       <div className="flex basis-1/2 place-content-end">
-        <picture>
-          <img
-            alt={article?.node?.image?.altText}
-            className="w-full h-full grow object-cover"
-            src={article?.node?.image?.url}
-          />
-        </picture>
+        {article?.node?.image?.url && (
+          <picture>
+            <img
+              alt={article?.node?.image?.altText || undefined}
+              className="w-full h-full grow object-cover"
+              src={article?.node?.image?.url}
+            />
+          </picture>
+        )}
       </div>
       <div className="grid basis-1/2 sm:place-content-center gap-y-md py-[2rem] md:p-10 lg:p-16">
         <div className="w-full p-4">

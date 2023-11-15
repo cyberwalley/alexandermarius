@@ -1,16 +1,12 @@
 import {Link, useLoaderData} from '@remix-run/react';
 import type {loader} from '~/routes/_index';
 import ServiceItem from './ServiceItem';
-import type {
-  PageSectionQuery,
-  SinglePageSectionQuery,
-} from 'storefrontapi.generated';
+import type {PageSectionQuery} from 'storefrontapi.generated';
 import ConsultingIcon from '~/assets/svg/ConsultingIcon';
 import HumanCapital from '~/assets/svg/HumanCapital';
 
 const ServiceSection = () => {
   const {pages}: PageSectionQuery = useLoaderData<typeof loader>();
-  const {page}: SinglePageSectionQuery = useLoaderData<typeof loader>();
   const allPages = pages?.edges;
   return (
     <section className="rounded-t-[1.3rem] md:rounded-t-[2rem] bg-[--color-main] px-[1rem]">
@@ -21,17 +17,18 @@ const ServiceSection = () => {
               <h2 className="text-[3rem] font-[900] leading-[3.5rem]">
                 <Link
                   className="text-white no-underline hover:no-underline"
-                  to={`pages/${page?.title}`}
+                  to="pages/services"
                 >
-                  {page?.title}
+                  Services
                 </Link>
               </h2>
-
-              <div
-                // @ts-ignore
-                dangerouslySetInnerHTML={{__html: page?.body}}
-                className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem] line-clamp-3"
-              ></div>
+              <div className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem] line-clamp-3">
+                Our services cater to a wide range of local and global clients
+                with diverse needs, and are market leaders in their own rights.
+                Elevate your business with a suite of services designed to
+                deliver excellence and drive growth. Explore how we can serve
+                you.
+              </div>
             </div>
           </div>
         </div>
@@ -43,10 +40,8 @@ const ServiceSection = () => {
                   if (page.node.handle === 'manpower-management') {
                     return (
                       <ServiceItem
-                        //@ts-ignore
                         page={page}
                         key={page.node.id}
-                        className="service-item"
                         icon={
                           <HumanCapital className=" w-10 h-10 text-gray-800 dark:text-white" />
                         }
@@ -58,7 +53,6 @@ const ServiceSection = () => {
                   ) {
                     return (
                       <ServiceItem
-                        //@ts-ignore
                         page={page}
                         key={page.node.id}
                         icon={<ConsultingIcon className="w-10 h-10" />}

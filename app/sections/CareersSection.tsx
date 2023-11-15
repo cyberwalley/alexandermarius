@@ -6,7 +6,7 @@ import type {AllBlogsQuery} from 'storefrontapi.generated';
 
 const CareersSection = () => {
   const {blogs}: AllBlogsQuery = useLoaderData<typeof loader>();
-
+  const SIZE = 4;
   return (
     <section className="bg-white px-[1rem]">
       <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pt-[7rem] pb-[3rem] md:pb-[7rem]">
@@ -33,15 +33,17 @@ const CareersSection = () => {
           <ul aria-label="Featured roles grid grid-flow-row auto-rows-max">
             {blogs?.edges?.map((blog) => {
               if (blog?.node?.handle === 'careers') {
-                return blog?.node?.articles?.edges?.map((article) => {
-                  return (
-                    <JobItem
-                      key={article?.node?.id}
-                      blogName={blog?.node?.handle}
-                      article={article}
-                    />
-                  );
-                });
+                return blog?.node?.articles?.edges
+                  ?.slice(0, SIZE)
+                  .map((article) => {
+                    return (
+                      <JobItem
+                        key={article?.node?.id}
+                        blogName={blog?.node?.handle}
+                        article={article}
+                      />
+                    );
+                  });
               }
               return null;
             })}
