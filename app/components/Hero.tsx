@@ -4,6 +4,8 @@ import {Image} from '@shopify/hydrogen';
 import Button from './Button';
 import Marquee from './Marque';
 import {useMediaQuery} from '~/hooks/useMediaQuery';
+import Newsletter from '~/routes/newsletter';
+import NewsletterForm from './NewsletterForm';
 
 const Hero = () => {
   const isMediumLargeDevice = useMediaQuery('(min-width: 768px)');
@@ -46,38 +48,7 @@ const Hero = () => {
                 </a>
               </div>
             </div>
-            <div className="w-full lg:w-[90%] xl:w-[80%]">
-              <div className="desktop hidden lg:flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
-                <input
-                  className="flex-1 pr-1 outline-none mr-2 min-w-0 bg-transparent text-black "
-                  placeholder="Type your email"
-                  data-testid="handle-input"
-                  value=""
-                />
-                <Button variant="primary">Get insights</Button>
-              </div>
-              <div className="mobile lg:hidden ">
-                <div className="flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
-                  <input
-                    className="flex-1 pr-1 outline-none mr-2 min-w-0 bg-transparent text-black "
-                    placeholder="Type your email"
-                    data-testid="handle-input"
-                    value=""
-                  />
-                </div>
-                <div className="mt-6 sm:mt-10">
-                  <Button className="w-full" variant="primary" shadow>
-                    Get insights
-                  </Button>
-                </div>
-              </div>
-              <div className="mt-4 text-left justify-start  px-2 h-8 text-lg text-black flex">
-                Subscribe for weekly insights
-              </div>
-              <div className="mt-4 px-2 h-8 text-left justify-start  text-lg text-red-700 flex">
-                No empty field
-              </div>
-            </div>
+            <NewsletterForm className="w-full lg:w-[90%] xl:w-[80%]" />
           </div>
           <div className="col-span-4 xs:col-span-4 md:col-span-5 xs:col-start-1 flex flex-row gap-[1rem] my-auto sm:col-start-1 sm:col-span-8">
             <Marquee
