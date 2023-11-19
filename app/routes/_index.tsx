@@ -187,41 +187,6 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   }
 ` as const;
 
-const GET_BLOG_QUERY = `#graphql
-  query BlogSection(
-    $language: LanguageCode,
-    $country: CountryCode,
-    $handle: String!
-  )
-  @inContext(language: $language, country: $country) {
-    blog(handle: $handle) {
-    id
-    title
-    handle
-    articles (first: 2) {
-      edges {
-        node {
-          id
-          title
-          content
-          contentHtml
-          handle
-          image {
-            id
-            width
-            altText
-            url
-          }
-        }
-      }
-    }
-    seo {
-      description
-    }
-  }
-  }
-` as const;
-
 const GET_ALL_BLOGS_QUERY = `#graphql
   query AllBlogs(
     $language: LanguageCode,
@@ -267,43 +232,8 @@ const GET_ALL_BLOGS_QUERY = `#graphql
   }
 ` as const;
 
-const CUSTOMER_RECOVER_MUTATION = `#graphql
-  mutation customerCreate(
-    $email: String!,
-    $country: CountryCode,
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
-    customerRecover(email: $email) {
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-` as const;
-
-const CUSTOMER_CREATE_MUTATION = `#graphql
-  mutation customerCreate(
-    $input: CustomerCreateInput!,
-    $country: CountryCode,
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
-    customerCreate(input: $input) {
-      customer {
-        id
-      }
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-` as const;
-
 const USER_SUBSCRIBE_MUTATION = `#graphql
-  mutation customerCreate(
+  mutation customerCreateForm(
     $input: CustomerCreateInput!,
     $country: CountryCode,
     $language: LanguageCode

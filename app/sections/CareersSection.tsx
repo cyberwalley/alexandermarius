@@ -49,7 +49,7 @@ const CareersSection = () => {
             })}
           </ul>
           <div className="flex justify-center mt-10 md:mt-[4rem] mb-10">
-            <Button to="blogs/careers" variant="secondary">
+            <Button to="pages/careers" variant="secondary">
               View all open roles
             </Button>
           </div>

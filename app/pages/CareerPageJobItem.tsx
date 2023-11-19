@@ -1,18 +1,18 @@
 import {Link} from '@remix-run/react';
-import type {AllBlogsQuery, CareersPageQuery} from 'storefrontapi.generated';
+import type {CareersPageQuery} from 'storefrontapi.generated';
 
-interface JobItemProps {
-  blogName: string;
-  article: AllBlogsQuery['blogs']['edges'][0]['node']['articles']['edges'][0];
+interface CareerPageJobProps {
+  //@ts-ignore
+  article: CareersPageQuery['blog']['articles']['edges'][0];
 }
 
-const JobItem = ({blogName, article}: JobItemProps) => {
+const CareerPageJobItem = ({article}: CareerPageJobProps) => {
   return (
     <li className="py-[2rem] border-t border-gray-300">
       <div className="flex flex-col md:flex-row md:justify-between gap-5 items-start md:items-center">
         <div className="xs:w-6-cols md:w-2-cols lg:w-2-cols mt-spacing-4 md:mt-0 md:text-right">
           <Link
-            to={`pages/${blogName}/${article?.node?.handle}`}
+            to={`${article?.node?.handle}`}
             className="group inline-block text-left"
           >
             <h3 className="text-[1.125rem] text-left font-semibold  group-hover:underline underline-transparent underline-thickness-1 underline-offset-2 group-hover:underline-text-primary">
@@ -59,4 +59,4 @@ const JobItem = ({blogName, article}: JobItemProps) => {
   );
 };
 
-export default JobItem;
+export default CareerPageJobItem;

@@ -4,7 +4,6 @@ import {Image} from '@shopify/hydrogen';
 import Button from './Button';
 import Marquee from './Marque';
 import {useMediaQuery} from '~/hooks/useMediaQuery';
-import Newsletter from '~/routes/newsletter';
 import NewsletterForm from './NewsletterForm';
 
 const Hero = () => {

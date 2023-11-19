@@ -4,7 +4,7 @@ import {Image, Pagination, getPaginationVariables} from '@shopify/hydrogen';
 import type {ArticleItemFragment} from 'storefrontapi.generated';
 
 export const meta: V2_MetaFunction = ({data}) => {
-  return [{title: `Hydrogen | ${data.blog.title} blog`}];
+  return [{title: `${data.blog.title} | Alexander Marius`}];
 };
 
 export const loader = async ({
