@@ -17,7 +17,6 @@ export async function loader({params, context}: LoaderArgs) {
   if (!handle || !subHandle) {
     throw new Response('Not found', {status: 404});
   }
-
   const {blog} = await context.storefront.query(GET_ARTICLE_QUERY, {
     variables: {handle, subHandle},
   });
@@ -28,11 +27,15 @@ export async function loader({params, context}: LoaderArgs) {
 
   const article = blog.articleByHandle;
 
-  return json({article});
+  const {page} = await context.storefront.query(GET_PAGE_QUERY, {
+    variables: {handle: 'manpower-management'},
+  });
+
+  return json({article, page});
 }
 
 const JobPost = () => {
-  const {article} = useLoaderData<typeof loader>();
+  const {article, page} = useLoaderData<typeof loader>();
   const {title, image, contentHtml, author} = article;
   const location = useLocation();
 
@@ -41,7 +44,7 @@ const JobPost = () => {
     month: 'long',
     day: 'numeric',
   }).format(new Date(article.publishedAt));
-
+  console.log(location.pathname, 'pagessss');
   return (
     <div className="article">
       <CareerPageJobDetails article={article} />
@@ -83,5 +86,22 @@ const GET_ARTICLE_QUERY = `#graphql
         }
       }
     }
+  }
+` as const;
+
+export const GET_PAGE_QUERY = `#graphql
+  query ServicesPage(
+    $language: LanguageCode,
+    $country: CountryCode,
+    $handle: String!
+  )
+  @inContext(language: $language, country: $country) {
+    page(handle: $handle) {
+    id
+    title
+    bodySummary
+    body
+    handle
+  }
   }
 ` as const;

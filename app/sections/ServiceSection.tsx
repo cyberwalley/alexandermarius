@@ -36,14 +36,14 @@ const ServiceSection = () => {
           <div className="sm:px-0 md:px-0  col-span-4 xs:col-span-4 md:col-span-6 xs:col-start-1 sm:col-start-1 md:col-start-1 flex flex-col gap-y-xl sm:col-span-6">
             <div className="grid gap-y-[2.5rem] pb-[6rem] md:pb-[8rem]">
               <div className="grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem] lg:flex">
-                {allPages?.map((page, index) => {
+                {allPages?.map((page) => {
                   if (page.node.handle === 'manpower-management') {
                     return (
                       <ServiceItem
                         page={page}
                         key={page.node.id}
                         icon={
-                          <HumanCapital className=" w-10 h-10 text-gray-800 dark:text-white" />
+                          <HumanCapital className="w-10 h-10 text-gray-800 dark:text-white" />
                         }
                       />
                     );

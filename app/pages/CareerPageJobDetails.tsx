@@ -6,7 +6,7 @@ import Button from '~/components/Button';
 
 interface CareerPageJobDetailsProps {
   //@ts-ignore
-  article: ArticleCareerPageQuery['article'];
+  article: ArticleCareerPageQuery['blog']['article'];
 }
 
 const CareerPageJobDetails = ({article}: CareerPageJobDetailsProps) => {

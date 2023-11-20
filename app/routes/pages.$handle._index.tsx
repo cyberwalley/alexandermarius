@@ -8,6 +8,7 @@ import {Image} from '@shopify/hydrogen';
 import StandardPage from '../pages/StandardPage';
 import CareersPage from '~/pages/CareersPage';
 import type {PageQuery} from 'storefrontapi.generated';
+import ServicePage from '~/pages/ServicePage';
 
 export const meta: V2_MetaFunction = ({data}) => {
   return [{title: `${data.page.title} | Alexander Marius`}];
@@ -28,18 +29,24 @@ export async function loader({params, context}: LoaderArgs) {
     throw new Response('Not Found', {status: 404});
   }
 
+  const {pages} = await context.storefront.query(GET_ALL_PAGES_QUERY);
+
+  if (!pages) {
+    throw new Response('Not Found', {status: 404});
+  }
+
   const {blog} = await context.storefront.query(GET_BLOG_QUERY, {
     variables: {
       handle: params.handle,
     },
   });
 
-  return json({page, blog});
+  return json({page, pages, blog});
 }
 
 export default function Page() {
   const location = useLocation();
-  const {page, blog} = useLoaderData<typeof loader>();
+  const {page, pages, blog} = useLoaderData<typeof loader>();
   const subtitle = page?.metafields?.[0]?.value;
   const coverImage = page?.metafields?.[1]?.reference?.image;
 
@@ -83,6 +90,8 @@ export default function Page() {
       <main>
         {page.handle === 'careers' ? (
           <CareersPage blog={blog} />
+        ) : page.handle === 'services' ? (
+          <ServicePage data={pages} />
         ) : (
           <StandardPage page={page} />
         )}
@@ -119,6 +128,26 @@ const PAGE_QUERY = `#graphql
       }
      }
     }
+  }
+` as const;
+
+export const GET_ALL_PAGES_QUERY = `#graphql
+  query ServicePage(
+    $language: LanguageCode,
+    $country: CountryCode,
+  )
+  @inContext(language: $language, country: $country) {
+    pages(first:50){
+    edges {
+      node {
+        id
+        title
+        handle
+        bodySummary
+        body
+      }
+    }
+  }
   }
 ` as const;
 

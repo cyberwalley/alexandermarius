@@ -1394,6 +1394,18 @@ export type ArticleCareerPageQuery = {
   }>;
 };
 
+export type ServicesPageQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+  handle: StorefrontAPI.Scalars['String'];
+}>;
+
+export type ServicesPageQuery = {
+  page?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Page, 'id' | 'title' | 'bodySummary' | 'body' | 'handle'>
+  >;
+};
+
 export type PageQueryVariables = StorefrontAPI.Exact<{
   language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
   country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
@@ -1417,6 +1429,22 @@ export type PageQuery = {
       >;
     }
   >;
+};
+
+export type ServicePageQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+}>;
+
+export type ServicePageQuery = {
+  pages: {
+    edges: Array<{
+      node: Pick<
+        StorefrontAPI.Page,
+        'id' | 'title' | 'handle' | 'bodySummary' | 'body'
+      >;
+    }>;
+  };
 };
 
 export type CareersPageQueryVariables = StorefrontAPI.Exact<{
@@ -1936,7 +1964,7 @@ interface GeneratedQueryTypes {
     return: HeroCollectionQuery;
     variables: HeroCollectionQueryVariables;
   };
-  '#graphql\n  query PageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    pages(first:20){\n    edges {\n      node {\n        id\n        title\n        handle\n        bodySummary\n        body\n      }\n    }\n  }\n  }\n': {
+  '#graphql\n  query PageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    pages(first:50){\n    edges {\n      node {\n        id\n        title\n        handle\n        bodySummary\n        body\n      }\n    }\n  }\n  }\n': {
     return: PageSectionQuery;
     variables: PageSectionQueryVariables;
   };
@@ -2004,9 +2032,17 @@ interface GeneratedQueryTypes {
     return: ArticleCareerPageQuery;
     variables: ArticleCareerPageQueryVariables;
   };
+  '#graphql\n  query ServicesPage(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n    id\n    title\n    bodySummary\n    body\n    handle\n  }\n  }\n': {
+    return: ServicesPageQuery;
+    variables: ServicesPageQueryVariables;
+  };
   '#graphql\n  query Page(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n      id\n      title\n      body\n      handle\n      seo {\n        description\n        title\n      }\n      metafields(identifiers: [{ key: "subtitle", namespace:"custom" }, {key: "cover_image", namespace:"custom"}]){\n      id\n      value\n      reference {\n        ... on MediaImage {\n          image {\n            url\n          }\n        }\n      }\n     }\n    }\n  }\n': {
     return: PageQuery;
     variables: PageQueryVariables;
+  };
+  '#graphql\n  query ServicePage(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    pages(first:50){\n    edges {\n      node {\n        id\n        title\n        handle\n        bodySummary\n        body\n      }\n    }\n  }\n  }\n': {
+    return: ServicePageQuery;
+    variables: ServicePageQueryVariables;
   };
   '#graphql\n  query CareersPage(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    blog(handle: $handle) {\n    id\n    title\n    handle\n    articles (first: 100 sortKey: UPDATED_AT, reverse: true) {\n      edges {\n        node {\n          id\n          title\n          content\n          contentHtml\n          handle\n          image {\n            id\n            width\n            altText\n            url\n          }\n          metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){\n            id\n            value     \n          }   \n        }\n      }\n    }\n    seo {\n      description\n    }\n  }\n  }\n': {
     return: CareersPageQuery;
