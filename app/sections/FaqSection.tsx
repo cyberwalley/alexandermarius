@@ -13,12 +13,7 @@ const FaqSection = () => {
           <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-10 lg:col-span-8 xl:col-span-8 col-start-1 pt-xl">
             <div className="text-left text-black">
               <h2 className="text-[3rem] font-[900] leading-[3.5rem]">
-                <Link
-                  className="text-black no-underline hover:no-underline"
-                  to="blogs/faq"
-                >
-                  Frequently Asked Questions
-                </Link>
+                Frequently Asked Questions
               </h2>
 
               <div
