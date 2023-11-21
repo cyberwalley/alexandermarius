@@ -1,9 +1,9 @@
 import {Link} from '@remix-run/react';
-import type {CareersPageQuery} from 'storefrontapi.generated';
+import type {BlogsOnPageQuery} from 'storefrontapi.generated';
 import CareerPageJobItem from './CareerPageJobItem';
 
 interface CareersPageProps {
-  blog: CareersPageQuery['blog'];
+  blog: BlogsOnPageQuery['blog'];
 }
 
 const CareersPage = ({blog}: CareersPageProps) => {

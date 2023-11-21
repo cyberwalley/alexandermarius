@@ -29,11 +29,11 @@ export async function loader({params, context}: LoaderArgs) {
     throw new Response('Not Found', {status: 404});
   }
 
-  const {pages} = await context.storefront.query(GET_ALL_PAGES_QUERY);
+  //const {pages} = await context.storefront.query(GET_ALL_PAGES_QUERY);
 
-  if (!pages) {
+  /* if (!pages) {
     throw new Response('Not Found', {status: 404});
-  }
+  } */
 
   const {blog} = await context.storefront.query(GET_BLOG_QUERY, {
     variables: {
@@ -41,12 +41,12 @@ export async function loader({params, context}: LoaderArgs) {
     },
   });
 
-  return json({page, pages, blog});
+  return json({page, blog});
 }
 
 export default function Page() {
   const location = useLocation();
-  const {page, pages, blog} = useLoaderData<typeof loader>();
+  const {page, blog} = useLoaderData<typeof loader>();
   const subtitle = page?.metafields?.[0]?.value;
   const coverImage = page?.metafields?.[1]?.reference?.image;
 
@@ -91,7 +91,7 @@ export default function Page() {
         {page.handle === 'careers' ? (
           <CareersPage blog={blog} />
         ) : page.handle === 'services' ? (
-          <ServicePage data={pages} />
+          <ServicePage blog={blog} />
         ) : (
           <StandardPage page={page} />
         )}
@@ -101,7 +101,7 @@ export default function Page() {
 }
 
 const PAGE_QUERY = `#graphql
-  query Page(
+  query ServicePage(
     $language: LanguageCode,
     $country: CountryCode,
     $handle: String!
@@ -131,7 +131,7 @@ const PAGE_QUERY = `#graphql
   }
 ` as const;
 
-export const GET_ALL_PAGES_QUERY = `#graphql
+/* export const GET_ALL_PAGES_QUERY = `#graphql
   query ServicePage(
     $language: LanguageCode,
     $country: CountryCode,
@@ -149,10 +149,10 @@ export const GET_ALL_PAGES_QUERY = `#graphql
     }
   }
   }
-` as const;
+` as const; */
 
 const GET_BLOG_QUERY = `#graphql
-  query CareersPage(
+  query BlogsOnPage(
     $language: LanguageCode,
     $country: CountryCode,
     $handle: String!

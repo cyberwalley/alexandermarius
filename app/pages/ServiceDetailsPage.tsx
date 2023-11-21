@@ -1,21 +1,15 @@
 import {Link} from '@remix-run/react';
 import {Image} from '@shopify/hydrogen';
 import type {ArticleCareerPageQuery} from 'storefrontapi.generated';
-import ExternalLinkIcon from '~/assets/svg/ExternalLinkIcon';
-import Button from '~/components/Button';
 
-interface CareerPageJobDetailsProps {
+interface ServiceDetailsPageProps {
   //@ts-ignore
   article: ArticleCareerPageQuery['blog']['article'];
   parentPage: string;
 }
 
-const CareerPageJobDetails = ({
-  article,
-  parentPage,
-}: CareerPageJobDetailsProps) => {
+const ServiceDetailsPage = ({article, parentPage}: ServiceDetailsPageProps) => {
   const {title, image, contentHtml, author, metafields} = article;
-
   return (
     <div>
       <header className="bg-[--color-main] border-b-[2.5rem] border-[--color-secondary] px-[1rem]">
@@ -54,34 +48,10 @@ const CareerPageJobDetails = ({
         <section className="bg-white px-[1rem]">
           <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pt-[7rem] pb-[3rem] md:pb-[7rem]">
             <div className="mx-auto max-w-[1000px] w-full grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem]">
-              <div className="flex flex-wrap gap-10">
-                <div>
-                  <Button
-                    variant="secondary"
-                    to={metafields?.[1]?.value}
-                    className="text-[1.375rem]"
-                    icon={<ExternalLinkIcon />}
-                  >
-                    Apply now
-                  </Button>
-                </div>
-                <div className=" w-full md:w-[75%] flex flex-col items-start">
-                  <div
-                    className="rte"
-                    dangerouslySetInnerHTML={{__html: contentHtml}}
-                  />
-                  <div className="mt-10">
-                    <Button
-                      variant="secondary"
-                      to={metafields?.[1]?.value}
-                      className="text-[1.375rem]"
-                      icon={<ExternalLinkIcon />}
-                    >
-                      Apply now
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              <div
+                className="rte"
+                dangerouslySetInnerHTML={{__html: contentHtml}}
+              />
             </div>
           </div>
         </section>
@@ -90,4 +60,4 @@ const CareerPageJobDetails = ({
   );
 };
 
-export default CareerPageJobDetails;
+export default ServiceDetailsPage;

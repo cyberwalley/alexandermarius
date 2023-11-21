@@ -6,6 +6,7 @@ import {
 } from '@remix-run/react';
 
 import CareerPageJobDetails from '~/pages/CareerPageJobDetails';
+import ServiceDetailsPage from '~/pages/ServiceDetailsPage';
 
 export const meta: V2_MetaFunction = ({data}) => {
   return [{title: `${data.article.title} | Alexander Marius`}];
@@ -27,15 +28,11 @@ export async function loader({params, context}: LoaderArgs) {
 
   const article = blog.articleByHandle;
 
-  const {page} = await context.storefront.query(GET_PAGE_QUERY, {
-    variables: {handle: 'manpower-management'},
-  });
-
-  return json({article, page});
+  return json({article, blog});
 }
 
 const JobPost = () => {
-  const {article, page} = useLoaderData<typeof loader>();
+  const {article, blog} = useLoaderData<typeof loader>();
   const {title, image, contentHtml, author} = article;
   const location = useLocation();
 
@@ -45,9 +42,15 @@ const JobPost = () => {
     day: 'numeric',
   }).format(new Date(article.publishedAt));
   console.log(location.pathname, 'pagessss');
+  console.log(blog?.handle, 'handle');
   return (
     <div className="article">
-      <CareerPageJobDetails article={article} />
+      {blog?.handle === 'careers' && (
+        <CareerPageJobDetails parentPage={blog?.handle} article={article} />
+      )}
+      {blog?.handle !== 'careers' && (
+        <ServiceDetailsPage parentPage={blog?.handle} article={article} />
+      )}
     </div>
   );
 };
@@ -62,6 +65,7 @@ const GET_ARTICLE_QUERY = `#graphql
     $language: LanguageCode
   ) @inContext(language: $language, country: $country) {
     blog(handle: $handle) {
+      handle
       articleByHandle(handle: $subHandle) {
         title
         contentHtml
