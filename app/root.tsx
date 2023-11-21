@@ -20,6 +20,7 @@ import resetStyles from './styles/reset.css';
 import appStyles from './styles/app.css';
 import {Layout} from '~/components/Layout';
 import tailwindCss from './styles/tailwind.css';
+import Error404Page from './pages/Error404Page';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -150,13 +151,10 @@ export function ErrorBoundary() {
       <body>
         <Layout {...root.data}>
           <div className="route-error">
-            <h1>Oops</h1>
-            <h2>{errorStatus}</h2>
-            {errorMessage && (
-              <fieldset>
-                <pre>{errorMessage}</pre>
-              </fieldset>
-            )}
+            <Error404Page
+              errorStatus={errorStatus}
+              errorMessage={errorMessage}
+            />
           </div>
         </Layout>
         <ScrollRestoration nonce={nonce} />
