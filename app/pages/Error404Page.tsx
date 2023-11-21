@@ -2,7 +2,12 @@ import {Link} from '@remix-run/react';
 import React from 'react';
 import Button from '~/components/Button';
 
-const Error404Page = ({errorStatus, errorMessage}) => {
+interface Error404PageProps {
+  errorStatus: number;
+  errorMessage?: string;
+}
+
+const Error404Page = ({errorStatus, errorMessage}: Error404PageProps) => {
   return (
     <section className="bg-white text-[--color-primary]">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
