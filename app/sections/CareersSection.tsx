@@ -16,7 +16,7 @@ const CareersSection = () => {
               <h2 className="text-[3rem] font-[900] leading-[3.5rem]">
                 <Link
                   className="text-black no-underline hover:no-underline"
-                  to="blogs/careers"
+                  to="pages/careers"
                 >
                   Careers
                 </Link>
