@@ -1,11 +1,11 @@
 import {Link} from '@remix-run/react';
-import type {PageSectionQuery} from 'storefrontapi.generated';
+import type {AllBlogsQuery} from 'storefrontapi.generated';
 interface ServiceItemProps {
-  page: PageSectionQuery['pages']['edges'][0];
+  article: AllBlogsQuery['blogs']['edges'][0]['node']['articles']['edges'][0];
   icon: React.ReactNode;
 }
 
-const ServiceItem = ({page, icon}: ServiceItemProps) => {
+const ServiceItem = ({article, icon}: ServiceItemProps) => {
   return (
     <div className="rounded-2xl ring-0 ring-black/20 border-black p-0">
       <div>
@@ -15,12 +15,17 @@ const ServiceItem = ({page, icon}: ServiceItemProps) => {
               {icon}
             </span>
           )}
-          <h3 className="text-[1.57rem] mb-4 font-bold">{page.node.title}</h3>
-          <p className="leading-[2rem] pt-sm line-clamp-4">
-            {page.node.bodySummary}
+          <h3 className="text-[1.57rem] mb-4 font-bold">
+            {article?.node.title}
+          </h3>
+          <p className="leading-[2rem] pt-sm line-clamp-3">
+            {article?.node.content}
           </p>
           <div className="w-full mt-4 text-left">
-            <Link to={`pages/${page.node.handle}`} className="group text-white">
+            <Link
+              to={`pages/services/${article?.node.handle}`}
+              className="group text-white"
+            >
               <span className="mb-2 text-left underline hover:no-underline text-lg font-medium">
                 Read more
                 <svg
