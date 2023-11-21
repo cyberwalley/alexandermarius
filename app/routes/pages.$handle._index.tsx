@@ -101,7 +101,7 @@ export default function Page() {
 }
 
 const PAGE_QUERY = `#graphql
-  query ServicePage(
+  query Page(
     $language: LanguageCode,
     $country: CountryCode,
     $handle: String!

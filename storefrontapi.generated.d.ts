@@ -1410,13 +1410,13 @@ export type ServicesPageQuery = {
   >;
 };
 
-export type ServicePageQueryVariables = StorefrontAPI.Exact<{
+export type PageQueryVariables = StorefrontAPI.Exact<{
   language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
   country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
   handle: StorefrontAPI.Scalars['String'];
 }>;
 
-export type ServicePageQuery = {
+export type PageQuery = {
   page?: StorefrontAPI.Maybe<
     Pick<StorefrontAPI.Page, 'id' | 'title' | 'body' | 'handle'> & {
       seo?: StorefrontAPI.Maybe<
@@ -2024,9 +2024,9 @@ interface GeneratedQueryTypes {
     return: ServicesPageQuery;
     variables: ServicesPageQueryVariables;
   };
-  '#graphql\n  query ServicePage(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n      id\n      title\n      body\n      handle\n      seo {\n        description\n        title\n      }\n      metafields(identifiers: [{ key: "subtitle", namespace:"custom" }, {key: "cover_image", namespace:"custom"}]){\n      id\n      value\n      reference {\n        ... on MediaImage {\n          image {\n            url\n          }\n        }\n      }\n     }\n    }\n  }\n': {
-    return: ServicePageQuery;
-    variables: ServicePageQueryVariables;
+  '#graphql\n  query Page(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n      id\n      title\n      body\n      handle\n      seo {\n        description\n        title\n      }\n      metafields(identifiers: [{ key: "subtitle", namespace:"custom" }, {key: "cover_image", namespace:"custom"}]){\n      id\n      value\n      reference {\n        ... on MediaImage {\n          image {\n            url\n          }\n        }\n      }\n     }\n    }\n  }\n': {
+    return: PageQuery;
+    variables: PageQueryVariables;
   };
   '#graphql\n  query BlogsOnPage(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    blog(handle: $handle) {\n    id\n    title\n    handle\n    articles (first: 100 sortKey: UPDATED_AT, reverse: true) {\n      edges {\n        node {\n          id\n          title\n          content\n          contentHtml\n          handle\n          image {\n            id\n            width\n            altText\n            url\n          }\n          metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){\n            id\n            value     \n          }   \n        }\n      }\n    }\n    seo {\n      description\n    }\n  }\n  }\n': {
     return: BlogsOnPageQuery;

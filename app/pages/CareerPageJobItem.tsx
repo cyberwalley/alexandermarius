@@ -1,5 +1,4 @@
 import {Link} from '@remix-run/react';
-import type {CareersPageQuery} from 'storefrontapi.generated';
 
 interface CareerPageJobProps {
   //@ts-ignore
