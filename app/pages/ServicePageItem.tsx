@@ -7,7 +7,7 @@ interface ServicePageItemProps {
 
 const ServicePageItem = ({article}: ServicePageItemProps) => {
   return (
-    <div className="p-10 shadow-xl rounded-md bg-white" key={article?.node.id}>
+    <div className="p-10 shadowing rounded-md bg-white" key={article?.node.id}>
       <h2 className="text-[1.5rem]">{article?.node.title}</h2>
       <div className="text-[1.125rem] line-clamp-3">
         {article?.node.content}

@@ -9,7 +9,7 @@ interface ServicePageProps {
 
 const ServicePage = ({blog}: ServicePageProps) => {
   return (
-    <section className="px-[1rem] bg-[#efefef]">
+    <section className="px-[1rem] bg-[#d2feff]">
       <div className="grid gap-y-[4rem] py-[3rem]  md:pt-[7rem] md:pb-[7rem]">
         <div className="mx-auto max-w-[1000px] w-full">
           <div className="grid grid-cols-1 gap-10 ">

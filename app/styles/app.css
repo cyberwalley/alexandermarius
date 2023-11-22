@@ -803,3 +803,7 @@ aside li {
 .rte a:hover {
   background-color: var(--color-secondary);
 }
+
+.shadowing {
+ box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.07), 0px 2px 4px 1px rgba(0, 0, 0, 0.07), 0px 1px 2px 1px rgba(0, 0, 0, 0.07);
+}
