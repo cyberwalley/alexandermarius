@@ -38,18 +38,26 @@ export default function Article() {
 
   return (
     <div className="article">
-      <h1>
-        {title}
-        <span>
-          {publishedDate} &middot; {author?.name}
-        </span>
-      </h1>
-
-      {image && <Image data={image} sizes="90vw" loading="eager" />}
       <div
-        dangerouslySetInnerHTML={{__html: contentHtml}}
-        className="article"
-      />
+        className="w-full h-[20rem] md:h-[40rem] relative bg-cover bg-center flex flex-col justify-center items-center"
+        style={{backgroundImage: `url(${article.image?.url})`}}
+      >
+        <h1 className="text-shadowing text-white text-[2rem] md:text-[5rem] max-w-[100rem] leading-[2rem] md:leading-[4.7rem]  text-center font-extrabold">
+          {title}
+        </h1>
+      </div>
+      {/* {image && <Image data={image} sizes="90vw" loading="eager" />} */}
+      <section className="bg-white px-[1rem]">
+        <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pt-[7rem] pb-[3rem] md:pb-[7rem]">
+          <div className="mx-auto max-w-[1000px] w-full grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem]">
+            <span>{publishedDate}</span>
+            <div
+              dangerouslySetInnerHTML={{__html: contentHtml}}
+              className="article rte"
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

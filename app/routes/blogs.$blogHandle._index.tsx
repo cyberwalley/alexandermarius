@@ -86,6 +86,7 @@ export default function Blog() {
                             <ArticleItem
                               article={article}
                               key={article.id}
+                              blogName={blog?.title}
                               loading={index < 2 ? 'eager' : 'lazy'}
                             />
                           );
@@ -117,9 +118,11 @@ export default function Blog() {
 function ArticleItem({
   article,
   loading,
+  blogName,
 }: {
   article: ArticleItemFragment;
   loading?: HTMLImageElement['loading'];
+  blogName: string;
 }) {
   const publishedAt = new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
@@ -130,21 +133,25 @@ function ArticleItem({
     <div className="blog-article p-4 rounded-md shadowing" key={article.id}>
       <Link to={`/blogs/${article.blog.handle}/${article.handle}`}>
         {article.image && (
-          <div className="blog-article-image">
+          <div className="blog-article-image relative overflow-hidden">
             <Image
               alt={article.image.altText || article.title}
               aspectRatio="3/2"
               data={article.image}
               loading={loading}
               sizes="(min-width: 768px) 50vw, 100vw"
+              className="hover:scale-125 transition-transform ease-linear delay-0 duration-300"
             />
           </div>
         )}
-        <div className="p-4">
-          <h3 className="text-2xl line-clamp-1">{article.title}</h3>
-          {/*  <small>{publishedAt}</small> */}
-        </div>
       </Link>
+      <div className="p-4">
+        <small className="uppercase">{blogName}</small>
+        <Link to={`/blogs/${article.blog.handle}/${article.handle}`}>
+          <h3 className="text-2xl line-clamp-1">{article.title}</h3>
+        </Link>
+      </div>
+
       <div className="py-[0.5rem] px-4">
         <div className="line-clamp-3">{article.content}</div>
       </div>
