@@ -245,32 +245,6 @@ export type RecommendedProductsQuery = {
   };
 };
 
-export type BlogSectionQueryVariables = StorefrontAPI.Exact<{
-  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
-  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
-  handle: StorefrontAPI.Scalars['String'];
-}>;
-
-export type BlogSectionQuery = {
-  blog?: StorefrontAPI.Maybe<
-    Pick<StorefrontAPI.Blog, 'id' | 'title' | 'handle'> & {
-      articles: {
-        edges: Array<{
-          node: Pick<
-            StorefrontAPI.Article,
-            'id' | 'title' | 'content' | 'contentHtml' | 'handle'
-          > & {
-            image?: StorefrontAPI.Maybe<
-              Pick<StorefrontAPI.Image, 'id' | 'width' | 'altText' | 'url'>
-            >;
-          };
-        }>;
-      };
-      seo?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Seo, 'description'>>;
-    }
-  >;
-};
-
 export type AllBlogsQueryVariables = StorefrontAPI.Exact<{
   language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
   country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
@@ -304,6 +278,23 @@ export type AllBlogsQuery = {
       };
     }>;
   };
+};
+
+export type CustomerCreateFormMutationVariables = StorefrontAPI.Exact<{
+  input: StorefrontAPI.CustomerCreateInput;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+}>;
+
+export type CustomerCreateFormMutation = {
+  customerCreate?: StorefrontAPI.Maybe<{
+    customer?: StorefrontAPI.Maybe<
+      Pick<StorefrontAPI.Customer, 'id' | 'email' | 'acceptsMarketing'>
+    >;
+    customerUserErrors: Array<
+      Pick<StorefrontAPI.CustomerUserError, 'code' | 'field' | 'message'>
+    >;
+  }>;
 };
 
 export type CustomerAddressUpdateMutationVariables = StorefrontAPI.Exact<{
@@ -1175,6 +1166,9 @@ export type BlogQueryVariables = StorefrontAPI.Exact<{
 export type BlogQuery = {
   blog?: StorefrontAPI.Maybe<
     Pick<StorefrontAPI.Blog, 'title'> & {
+      metafield?: StorefrontAPI.Maybe<
+        Pick<StorefrontAPI.Metafield, 'id' | 'value'>
+      >;
       seo?: StorefrontAPI.Maybe<
         Pick<StorefrontAPI.Seo, 'title' | 'description'>
       >;
@@ -1182,7 +1176,12 @@ export type BlogQuery = {
         nodes: Array<
           Pick<
             StorefrontAPI.Article,
-            'contentHtml' | 'handle' | 'id' | 'publishedAt' | 'title'
+            | 'contentHtml'
+            | 'content'
+            | 'handle'
+            | 'id'
+            | 'publishedAt'
+            | 'title'
           > & {
             author?: StorefrontAPI.Maybe<
               Pick<StorefrontAPI.ArticleAuthor, 'name'>
@@ -1207,7 +1206,7 @@ export type BlogQuery = {
 
 export type ArticleItemFragment = Pick<
   StorefrontAPI.Article,
-  'contentHtml' | 'handle' | 'id' | 'publishedAt' | 'title'
+  'contentHtml' | 'content' | 'handle' | 'id' | 'publishedAt' | 'title'
 > & {
   author?: StorefrontAPI.Maybe<Pick<StorefrontAPI.ArticleAuthor, 'name'>>;
   image?: StorefrontAPI.Maybe<
@@ -1356,6 +1355,69 @@ export type StoreCollectionsQuery = {
   };
 };
 
+export type CustomerCreateNewsletterPageMutationVariables =
+  StorefrontAPI.Exact<{
+    input: StorefrontAPI.CustomerCreateInput;
+    country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+    language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  }>;
+
+export type CustomerCreateNewsletterPageMutation = {
+  customerCreate?: StorefrontAPI.Maybe<{
+    customer?: StorefrontAPI.Maybe<
+      Pick<StorefrontAPI.Customer, 'id' | 'email' | 'acceptsMarketing'>
+    >;
+    customerUserErrors: Array<
+      Pick<StorefrontAPI.CustomerUserError, 'code' | 'field' | 'message'>
+    >;
+  }>;
+};
+
+export type ArticleCareerPageQueryVariables = StorefrontAPI.Exact<{
+  handle: StorefrontAPI.Scalars['String'];
+  subHandle: StorefrontAPI.Scalars['String'];
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+}>;
+
+export type ArticleCareerPageQuery = {
+  blog?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Blog, 'handle'> & {
+      articleByHandle?: StorefrontAPI.Maybe<
+        Pick<StorefrontAPI.Article, 'title' | 'contentHtml' | 'publishedAt'> & {
+          author?: StorefrontAPI.Maybe<
+            Pick<StorefrontAPI.ArticleAuthor, 'name'>
+          >;
+          image?: StorefrontAPI.Maybe<
+            Pick<
+              StorefrontAPI.Image,
+              'id' | 'altText' | 'url' | 'width' | 'height'
+            >
+          >;
+          metafields: Array<
+            StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'id' | 'value'>>
+          >;
+          seo?: StorefrontAPI.Maybe<
+            Pick<StorefrontAPI.Seo, 'description' | 'title'>
+          >;
+        }
+      >;
+    }
+  >;
+};
+
+export type ServicesPageQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+  handle: StorefrontAPI.Scalars['String'];
+}>;
+
+export type ServicesPageQuery = {
+  page?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Page, 'id' | 'title' | 'bodySummary' | 'body' | 'handle'>
+  >;
+};
+
 export type PageQueryVariables = StorefrontAPI.Exact<{
   language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
   country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
@@ -1364,10 +1426,48 @@ export type PageQueryVariables = StorefrontAPI.Exact<{
 
 export type PageQuery = {
   page?: StorefrontAPI.Maybe<
-    Pick<StorefrontAPI.Page, 'id' | 'title' | 'body'> & {
+    Pick<StorefrontAPI.Page, 'id' | 'title' | 'body' | 'handle'> & {
       seo?: StorefrontAPI.Maybe<
         Pick<StorefrontAPI.Seo, 'description' | 'title'>
       >;
+      metafields: Array<
+        StorefrontAPI.Maybe<
+          Pick<StorefrontAPI.Metafield, 'id' | 'value'> & {
+            reference?: StorefrontAPI.Maybe<{
+              image?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Image, 'url'>>;
+            }>;
+          }
+        >
+      >;
+    }
+  >;
+};
+
+export type BlogsOnPageQueryVariables = StorefrontAPI.Exact<{
+  language?: StorefrontAPI.InputMaybe<StorefrontAPI.LanguageCode>;
+  country?: StorefrontAPI.InputMaybe<StorefrontAPI.CountryCode>;
+  handle: StorefrontAPI.Scalars['String'];
+}>;
+
+export type BlogsOnPageQuery = {
+  blog?: StorefrontAPI.Maybe<
+    Pick<StorefrontAPI.Blog, 'id' | 'title' | 'handle'> & {
+      articles: {
+        edges: Array<{
+          node: Pick<
+            StorefrontAPI.Article,
+            'id' | 'title' | 'content' | 'contentHtml' | 'handle'
+          > & {
+            image?: StorefrontAPI.Maybe<
+              Pick<StorefrontAPI.Image, 'id' | 'width' | 'altText' | 'url'>
+            >;
+            metafields: Array<
+              StorefrontAPI.Maybe<Pick<StorefrontAPI.Metafield, 'id' | 'value'>>
+            >;
+          };
+        }>;
+      };
+      seo?: StorefrontAPI.Maybe<Pick<StorefrontAPI.Seo, 'description'>>;
     }
   >;
 };
@@ -1860,7 +1960,7 @@ interface GeneratedQueryTypes {
     return: HeroCollectionQuery;
     variables: HeroCollectionQueryVariables;
   };
-  '#graphql\n  query PageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    pages(first:20){\n    edges {\n      node {\n        id\n        title\n        handle\n        bodySummary\n        body\n      }\n    }\n  }\n  }\n': {
+  '#graphql\n  query PageSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    pages(first:50){\n    edges {\n      node {\n        id\n        title\n        handle\n        bodySummary\n        body\n      }\n    }\n  }\n  }\n': {
     return: PageSectionQuery;
     variables: PageSectionQueryVariables;
   };
@@ -1884,11 +1984,7 @@ interface GeneratedQueryTypes {
     return: RecommendedProductsQuery;
     variables: RecommendedProductsQueryVariables;
   };
-  '#graphql\n  query BlogSection(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    blog(handle: $handle) {\n    id\n    title\n    handle\n    articles (first: 2) {\n      edges {\n        node {\n          id\n          title\n          content\n          contentHtml\n          handle\n          image {\n            id\n            width\n            altText\n            url\n          }\n        }\n      }\n    }\n    seo {\n      description\n    }\n  }\n  }\n': {
-    return: BlogSectionQuery;
-    variables: BlogSectionQueryVariables;
-  };
-  '#graphql\n  query AllBlogs(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    blogs(first: 20) {\n    edges {\n      node {\n        id\n        title\n        handle\n        articles(first: 50) {\n          edges {\n            node {\n              id\n              title\n              content\n              handle\n              publishedAt\n              image {\n                id\n                altText\n                url\n              }\n              metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){\n                id\n                value\n                \n              }\n              authorV2 {\n                firstName\n              }\n            }\n          }\n        }\n        seo {\n          description\n        }\n      }\n    }\n  }\n  }\n': {
+  '#graphql\n  query AllBlogs(\n    $language: LanguageCode,\n    $country: CountryCode,\n  )\n  @inContext(language: $language, country: $country) {\n    blogs(first: 20) {\n    edges {\n      node {\n        id\n        title\n        handle\n        articles(first: 50 sortKey: UPDATED_AT, reverse: true) {\n          edges {\n            node {\n              id\n              title\n              content\n              handle\n              publishedAt\n              image {\n                id\n                altText\n                url\n              }\n              metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){\n                id\n                value\n                \n              }\n              authorV2 {\n                firstName\n              }\n            }\n          }\n        }\n        seo {\n          description\n        }\n      }\n    }\n  }\n  }\n': {
     return: AllBlogsQuery;
     variables: AllBlogsQueryVariables;
   };
@@ -1912,7 +2008,7 @@ interface GeneratedQueryTypes {
     return: ArticleQuery;
     variables: ArticleQueryVariables;
   };
-  '#graphql\n  query Blog(\n    $language: LanguageCode\n    $blogHandle: String!\n    $first: Int\n    $last: Int\n    $startCursor: String\n    $endCursor: String\n  ) @inContext(language: $language) {\n    blog(handle: $blogHandle) {\n      title\n      seo {\n        title\n        description\n      }\n      articles(\n        first: $first,\n        last: $last,\n        before: $startCursor,\n        after: $endCursor\n      ) {\n        nodes {\n          ...ArticleItem\n        }\n        pageInfo {\n          hasPreviousPage\n          hasNextPage\n          hasNextPage\n          endCursor\n          startCursor\n        }\n\n      }\n    }\n  }\n  fragment ArticleItem on Article {\n    author: authorV2 {\n      name\n    }\n    contentHtml\n    handle\n    id\n    image {\n      id\n      altText\n      url\n      width\n      height\n    }\n    publishedAt\n    title\n    blog {\n      handle\n    }\n  }\n': {
+  '#graphql\n  query Blog(\n    $language: LanguageCode\n    $blogHandle: String!\n    $first: Int\n    $last: Int\n    $startCursor: String\n    $endCursor: String\n  ) @inContext(language: $language) {\n    blog(handle: $blogHandle) {\n      title\n      metafield(namespace: "custom", key: "subtitle") {\n        id\n        value\n      }\n      seo {\n        title\n        description\n      }\n      articles(\n        first: $first,\n        last: $last,\n        before: $startCursor,\n        after: $endCursor\n      ) {\n        nodes {\n          ...ArticleItem\n        }\n        pageInfo {\n          hasPreviousPage\n          hasNextPage\n          hasNextPage\n          endCursor\n          startCursor\n        }\n\n      }\n    }\n  }\n  fragment ArticleItem on Article {\n    author: authorV2 {\n      name\n    }\n    contentHtml\n    content\n    handle\n    id\n    image {\n      id\n      altText\n      url\n      width\n      height\n    }\n    publishedAt\n    title\n    blog {\n      handle\n    }\n  }\n': {
     return: BlogQuery;
     variables: BlogQueryVariables;
   };
@@ -1928,9 +2024,21 @@ interface GeneratedQueryTypes {
     return: StoreCollectionsQuery;
     variables: StoreCollectionsQueryVariables;
   };
-  '#graphql\n  query Page(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n      id\n      title\n      body\n      seo {\n        description\n        title\n      }\n    }\n  }\n': {
+  '#graphql\n  query ArticleCareerPage(\n    $handle: String!\n    $subHandle: String!\n    $country: CountryCode\n    $language: LanguageCode\n  ) @inContext(language: $language, country: $country) {\n    blog(handle: $handle) {\n      handle\n      articleByHandle(handle: $subHandle) {\n        title\n        contentHtml\n        publishedAt\n        author: authorV2 {\n          name\n        }\n        image {\n          id\n          altText\n          url\n          width\n          height\n        }\n        metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){\n            id\n            value     \n        }   \n        seo {\n          description\n          title\n        }\n      }\n    }\n  }\n': {
+    return: ArticleCareerPageQuery;
+    variables: ArticleCareerPageQueryVariables;
+  };
+  '#graphql\n  query ServicesPage(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n    id\n    title\n    bodySummary\n    body\n    handle\n  }\n  }\n': {
+    return: ServicesPageQuery;
+    variables: ServicesPageQueryVariables;
+  };
+  '#graphql\n  query Page(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    page(handle: $handle) {\n      id\n      title\n      body\n      handle\n      seo {\n        description\n        title\n      }\n      metafields(identifiers: [{ key: "subtitle", namespace:"custom" }, {key: "cover_image", namespace:"custom"}]){\n      id\n      value\n      reference {\n        ... on MediaImage {\n          image {\n            url\n          }\n        }\n      }\n     }\n    }\n  }\n': {
     return: PageQuery;
     variables: PageQueryVariables;
+  };
+  '#graphql\n  query BlogsOnPage(\n    $language: LanguageCode,\n    $country: CountryCode,\n    $handle: String!\n  )\n  @inContext(language: $language, country: $country) {\n    blog(handle: $handle) {\n    id\n    title\n    handle\n    articles (first: 100 sortKey: UPDATED_AT, reverse: true) {\n      edges {\n        node {\n          id\n          title\n          content\n          contentHtml\n          handle\n          image {\n            id\n            width\n            altText\n            url\n          }\n          metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){\n            id\n            value     \n          }   \n        }\n      }\n    }\n    seo {\n      description\n    }\n  }\n  }\n': {
+    return: BlogsOnPageQuery;
+    variables: BlogsOnPageQueryVariables;
   };
   '#graphql\n  fragment Policy on ShopPolicy {\n    body\n    handle\n    id\n    title\n    url\n  }\n  query Policy(\n    $country: CountryCode\n    $language: LanguageCode\n    $privacyPolicy: Boolean!\n    $refundPolicy: Boolean!\n    $shippingPolicy: Boolean!\n    $termsOfService: Boolean!\n  ) @inContext(language: $language, country: $country) {\n    shop {\n      privacyPolicy @include(if: $privacyPolicy) {\n        ...Policy\n      }\n      shippingPolicy @include(if: $shippingPolicy) {\n        ...Policy\n      }\n      termsOfService @include(if: $termsOfService) {\n        ...Policy\n      }\n      refundPolicy @include(if: $refundPolicy) {\n        ...Policy\n      }\n    }\n  }\n': {
     return: PolicyQuery;
@@ -1955,6 +2063,10 @@ interface GeneratedQueryTypes {
 }
 
 interface GeneratedMutationTypes {
+  '#graphql\n  mutation customerCreateForm(\n    $input: CustomerCreateInput!,\n    $country: CountryCode,\n    $language: LanguageCode\n  ) @inContext(country: $country, language: $language) {\n    customerCreate(input: $input) {\n      customer {\n        id\n        email\n        acceptsMarketing\n      }\n      customerUserErrors {\n        code\n        field\n        message\n      }\n    }\n  }\n': {
+    return: CustomerCreateFormMutation;
+    variables: CustomerCreateFormMutationVariables;
+  };
   '#graphql\n  mutation customerAddressUpdate(\n    $address: MailingAddressInput!\n    $customerAccessToken: String!\n    $id: ID!\n    $country: CountryCode\n    $language: LanguageCode\n ) @inContext(country: $country, language: $language) {\n    customerAddressUpdate(\n      address: $address\n      customerAccessToken: $customerAccessToken\n      id: $id\n    ) {\n      customerAddress {\n        id\n      }\n      customerUserErrors {\n        code\n        field\n        message\n      }\n    }\n  }\n': {
     return: CustomerAddressUpdateMutation;
     variables: CustomerAddressUpdateMutationVariables;
@@ -1998,6 +2110,10 @@ interface GeneratedMutationTypes {
   '#graphql\n  mutation customerReset(\n    $id: ID!,\n    $input: CustomerResetInput!\n    $country: CountryCode\n    $language: LanguageCode\n  ) @inContext(country: $country, language: $language) {\n    customerReset(id: $id, input: $input) {\n      customerAccessToken {\n        accessToken\n        expiresAt\n      }\n      customerUserErrors {\n        code\n        field\n        message\n      }\n    }\n  }\n': {
     return: CustomerResetMutation;
     variables: CustomerResetMutationVariables;
+  };
+  '#graphql\n  mutation customerCreateNewsletterPage(\n    $input: CustomerCreateInput!,\n    $country: CountryCode,\n    $language: LanguageCode\n  ) @inContext(country: $country, language: $language) {\n    customerCreate(input: $input) {\n      customer {\n        id\n        email\n        acceptsMarketing\n      }\n      customerUserErrors {\n        code\n        field\n        message\n      }\n    }\n  }\n': {
+    return: CustomerCreateNewsletterPageMutation;
+    variables: CustomerCreateNewsletterPageMutationVariables;
   };
 }
 

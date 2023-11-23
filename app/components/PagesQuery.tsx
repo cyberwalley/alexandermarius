@@ -4,7 +4,7 @@ export const PAGES_QUERY = `#graphql
     $country: CountryCode,
   )
   @inContext(language: $language, country: $country) {
-    pages(first:20){
+    pages(first:50){
     edges {
       node {
         id

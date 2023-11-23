@@ -4,7 +4,6 @@ import {Image} from '@shopify/hydrogen';
 import Button from './Button';
 import Marquee from './Marque';
 import {useMediaQuery} from '~/hooks/useMediaQuery';
-import Newsletter from '~/routes/newsletter';
 import NewsletterForm from './NewsletterForm';
 
 const Hero = () => {
@@ -19,8 +18,8 @@ const Hero = () => {
       className="px-[1rem] bg-contain bg-repeat md:bg-no-repeat"
       style={{backgroundImage: `url(${image?.url})`, width: '100%'}}
     >
-      <div className="relative overflow-hidden  md:bg-cover p-4 md:p-0">
-        <div className="relative mx-auto max-w-[1536px] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-x-[1.5rem] gap-y-[2rem]">
+      <div className="md:bg-cover md:p-0">
+        <div className="relative px-4 pt-4 md:pt-0 mx-auto max-w-[1536px] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-x-[1.5rem] gap-y-[2rem]">
           <div className="col-span-4 xs:col-span-4 md:col-span-6 col-start-1 flex flex-col pt-3xl sm:col-span-8 my-auto md:py-[5rem] gap-y-[3rem]">
             <div className="text-left text-black z-[2]">
               <h1 className="text-[2rem] text-left mb-4 mt-0 md:text-[4.2rem] text-[var(--color-main)] font-[900] leading-tight md:leading-[1.3]">

@@ -58,7 +58,7 @@ export default function Newsletter() {
 }
 
 const USER_SUBSCRIBE_MUTATION = `#graphql
-  mutation customerCreate(
+  mutation customerCreateNewsletterPage(
     $input: CustomerCreateInput!,
     $country: CountryCode,
     $language: LanguageCode

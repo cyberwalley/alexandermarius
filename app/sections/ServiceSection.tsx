@@ -6,7 +6,7 @@ import ConsultingIcon from '~/assets/svg/ConsultingIcon';
 import HumanCapital from '~/assets/svg/HumanCapital';
 
 const ServiceSection = () => {
-  const {pages}: PageSectionQuery = useLoaderData<typeof loader>();
+  const {pages, blogs} = useLoaderData<typeof loader>();
   const allPages = pages?.edges;
   return (
     <section className="rounded-t-[1.3rem] md:rounded-t-[2rem] bg-[--color-main] px-[1rem]">
@@ -36,28 +36,19 @@ const ServiceSection = () => {
           <div className="sm:px-0 md:px-0  col-span-4 xs:col-span-4 md:col-span-6 xs:col-start-1 sm:col-start-1 md:col-start-1 flex flex-col gap-y-xl sm:col-span-6">
             <div className="grid gap-y-[2.5rem] pb-[6rem] md:pb-[8rem]">
               <div className="grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem] lg:flex">
-                {allPages?.map((page, index) => {
-                  if (page.node.handle === 'manpower-management') {
-                    return (
-                      <ServiceItem
-                        page={page}
-                        key={page.node.id}
-                        icon={
-                          <HumanCapital className=" w-10 h-10 text-gray-800 dark:text-white" />
-                        }
-                      />
-                    );
-                  }
-                  if (
-                    page.node.handle === 'business-management-and-consulting'
-                  ) {
-                    return (
-                      <ServiceItem
-                        page={page}
-                        key={page.node.id}
-                        icon={<ConsultingIcon className="w-10 h-10" />}
-                      />
-                    );
+                {blogs?.edges?.map((blog) => {
+                  if (blog?.node?.handle === 'services') {
+                    return blog?.node?.articles?.edges.map((article) => {
+                      return (
+                        <ServiceItem
+                          key={article?.node?.id}
+                          article={article}
+                          icon={
+                            <HumanCapital className="w-10 h-10 text-gray-800 dark:text-white" />
+                          }
+                        />
+                      );
+                    });
                   }
                   return null;
                 })}

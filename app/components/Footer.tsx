@@ -5,6 +5,7 @@ import InstagramIcon from '~/assets/svg/InstagramIcon';
 import LinkedInIcon from '~/assets/svg/LinkedInIcon';
 import XIcon from '~/assets/svg/XIcon';
 import HeartIcon from '~/assets/svg/HeartIcon';
+import ExternalLinkIcon from '~/assets/svg/ExternalLinkIcon';
 
 export function Footer({menu}: FooterQuery) {
   return (
@@ -131,18 +132,21 @@ function FooterMenu({menu}: Pick<FooterQuery, 'menu'>) {
             </Link>
           </li>
         </ul>
-        <div className="text-white mt-10 md:mt-0 text-sm">
-          <span className="flex gap-[0.2rem]">
+        <div className="text-white md:text-black mt-10 md:mt-0 text-sm md:rounded-full md:p-4  md:bg-white">
+          <span className="dev-signature flex flex-start gap-[0.2rem] items-center">
             Made with
-            <HeartIcon className="w-6 h-6 text-red-700" /> by{' '}
+            <HeartIcon fill="red" className="w-6 h-6 text-red-900" /> by{' '}
             <a
-              className="text-[--color-secondary]"
+              className="text-white md:text-black font-extrabold underline"
               href="https://www.madebyax.com/?utm_source=alexandermarius&utm_medium=web&utm_campaign=referral"
               target="_blank"
               rel="noreferrer"
             >
               <span className="sr-only">Love</span> AxDigital
             </a>
+            <span>
+              <ExternalLinkIcon className="w-[1em] h-[1em] ml-1 relative" />
+            </span>
           </span>
         </div>
       </div>

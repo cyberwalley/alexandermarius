@@ -750,7 +750,69 @@ aside li {
 
 /*
 * --------------------------------------------------
-* Carousel
+* Rich text
 * --------------------------------------------------
 */
 
+.rte * {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.rte  strong {
+  font-weight: 600;
+}
+
+.rte > h2 > *, .rte > h3 > *, .rte > h4 > *, .rte > h5 > * {
+  font-weight: 600 !important; 
+  margin-top: 1.5rem;
+  
+}
+
+.rte h2 {
+  font-size: 2.75rem;
+   margin-top: 1.5em;
+   margin-bottom: 1.5rem;
+  
+}
+
+.rte h3 {
+  font-size: 2rem;
+  line-height: 2.75em;
+}
+
+.rte > ul, .rte ul {
+  margin-left: 1.5rem;
+  padding-left: 2.5rem;
+  list-style-type: disc;
+  margin-top: 1rem;
+}
+
+.rte > ul > li, .rte ul li  {
+  display: list-item;
+  margin-bottom: 1rem;
+}
+
+.rte a{
+  text-decoration: underline;
+  text-decoration-color: var(--color-secondary);
+  text-decoration-thickness: 0.19rem;
+}
+
+.rte a:hover {
+  background-color: var(--color-secondary);
+}
+
+/*
+* --------------------------------------------------
+* General
+* --------------------------------------------------
+*/
+
+.shadowing {
+ box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.07), 0px 2px 4px 1px rgba(0, 0, 0, 0.07), 0px 1px 2px 1px rgba(0, 0, 0, 0.07);
+}
+.text-shadowing {
+  text-shadow: 1px 1px 0 rgba(0,0,0,.2)
+}
