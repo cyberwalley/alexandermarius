@@ -10,7 +10,7 @@ import ChevronLeft from '~/assets/svg/ChevronLeft';
 import ChevronRight from '~/assets/svg/ChevronRight';
 
 const CARD_WIDTH = 350;
-const MARGIN = 20;
+const MARGIN = 40;
 const CARD_SIZE = CARD_WIDTH + MARGIN;
 
 const BREAKPOINTS = {
@@ -46,33 +46,55 @@ const CaseStudySection = () => {
   };
 
   return (
-    <section className="bg-neutral-100 py-8" ref={ref}>
-      <div className="relative overflow-hidden p-4">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex items-center justify-between">
-            <h2 className="mb-4 text-4xl">The Team Blog</h2>
+    <section
+      className="rounded-b-[1.3rem] md:rounded-b-[2rem] bg-[--color-main]"
+      ref={ref}
+    >
+      <div className="relative overflow-hidden p-4 pt-[3rem] py-[4rem] md:py-[7rem]">
+        <div className="px-4 xl:px-0  mx-auto max-w-[1536px] w-full  ">
+          <div className="text-left text-white xl:px-0">
+            <Link
+              className="text-white no-underline hover:no-underline"
+              to="blogs/case-study"
+            >
+              <h2 className="text-[3rem] font-[900] leading-[3.5rem]">
+                Case study
+              </h2>
+            </Link>
 
-            <div className="flex items-center gap-2">
-              <button
-                className={`rounded-lg border-[1px] border-neutral-400 bg-white p-1.5 text-2xl transition-opacity ${
-                  CAN_SHIFT_LEFT ? '' : 'opacity-30'
-                }`}
-                disabled={!CAN_SHIFT_LEFT}
-                onClick={shiftLeft}
-              >
-                <ChevronLeft />
-              </button>
-              <button
-                className={`rounded-lg border-[1px] border-neutral-400 bg-white p-1.5 text-2xl transition-opacity ${
-                  CAN_SHIFT_RIGHT ? '' : 'opacity-30'
-                }`}
-                disabled={!CAN_SHIFT_RIGHT}
-                onClick={shiftRight}
-              >
-                <ChevronRight />
-              </button>
+            <div className="flex-col md;flex items-center justify-between mb-[5rem]">
+              <div className="mb-10 text-4xl max-w-[1024px]">
+                <p className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem] line-clamp-3">
+                  Success Stories Sculpted by Strategy. Unveil the narratives of
+                  transformation and triumph that underscore our partnership
+                  with global leaders. Dive into our case studies.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 justify-end">
+                <button
+                  className={`rounded-lg border-2 border-neutral-400 bg-[--color-main] p-1.5 text-2xl transition-opacity ${
+                    CAN_SHIFT_LEFT ? '' : 'opacity-30'
+                  }`}
+                  disabled={!CAN_SHIFT_LEFT}
+                  onClick={shiftLeft}
+                >
+                  <ChevronLeft />
+                </button>
+                <button
+                  className={`rounded-lg border-2 border-neutral-400 bg-[--color-main] p-1.5 text-2xl transition-opacity ${
+                    CAN_SHIFT_RIGHT ? '' : 'opacity-30'
+                  }`}
+                  disabled={!CAN_SHIFT_RIGHT}
+                  onClick={shiftRight}
+                >
+                  <ChevronRight />
+                </button>
+              </div>
             </div>
           </div>
+        </div>
+        <div className="mx-auto max-w-6xl">
           <motion.div
             animate={{
               x: offset,
@@ -82,15 +104,22 @@ const CaseStudySection = () => {
             }}
             className="flex"
           >
-            {posts.map((post) => {
-              return (
-                <PostCarousel
-                  key={post.id}
-                  {...post}
-                  marginRight={MARGIN}
-                  cardWidth={CARD_WIDTH}
-                />
-              );
+            {blogs?.edges?.map((blog) => {
+              if (blog?.node?.handle === 'case-study') {
+                return blog?.node?.articles?.edges?.map((article) => {
+                  return (
+                    <PostCarousel
+                      key={article?.node?.id}
+                      article={article}
+                      //@ts-ignore
+                      blog={blog}
+                      marginRight={MARGIN}
+                      cardWidth={CARD_WIDTH}
+                    />
+                  );
+                });
+              }
+              return null;
             })}
           </motion.div>
         </div>
