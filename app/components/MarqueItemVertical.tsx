@@ -21,7 +21,7 @@ const MarqueItemVertical = ({
         return (
           <div
             key={product?.node?.id}
-            className="shadow-3xl mb-10 border-2 border-black rounded-xl p-2 bg-white h-auto w-[15rem] sm:w-[9rem] md:w-[7rem] lg:w-[11rem] xl:w-[15rem] "
+            className="shadow-3xl mb-10 border-2 border-black rounded-xl p-2 bg-white h-auto w-[15rem] sm:w-[9rem] md:w-[10rem] lg:w-[15rem] xl:w-[19rem] "
           >
             <Image
               data={product?.node?.featuredImage || undefined}

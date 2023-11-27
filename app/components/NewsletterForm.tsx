@@ -42,15 +42,17 @@ const NewsletterForm = ({className}: NewsletterFormProps) => {
     <div className={className}>
       <div className={` desktop ${formState === 'success' ? 'hidden' : ''}`}>
         <Form method="POST">
-          <div className='"desktop hidden lg:flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl'>
+          <div className="desktop hidden lg:flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
             <input
-              className="flex-1 pr-1 border-0 outline-none mr-2 min-w-0 bg-transparent text-black "
+              className="focus:ring-offset-0  focus:outline-none flex-1 pr-1 border-0 outline-none mr-2 min-w-0 bg-transparent text-black"
               id="email"
               name="email"
               type="email"
-              placeholder="Your email"
-              aria-label="Your email"
+              placeholder="Enter your email address"
+              aria-label="Enter your email address"
+              spellCheck="false"
               required
+              autoComplete="off"
               ref={inputRef}
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
@@ -69,13 +71,15 @@ const NewsletterForm = ({className}: NewsletterFormProps) => {
         <Form method="POST">
           <div className="flex justify-between rounded-full shadow-3xl border-2  border-black bg-white p-[0.188rem] pl-[0.938rem] md:pl-[1.125rem] text-base lg:text-xl">
             <input
-              className="flex-1 pr-1 outline-none focus:outline-none mr-2 min-w-0 bg-transparent text-black py-[0.9rem] border-0"
+              className="flex-1 ring-0 pr-1 outline-none focus:outline-none mr-2 min-w-0 bg-transparent text-black py-[0.9rem] border-0"
               id="email"
               name="email"
               type="email"
-              placeholder="Your email"
-              aria-label="Your email"
+              placeholder="Enter your email address"
+              aria-label="Enter your email address"
               required
+              autoComplete="off"
+              spellCheck="false"
               ref={inputRef}
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus

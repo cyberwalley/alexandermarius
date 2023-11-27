@@ -50,7 +50,7 @@ const Hero = () => {
             </div>
             <NewsletterForm className="w-full lg:w-[90%] xl:w-[80%]" />
           </div>
-          <div className="col-span-4 xs:col-span-4 md:col-span-5 xs:col-start-1 flex flex-row gap-[1rem] sm:col-start-1 sm:col-span-8">
+          <div className="col-span-4 xs:col-span-4 md:col-span-6 xs:col-start-1 flex flex-row gap-[1rem] sm:col-start-1 sm:col-span-8">
             {/*  <Marquee
               content={collection}
               contentType="text"
