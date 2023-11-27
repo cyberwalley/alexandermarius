@@ -1,13 +1,9 @@
 import {useLoaderData} from '@remix-run/react';
 import type {loader} from '~/routes/_index';
-import {Image} from '@shopify/hydrogen';
-import Button from './Button';
-import Marquee from './Marque';
-import {useMediaQuery} from '~/hooks/useMediaQuery';
 import NewsletterForm from './NewsletterForm';
+import MarqueCarousel from './MarqueCarousel';
 
 const Hero = () => {
-  const isMediumLargeDevice = useMediaQuery('(min-width: 768px)');
   const {collection} = useLoaderData<typeof loader>();
 
   if (!collection) return null;
@@ -49,14 +45,8 @@ const Hero = () => {
             </div>
             <NewsletterForm className="w-full lg:w-[90%] xl:w-[80%]" />
           </div>
-          <div className="col-span-4 xs:col-span-4 md:col-span-5 xs:col-start-1 flex flex-row gap-[1rem] my-auto sm:col-start-1 sm:col-span-8">
-            <Marquee
-              content={collection}
-              contentType="text"
-              orientation={isMediumLargeDevice ? 'vertical' : 'horizontal'}
-              variant="double"
-              reverse
-            />
+          <div className="col-span-4 xs:col-span-4 md:col-span-6 xs:col-start-1 flex flex-row gap-[1rem] sm:col-start-1 sm:col-span-8">
+            <MarqueCarousel content={collection} />
           </div>
         </div>
       </div>
