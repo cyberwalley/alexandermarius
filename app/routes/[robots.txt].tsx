@@ -58,6 +58,7 @@ ${generalDisallowRules({sitemapUrl, shopId})}
 User-agent: adsbot-google
 Disallow: /checkouts/
 Disallow: /checkout
+Disallow: /products/
 Disallow: /carts
 Disallow: /orders
 ${shopId ? `Disallow: /${shopId}/checkouts` : ''}
