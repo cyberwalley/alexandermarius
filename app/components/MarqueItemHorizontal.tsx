@@ -1,5 +1,6 @@
 import {motion} from 'framer-motion';
 import {Image} from '@shopify/hydrogen';
+import type {HeroCollectionQuery} from 'storefrontapi.generated';
 
 const MarqueItemHorizontal = ({
   reverse = false,
@@ -8,6 +9,7 @@ const MarqueItemHorizontal = ({
 }: {
   reverse?: boolean;
   duration?: number;
+  content: HeroCollectionQuery['collection'];
 }) => {
   const collectionData = content?.products?.edges;
   return (

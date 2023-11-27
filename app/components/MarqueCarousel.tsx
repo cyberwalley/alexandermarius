@@ -1,7 +1,12 @@
+import type {HeroCollectionQuery} from 'storefrontapi.generated';
 import MarqueItemHorizontal from './MarqueItemHorizontal';
 import MarqueItemVertical from './MarqueItemVertical';
 
-const MarqueCarousel = ({content}) => {
+interface MarqueCarouselProps {
+  content: HeroCollectionQuery['collection'];
+}
+
+const MarqueCarousel = ({content}: MarqueCarouselProps) => {
   return (
     <div className="bg-transparent select-none  mask-gradient-marquee-bottom overflow-hidden">
       <div className="p-4 overflow-hidden md:flex gap-8 lg:gap-2 xl:gap-8 md:h-[57rem] lg:h-[49rem] md:relative">
