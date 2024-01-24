@@ -1,10 +1,10 @@
-interface HumanCapitalProps {
+interface HumanCapitalIconProps {
   className?: string;
 }
 
-const HumanCapital = ({
+const HumanCapitalIcon = ({
   className = 'w-6 h-6 text-gray-800 dark:text-white',
-}: HumanCapitalProps) => {
+}: HumanCapitalIconProps) => {
   return (
     <svg
       className={className}
@@ -18,4 +18,4 @@ const HumanCapital = ({
   );
 };
 
-export default HumanCapital;
+export default HumanCapitalIcon;

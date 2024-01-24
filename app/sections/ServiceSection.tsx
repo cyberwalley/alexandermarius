@@ -3,7 +3,7 @@ import type {loader} from '~/routes/_index';
 import ServiceItem from './ServiceItem';
 import type {PageSectionQuery} from 'storefrontapi.generated';
 import ConsultingIcon from '~/assets/svg/ConsultingIcon';
-import HumanCapital from '~/assets/svg/HumanCapital';
+import HumanCapitalIcon from '~/assets/svg/HumanCapitalIcon';
 
 const ServiceSection = () => {
   const {pages, blogs} = useLoaderData<typeof loader>();
@@ -44,7 +44,11 @@ const ServiceSection = () => {
                           key={article?.node?.id}
                           article={article}
                           icon={
-                            <HumanCapital className="w-10 h-10 text-gray-800 dark:text-white" />
+                            article?.node.title?.includes('Manpower') ? (
+                              <HumanCapitalIcon className="w-10 h-10 text-gray-800 dark:text-white" />
+                            ) : (
+                              <ConsultingIcon className="w-10 h-10 text-gray-800 dark:text-white" />
+                            )
                           }
                         />
                       );
