@@ -23,13 +23,15 @@ const CaseStudySection = () => {
   const [ref, {width}] = useMeasure();
   const [offset, setOffset] = useState(0);
 
+  const articleCount = blogs?.edges?.[3].node?.articles?.edges?.length;
+
   const CARD_BUFFER =
     width > BREAKPOINTS.lg ? 3 : width > BREAKPOINTS.sm ? 2 : 1;
 
   const CAN_SHIFT_LEFT = offset < 0;
 
   const CAN_SHIFT_RIGHT =
-    Math.abs(offset) < CARD_SIZE * (posts.length - CARD_BUFFER);
+    Math.abs(offset) < CARD_SIZE * (articleCount - CARD_BUFFER);
 
   const shiftLeft = () => {
     if (!CAN_SHIFT_LEFT) {
