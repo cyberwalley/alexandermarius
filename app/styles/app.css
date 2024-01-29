@@ -837,3 +837,21 @@ aside li {
 .text-shadowing {
   text-shadow: 1px 1px 0 rgba(0,0,0,.2)
 }
+
+.list-wrapper {
+  background-color: #d2feff;
+  padding: 3rem;
+}
+
+.list-wrapper .p-6.rounded-md.shadowing.bg-white {
+  padding: 1.5rem;
+}
+
+.list-wrapper .p-6.rounded-md.shadowing.bg-white h4 {
+  color: #1a6d6e;
+}
+
+.service-details-bottom-wrapper h3 {
+  line-height: 1.2em;
+  padding-top: 4rem;
+}
