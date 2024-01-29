@@ -19,7 +19,7 @@ const ServiceItem = ({article, icon}: ServiceItemProps) => {
           <h3 className="text-[1.57rem] mb-4 font-bold">
             {article?.node.title}
           </h3>
-          <p className="leading-[2rem] pt-sm line-clamp-3">
+          <p className="leading-[2rem] pt-sm line-clamp-4">
             {article?.node.content}
           </p>
           <div className="w-full mt-4 text-left">
