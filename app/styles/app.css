@@ -766,14 +766,11 @@ aside li {
 
 .rte > h2 > *, .rte > h3 > *, .rte > h4 > *, .rte > h5 > * {
   font-weight: 600 !important; 
-  margin-top: 1.5rem;
   
 }
 
-.rte h2 {
+.rte h2, .rte h2 > * {
   font-size: 2.75rem;
-   margin-top: 1.5em;
-   margin-bottom: 1.5rem;
   
 }
 

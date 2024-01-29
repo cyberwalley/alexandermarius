@@ -44,3 +44,10 @@ export function getVariantUrl({
 
   return path + (searchString ? '?' + searchParams.toString() : '');
 }
+
+export function handleize(string: string) {
+  return string
+    .toLowerCase()
+    .replace(/\s/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+}

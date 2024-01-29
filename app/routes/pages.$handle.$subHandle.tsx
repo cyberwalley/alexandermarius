@@ -22,13 +22,17 @@ export async function loader({params, context}: LoaderArgs) {
     variables: {handle, subHandle},
   });
 
+  const {blogs} = await context.storefront.query(
+    GET_ALL_BLOGS_FOR_SERVICE_DETAIL_PAGE_QUERY,
+  );
+
   if (!blog?.articleByHandle) {
     throw new Response(null, {status: 404});
   }
 
   const article = blog.articleByHandle;
 
-  return json({article, blog});
+  return json({article, blog, blogs, subHandle});
 }
 
 const JobPost = () => {
@@ -69,6 +73,11 @@ const GET_ARTICLE_QUERY = `#graphql
       articleByHandle(handle: $subHandle) {
         title
         contentHtml
+        excerpt
+        seo {
+          title
+          description
+        }
         publishedAt
         author: authorV2 {
           name
@@ -106,6 +115,52 @@ export const GET_PAGE_QUERY = `#graphql
     bodySummary
     body
     handle
+  }
+  }
+` as const;
+
+const GET_ALL_BLOGS_FOR_SERVICE_DETAIL_PAGE_QUERY = `#graphql
+  query AllBlogsServiceDetailPage(
+    $language: LanguageCode,
+    $country: CountryCode,
+  )
+  @inContext(language: $language, country: $country) {
+    blogs(first: 20) {
+    edges {
+      node {
+        id
+        title
+        handle
+        articles(first: 50 sortKey: UPDATED_AT, reverse: true) {
+          edges {
+            node {
+              id
+              title
+              content
+              contentHtml
+              handle
+              publishedAt
+              image {
+                id
+                altText
+                url
+              }
+              metafields(identifiers: [{ key: "job_location", namespace:"custom" }, {key: "apply_link", namespace:"custom"}]){
+                id
+                value
+                
+              }
+              authorV2 {
+                firstName
+              }
+            }
+          }
+        }
+        seo {
+          description
+        }
+      }
+    }
   }
   }
 ` as const;
