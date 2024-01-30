@@ -855,3 +855,9 @@ aside li {
   line-height: 1.2em;
   padding-top: 4rem;
 }
+
+@media screen and (max-width: 500px){
+  .blog-grid {
+    display: inline-block;
+  }
+}
