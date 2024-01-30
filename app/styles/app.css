@@ -860,4 +860,7 @@ aside li {
   .blog-grid {
     display: inline-block;
   }
+  .list-wrapper {
+    padding: 1rem;
+  }
 }
