@@ -47,12 +47,12 @@ export default function Homepage() {
   return (
     <div className="home">
       <Hero />
-      <ServiceSection />
       <SectionBanner />
-      <CaseStudySection />
-      <InsightsSection />
+      <ServiceSection />
+      {/* <CaseStudySection /> */}
+      {/* <InsightsSection /> */}
       <FaqSection />
-      <CareersSection />
+      {/* <CareersSection /> */}
     </div>
   );
 }
