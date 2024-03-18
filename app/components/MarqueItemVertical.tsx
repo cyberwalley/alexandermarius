@@ -35,8 +35,8 @@ const MarqueItemVertical = ({
               >
                 <Image
                   data={product?.node?.featuredImage || undefined}
-                  aspectRatio="1/1"
-                  sizes="50vw"
+                  aspectRatio="19/16"
+                  sizes="25vw"
                   loading="eager"
                 />
                 <div className="px-2 py-3">
