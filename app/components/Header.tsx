@@ -10,10 +10,10 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header">
+    <header className="header pb-[7rem] pt-[1rem] px-[1rem]">
       <div className="max-w-[1536px] m-auto flex items-center justify-between w-full leading-none gap-8">
-        <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-          <strong>{shop.name}</strong>
+        <NavLink prefetch="intent" to="/">
+          <img src={shop.brand?.logo?.image?.url} width={120} alt="logo" />
         </NavLink>
         <HeaderMenu menu={menu} viewport="desktop" />
         <HeaderMenuMobileToggle />
