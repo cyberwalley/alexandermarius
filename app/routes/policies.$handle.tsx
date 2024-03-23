@@ -1,6 +1,7 @@
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {Link, useLoaderData, type V2_MetaFunction} from '@remix-run/react';
 import {type Shop} from '@shopify/hydrogen/storefront-api-types';
+import Button from '~/components/Button';
 
 type SelectedPolicies = keyof Pick<
   Shop,
@@ -45,16 +46,30 @@ export default function Policy() {
   const {policy} = useLoaderData<typeof loader>();
 
   return (
-    <div className="policy">
-      <br />
-      <br />
-      <div>
-        <Link to="/policies">← Back to Policies</Link>
+    <section className="px-[1rem]">
+      <div className="grid gap-y-[4rem] py-[3rem]  md:pt-[7rem] md:pb-[7rem]">
+        <div className="mx-auto max-w-[1000px] w-full">
+          <div className="policy">
+            <br />
+            <br />
+            <div>
+              {/* <Link className="btn" to="/policies">
+                ← Back to Policies
+              </Link> */}
+              <Button to="/policies" variant="primary">
+                ← Back to Policies
+              </Button>
+            </div>
+            <br />
+            <h1>{policy.title}</h1>
+            <div
+              className="rte"
+              dangerouslySetInnerHTML={{__html: policy.body}}
+            />
+          </div>
+        </div>
       </div>
-      <br />
-      <h1>{policy.title}</h1>
-      <div dangerouslySetInnerHTML={{__html: policy.body}} />
-    </div>
+    </section>
   );
 }
 
