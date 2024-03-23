@@ -16,19 +16,27 @@ export default function Policies() {
   const {policies} = useLoaderData<typeof loader>();
 
   return (
-    <div className="policies">
-      <h1>Policies</h1>
-      <div>
-        {policies.map((policy) => {
-          if (!policy) return null;
-          return (
-            <fieldset key={policy.id}>
-              <Link to={`/policies/${policy.handle}`}>{policy.title}</Link>
-            </fieldset>
-          );
-        })}
+    <section className="px-[1rem]">
+      <div className="grid gap-y-[4rem] py-[3rem]  md:pt-[7rem] md:pb-[7rem]">
+        <div className="mx-auto max-w-[1000px] w-full">
+          <div className="policies">
+            <h1>Policies</h1>
+            <div className="rte">
+              {policies.map((policy) => {
+                if (!policy) return null;
+                return (
+                  <fieldset key={policy.id}>
+                    <Link to={`/policies/${policy.handle}`}>
+                      {policy.title}
+                    </Link>
+                  </fieldset>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
