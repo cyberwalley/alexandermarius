@@ -26,17 +26,21 @@ export async function loader({params, context}: LoaderArgs) {
     GET_ALL_BLOGS_FOR_SERVICE_DETAIL_PAGE_QUERY,
   );
 
+  const {metaobjects} = await context.storefront.query(
+    GET_METOBJECTS_BUS_RESTRUCTURE_QUERY,
+  );
+
   if (!blog?.articleByHandle) {
     throw new Response(null, {status: 404});
   }
 
   const article = blog.articleByHandle;
 
-  return json({article, blog, blogs, subHandle});
+  return json({article, blog, blogs, subHandle, metaobjects});
 }
 
 const JobPost = () => {
-  const {article, blog} = useLoaderData<typeof loader>();
+  const {article, blog, metaobjects} = useLoaderData<typeof loader>();
   const {title, image, contentHtml, author} = article;
   const location = useLocation();
 
@@ -45,15 +49,18 @@ const JobPost = () => {
     month: 'long',
     day: 'numeric',
   }).format(new Date(article.publishedAt));
-  console.log(location.pathname, 'pagessss');
-  console.log(blog?.handle, 'handle');
+
   return (
     <div className="article">
       {blog?.handle === 'careers' && (
         <CareerPageJobDetails parentPage={blog?.handle} article={article} />
       )}
       {blog?.handle !== 'careers' && (
-        <ServiceDetailsPage parentPage={blog?.handle} article={article} />
+        <ServiceDetailsPage
+          metaobjects={metaobjects}
+          parentPage={blog?.handle}
+          article={article}
+        />
       )}
     </div>
   );
@@ -158,6 +165,27 @@ const GET_ALL_BLOGS_FOR_SERVICE_DETAIL_PAGE_QUERY = `#graphql
         }
         seo {
           description
+        }
+      }
+    }
+  }
+  }
+` as const;
+
+const GET_METOBJECTS_BUS_RESTRUCTURE_QUERY = `#graphql
+   query ServicesMetaobjects(
+    $language: LanguageCode,
+    $country: CountryCode,
+  )
+  @inContext(language: $language, country: $country) {
+    metaobjects(type: "business_restructuring", first: 20) {
+    edges {
+      node {
+        id
+        type
+        fields {
+          value
+          key
         }
       }
     }

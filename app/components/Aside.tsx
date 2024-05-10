@@ -28,7 +28,7 @@ export function Aside({
           window.location.hash = '';
         }}
       />
-      <aside className="bg-[color:var(--color-main)] text-white">
+      <aside className="bg-white text-black">
         <header>
           <h3>{heading}</h3>
           <CloseAside />
@@ -42,7 +42,7 @@ export function Aside({
 function CloseAside() {
   return (
     /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
-    <a className="close text-white" href="#" onChange={() => history.go(-1)}>
+    <a className="close text-black" href="#" onChange={() => history.go(-1)}>
       <CloseIcon />
     </a>
   );

@@ -1,31 +1,52 @@
 import {Link, useLoaderData} from '@remix-run/react';
-import Carousel from '../components/Carousel';
+//import Carousel from '../components/Carousel';
 import type {loader} from '~/routes/_index';
 import type {AllBlogsQuery} from 'storefrontapi.generated';
 import useMeasure from 'react-use-measure';
-import {useState} from 'react';
+//import {useState} from 'react';
 import PostCarousel from '~/components/PostCarousel';
 import {motion} from 'framer-motion';
 import ChevronLeft from '~/assets/svg/ChevronLeft';
 import ChevronRight from '~/assets/svg/ChevronRight';
 
-const CARD_WIDTH = 350;
+import {useState, useEffect} from 'react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@relume_io/relume-ui';
+import type {ImageProps, CarouselApi} from '@relume_io/relume-ui';
+import clsx from 'clsx';
+
+/* const CARD_WIDTH = 350;
 const MARGIN = 40;
 const CARD_SIZE = CARD_WIDTH + MARGIN;
 
 const BREAKPOINTS = {
   sm: 640,
   lg: 1024,
-};
+}; */
 
-const CaseStudySection = () => {
+interface CaseStudySectionProps {
+  title: string;
+  description: string;
+  page: string;
+}
+
+const CaseStudySection = ({
+  title,
+  description,
+  page,
+}: CaseStudySectionProps) => {
   const {blogs}: AllBlogsQuery = useLoaderData<typeof loader>();
   const [ref, {width}] = useMeasure();
   const [offset, setOffset] = useState(0);
 
   const articleCount = blogs?.edges?.[3].node?.articles?.edges?.length;
 
-  const CARD_BUFFER =
+  /*  const CARD_BUFFER =
     width > BREAKPOINTS.lg ? 3 : width > BREAKPOINTS.sm ? 2 : 1;
 
   const CAN_SHIFT_LEFT = offset < 0;
@@ -45,9 +66,100 @@ const CaseStudySection = () => {
       return;
     }
     setOffset((pv) => (pv -= CARD_SIZE));
+  }; */
+
+  /*   const {heading, description, images} = {
+    ...Gallery21DefaultProps,
+    ...props,
+  } as Props; */
+
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  // for all available options: https://www.embla-carousel.com/api/options/
+  const options = {
+    loop: true,
   };
 
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+    setCurrent(api.selectedScrollSnap() + 1);
+    api.on('select', () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
   return (
+    <section className="overflow-hidden px-[5%] py-16 md:py-24 lg:py-28">
+      <div className="container !h-full">
+        <div className="mb-12 md:mb-18 lg:mb-20 lg:max-w-[50vw]">
+          <Link to={page} className="no-underline hover:no-underline">
+            <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+              {title}
+            </h2>
+          </Link>
+          <p className="md:text-md">{description}</p>
+        </div>
+        <Carousel setApi={setApi} opts={options}>
+          <CarouselContent>
+            {blogs?.edges?.map((blog) => {
+              if (blog?.node?.handle === 'case-study') {
+                return blog?.node?.articles?.edges?.map((article) => {
+                  return (
+                    <Link
+                      to={`blogs/${blog?.node?.handle}/${article?.node?.handle}`}
+                      key={article?.node?.id}
+                    >
+                      <CarouselItem className="basis-auto pr-2 md:pr-4">
+                        <img
+                          src={article?.node?.image?.url}
+                          alt={article?.node?.image?.altText || undefined}
+                          className="w-[314px] sm:w-[408px] md:w-[314px] lg:w-[608px] xxl:w-full"
+                        />
+                      </CarouselItem>
+                    </Link>
+                  );
+                });
+              }
+              return null;
+            })}
+          </CarouselContent>
+          <div className="mt-[38px] flex items-center justify-between">
+            <div className="mt-4 flex w-full items-start justify-start">
+              {blogs?.edges?.map((blog) => {
+                if (blog?.node?.handle === 'case-study') {
+                  return blog?.node?.articles?.edges?.map((_, index) => {
+                    return (
+                      <button
+                        key={index}
+                        onClick={() => api?.scrollTo(index)}
+                        className={clsx(
+                          'mx-[3px] inline-block size-2 rounded-full',
+                          {
+                            'bg-black': current === index + 1,
+                            'bg-neutral-light': current !== index + 1,
+                          },
+                        )}
+                      />
+                    );
+                  });
+                }
+                return null;
+              })}
+            </div>
+            <div className="flex items-end justify-end gap-2 md:gap-4">
+              <CarouselPrevious className="static right-0 top-0 size-12 -translate-y-0" />
+              <CarouselNext className="static right-0 top-0 size-12 -translate-y-0" />
+            </div>
+          </div>
+        </Carousel>
+      </div>
+    </section>
+  );
+
+  /*  return (
     <section
       className="rounded-b-[1.3rem] md:rounded-b-[2rem] bg-[--color-main]"
       ref={ref}
@@ -127,7 +239,7 @@ const CaseStudySection = () => {
         </div>
       </div>
     </section>
-  );
+  ); */
 };
 
 export default CaseStudySection;

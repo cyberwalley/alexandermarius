@@ -8,9 +8,12 @@ import {
 } from '@shopify/hydrogen';
 import type {ProductItemFragment} from 'storefrontapi.generated';
 import {useVariantUrl} from '~/utils';
+import {StaticLink} from '~/configs/links';
 
 export const meta: V2_MetaFunction = ({data}) => {
-  return [{title: `Hydrogen | ${data.collection.title} Collection`}];
+  return [
+    {title: `${StaticLink.SiteName} | ${data.collection.title} Collection`},
+  ];
 };
 
 export async function loader({request, params, context}: LoaderArgs) {

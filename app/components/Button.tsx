@@ -49,9 +49,7 @@ const Button = ({
         type={submit ? 'submit' : 'button'}
         {...props}
         className={`${
-          variant === 'secondary'
-            ? 'bg-white border-2'
-            : 'bg-[var(--color-secondary)]'
+          variant === 'secondary' ? 'bg-white border-2' : 'bg-brand-primary'
         }  ${
           shadow
             ? 'hover:translate-x-[-5px] transition  hover:translate-y-[5px] hover:shadow-none shadow-3xl border-2  ease-in-out'

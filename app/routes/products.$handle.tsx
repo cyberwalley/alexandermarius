@@ -26,9 +26,10 @@ import type {
   SelectedOption,
 } from '@shopify/hydrogen/storefront-api-types';
 import {getVariantUrl} from '~/utils';
+import {StaticLink} from '~/configs/links';
 
 export const meta: V2_MetaFunction = ({data}) => {
-  return [{title: `Hydrogen | ${data.product.title}`}];
+  return [{title: `${StaticLink.SiteName} | ${data.product.title}`}];
 };
 
 export async function loader({params, request, context}: LoaderArgs) {

@@ -18,7 +18,7 @@ const CareerPageJobDetails = ({
 
   return (
     <div>
-      <header className="bg-[--color-main] border-b-[2.5rem] border-[--color-secondary] px-[1rem]">
+      <header className="bg-[--color-main] px-[1rem] bg-brand-darkest">
         <div className="grid gap-y-[4rem] px-4 pt-[3rem] pb-[3rem] md:pt-[7rem] md:pb-[7rem]">
           <div className="mx-auto max-w-[1536px] w-full grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-y-[2.5rem]">
             <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 pt-xl">
@@ -67,7 +67,7 @@ const CareerPageJobDetails = ({
                 </div>
                 <div className=" w-full md:w-[75%] flex flex-col items-start">
                   <div
-                    className="rte"
+                    className="prose"
                     dangerouslySetInnerHTML={{__html: contentHtml}}
                   />
                   <div className="mt-10">

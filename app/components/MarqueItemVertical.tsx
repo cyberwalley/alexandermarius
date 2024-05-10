@@ -31,22 +31,23 @@ const MarqueItemVertical = ({
             return (
               <div
                 key={product?.node?.id}
-                className="shadow-3xl mb-10 border-2 border-black rounded-xl p-2 bg-white h-auto w-[15rem] sm:w-[9rem] md:w-[10rem] lg:w-[15rem] xl:w-[19rem] "
+                className="shadow-3xl mb-10 border-2 border-black rounded-xl p-2 bg-white h-auto w-[15rem] sm:w-[9rem] md:w-full xl:w-[15rem]"
               >
                 <Image
                   data={product?.node?.featuredImage || undefined}
                   aspectRatio="19/16"
+                  className="inset-0 object-cover"
                   sizes="25vw"
                   loading="eager"
                 />
-                <div className="px-2 py-3">
+                {/*  <div className="px-2 py-3">
                   <p className="text-black font-normal text-sm">
                     {product?.node?.title}
                   </p>
                   <div className="text-gray-500 font-normal text-sm">
                     {product?.node?.description}
                   </div>
-                </div>
+                </div> */}
               </div>
             );
           })}

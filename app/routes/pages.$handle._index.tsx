@@ -9,6 +9,9 @@ import StandardPage from '../pages/StandardPage';
 import CareersPage from '~/pages/CareersPage';
 import type {PageQuery} from 'storefrontapi.generated';
 import ServicePage from '~/pages/ServicePage';
+import ContactPage from '~/pages/ContactPage';
+import {useMemo} from 'react';
+import FaqPage from '~/pages/FaqPage';
 
 export const meta: V2_MetaFunction = ({data}) => {
   return [{title: `${data.page.title} | Alexander Marius`}];
@@ -50,9 +53,31 @@ export default function Page() {
   const subtitle = page?.metafields?.[0]?.value;
   const coverImage = page?.metafields?.[1]?.reference?.image;
 
+  const currentPage = useMemo(() => {
+    switch (page.handle) {
+      case 'careers':
+        return <CareersPage blog={blog} />;
+      case 'services':
+        return <ServicePage blog={blog} />;
+      case 'contact':
+        return <ContactPage />;
+      case 'faq':
+        return (
+          <FaqPage
+            blog={blog}
+            footerHeading="Still have questions?"
+            footerDescription="Don't see your question here? Reach out to us and we'll be happy to help."
+          />
+        );
+      default: {
+        return <StandardPage page={page} />;
+      }
+    }
+  }, [blog, page]);
+
   return (
     <div className="page">
-      <header className="bg-[--color-main] border-b-[2.5rem] border-[--color-secondary] px-[1rem]">
+      {/*  <header className="bg-[--color-main] border-b-[2.5rem] border-[--color-secondary] px-[1rem]">
         <div
           className={`grid gap-y-[4rem] px-4 pt-[3rem] md:pt-[7rem] ${
             coverImage ? 'md:pb-0' : 'pb-[7rem]'
@@ -86,16 +111,25 @@ export default function Page() {
             )}
           </div>
         </div>
-      </header>
-      <main>
-        {page.handle === 'careers' ? (
-          <CareersPage blog={blog} />
-        ) : page.handle === 'services' ? (
-          <ServicePage blog={blog} />
-        ) : (
-          <StandardPage page={page} />
+      </header> */}
+      <header className="px-[5%] py-16 md:py-24 lg:py-28 bg-brand-darkest">
+        <div className="container !h-full !mb-[5rem] grid grid-cols-1 items-start justify-between gap-x-12 gap-y-8 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
+          <h3 className="text-4xl font-bold leading-[1.2] md:text-5xl lg:text-6xl text-white">
+            {page.title}
+          </h3>
+          <p className="md:text-md text-white">{subtitle}</p>
+        </div>
+        {coverImage && (
+          <div>
+            <img
+              src={coverImage?.url}
+              className="w-full md:h-[50rem] object-cover"
+              alt={page.title}
+            />
+          </div>
         )}
-      </main>
+      </header>
+      <main>{currentPage}</main>
     </div>
   );
 }

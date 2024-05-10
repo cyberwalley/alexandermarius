@@ -2,6 +2,7 @@ import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {Link, useLoaderData, type V2_MetaFunction} from '@remix-run/react';
 import {type Shop} from '@shopify/hydrogen/storefront-api-types';
 import Button from '~/components/Button';
+import {StaticLink} from '~/configs/links';
 
 type SelectedPolicies = keyof Pick<
   Shop,
@@ -9,7 +10,7 @@ type SelectedPolicies = keyof Pick<
 >;
 
 export const meta: V2_MetaFunction = ({data}) => {
-  return [{title: `Hydrogen | ${data.policy.title}`}];
+  return [{title: `${StaticLink.SiteName} | ${data.policy.title}`}];
 };
 
 export async function loader({params, context}: LoaderArgs) {
@@ -63,7 +64,7 @@ export default function Policy() {
             <br />
             <h1>{policy.title}</h1>
             <div
-              className="rte"
+              className="prose"
               dangerouslySetInnerHTML={{__html: policy.body}}
             />
           </div>

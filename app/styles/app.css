@@ -131,16 +131,15 @@ aside li {
 */
 .header {
   align-items: center;
-  background: var(--color-main);
   display: flex;
   height: var(--header-height);
   position: sticky;
   top: 0;
   z-index: 9;
 }
-.header-menu-item:hover{
-  border-bottom: 2px solid var(--color-secondary) !important;
-}
+/* .header-menu-item:hover{
+  border-bottom: 1px solid var(--color-secondary) !important;
+} */
 
 .header-menu-mobile-toggle {
   @media (min-width: 48em) {
@@ -152,6 +151,7 @@ aside li {
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
+  align-items:flex-start;
 }
 
 .header-menu-desktop {
@@ -161,6 +161,7 @@ aside li {
     display: flex;
     grid-gap: 1rem;
     margin-left: 3rem;
+    align-items: center;
   }
 }
 

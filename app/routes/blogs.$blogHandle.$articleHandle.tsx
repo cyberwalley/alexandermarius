@@ -1,9 +1,10 @@
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {useLoaderData, type V2_MetaFunction} from '@remix-run/react';
 import {Image} from '@shopify/hydrogen';
+import {StaticLink} from '~/configs/links';
 
 export const meta: V2_MetaFunction = ({data}) => {
-  return [{title: `Hydrogen | ${data.article.title} article`}];
+  return [{title: `${StaticLink.SiteName} | ${data.article.title} article`}];
 };
 
 export async function loader({params, context}: LoaderArgs) {
@@ -53,7 +54,7 @@ export default function Article() {
             <span>{publishedDate}</span>
             <div
               dangerouslySetInnerHTML={{__html: contentHtml}}
-              className="article rte"
+              className="article prose"
             />
           </div>
         </div>
