@@ -1,13 +1,26 @@
 import {Link, useLoaderData} from '@remix-run/react';
 import {Image} from '@shopify/hydrogen';
 import type {loader} from '~/routes/_index';
-import type {ArticleCareerPageQuery} from 'storefrontapi.generated';
+import type {
+  ArticleCareerPageQuery,
+  ServicesMetaobjectsQuery,
+} from 'storefrontapi.generated';
 import Tab from '~/components/Tab';
 
 interface ServiceDetailsPageProps {
   //@ts-ignore
   article: ArticleCareerPageQuery['blog']['article'];
   parentPage: string;
+  metaobjects: ServicesMetaobjectsQuery['metaobjects'];
+  /* metaobjects: SerializeObject<
+    UndefinedToOptional<{
+      edges: {
+        node: Pick<Metaobject, 'id'> & {
+          fields: Pick<MetaobjectField, 'value' | 'key'>[];
+        };
+      }[];
+    }>
+  >; */
 }
 
 const tabs = [
@@ -29,15 +42,20 @@ const tabs = [
   },
 ];
 
-const ServiceDetailsPage = ({article, parentPage}: ServiceDetailsPageProps) => {
+const ServiceDetailsPage = ({
+  article,
+  parentPage,
+  metaobjects,
+}: ServiceDetailsPageProps) => {
   const {pages, blogs} = useLoaderData<typeof loader>();
   const {title, image, contentHtml, author, metafields, seo, excerpt} = article;
+  console.log(metaobjects, 'metaobjects');
 
   console.log(blogs, 'blogs newwy');
 
   return (
     <div>
-      <header className="bg-[--color-main] border-b-[2.5rem] border-[--color-secondary] px-[1rem]">
+      <header className="bg-[--color-main] bg-brand-darkest px-[1rem]">
         <div className="grid gap-y-[4rem] px-4 pt-[3rem] pb-[3rem] md:pt-[7rem] md:pb-[7rem]">
           <div className="mx-auto max-w-[1536px] w-full grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-[2.5rem] gap-y-[2.5rem]">
             <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 pt-xl">
@@ -59,7 +77,7 @@ const ServiceDetailsPage = ({article, parentPage}: ServiceDetailsPageProps) => {
                 </div>
               </div>
             </div>
-            {image && (
+            {/* {image && (
               <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 md:col-start-7  flex flex-col gap-y-[2.5rem]">
                 <picture>
                   <Image
@@ -69,11 +87,11 @@ const ServiceDetailsPage = ({article, parentPage}: ServiceDetailsPageProps) => {
                   />
                 </picture>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </header>
-      {blogs && <Tab tabs={blogs} title={title} />}
+      {blogs && <Tab metaobjects={metaobjects} tabs={blogs} title={title} />}
       {/*    <main className="article">
         <section className="bg-white px-[1rem]">
           <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pt-[7rem] pb-[3rem] md:pb-[7rem]">

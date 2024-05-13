@@ -1,9 +1,10 @@
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {Link, useLoaderData, type V2_MetaFunction} from '@remix-run/react';
 import {Pagination, getPaginationVariables} from '@shopify/hydrogen';
+import {StaticLink} from '~/configs/links';
 
 export const meta: V2_MetaFunction = () => {
-  return [{title: `Hydrogen | Blogs`}];
+  return [{title: `${StaticLink.SiteName} | Blogs`}];
 };
 
 export const loader = async ({request, context: {storefront}}: LoaderArgs) => {

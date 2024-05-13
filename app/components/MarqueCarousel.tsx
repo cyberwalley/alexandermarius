@@ -9,7 +9,7 @@ interface MarqueCarouselProps {
 const MarqueCarousel = ({content}: MarqueCarouselProps) => {
   return (
     <div className="bg-transparent select-none  mask-gradient-marquee-bottom overflow-hidden">
-      <div className="p-4 overflow-hidden md:flex gap-8 lg:gap-2 xl:gap-8 md:h-[57rem] lg:h-[49rem] md:relative">
+      <div className="p-4 overflow-hidden md:flex gap-8 lg:gap-2 xl:gap-8 md:h-[57rem] lg:h-[54rem] md:relative">
         <div className="hidden md:flex md:flex-col items-center mb-4 md:h-full">
           <MarqueItemVertical content={content} duration={100} />
           <MarqueItemVertical content={content} duration={100} />

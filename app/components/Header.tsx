@@ -10,10 +10,10 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="header pb-[7rem] pt-[1rem] px-[1rem]">
+    <header className="header pb-[4rem] pt-[1rem] px-[1rem] bg-white border-b-[1px]">
       <div className="max-w-[1536px] m-auto flex items-center justify-between w-full leading-none gap-8">
         <NavLink prefetch="intent" to="/">
-          <img src={shop.brand?.logo?.image?.url} width={120} alt="logo" />
+          <img src={shop.brand?.logo?.image?.url} width={200} alt="logo" />
         </NavLink>
         <HeaderMenu menu={menu} viewport="desktop" />
         <HeaderMenuMobileToggle />
@@ -43,7 +43,7 @@ export function HeaderMenu({
 
   return (
     <nav className={className} role="navigation">
-      {viewport === 'mobile' && (
+      {/*  {viewport === 'mobile' && (
         <NavLink
           end
           onClick={closeAside}
@@ -53,7 +53,7 @@ export function HeaderMenu({
         >
           Home
         </NavLink>
-      )}
+      )} */}
       {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
         if (!item.url) return null;
 
@@ -100,7 +100,7 @@ function HeaderCtas({
 function HeaderMenuMobileToggle() {
   return (
     <a className="header-menu-mobile-toggle" href="#mobile-menu-aside">
-      <h3 className="text-white">
+      <h3 className="text-black">
         <HamburgerIcon />
       </h3>
     </a>
@@ -178,9 +178,13 @@ function activeLinkStyle({
   isPending: boolean;
 }) {
   return {
-    fontWeight: isActive ? '900' : undefined,
-    color: isPending ? 'grey' : 'white',
-    borderBottom: isActive ? '2px solid var(--color-secondary)' : 'none',
+    fontWeight: isActive ? '700' : undefined,
+    //color: isPending ? 'grey' : 'black',
+    color: isActive ? 'black' : 'black',
+    backgroundColor: isActive ? '#65a7df' : 'transparent',
+    border: isActive ? '1px solid black' : 'none',
+    borderRadius: '9999px',
+    //borderBottom: isActive ? 'none' : 'none',
     textDecoration: 'none',
     padding: '0.70rem',
   };

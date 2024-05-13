@@ -24,6 +24,10 @@ import CaseStudySection from '~/sections/CaseStudySection';
 import CareersSection from '~/sections/CareersSection';
 import FaqSection from '~/sections/FaqSection';
 import type {CustomerCreateMutation} from 'storefrontapi.generated';
+import type {ImageProps, ButtonProps} from '@relume_io/relume-ui';
+import LogoImage from '~/sections/LogoImage';
+import {BlogPage} from '~/configs/links';
+import StatsSection from '~/sections/StatsSection';
 
 export const meta: V2_MetaFunction = () => {
   return [{title: 'Alexander Marius'}];
@@ -47,12 +51,50 @@ export default function Homepage() {
   return (
     <div className="home">
       <Hero />
-      <SectionBanner />
-      <ServiceSection />
-      {/* <CaseStudySection /> */}
-      {/* <InsightsSection /> */}
-      <FaqSection />
-      {/* <CareersSection /> */}
+      <ServiceSection
+        page="Services"
+        description="Our services cater to a wide range of local and global clients
+                with diverse needs, and are market leaders in their own rights.
+                Elevate your business with a suite of services designed to
+                deliver excellence and drive growth. Explore how we can serve
+                you."
+      />
+      <StatsSection
+        heading="Our (Constantly Growing) Statistics"
+        description="We are real people that understand what it takes to hire the right people. We take a personalized approach to business, which means we take the time to understand you, your business and every candidate we introduce to you."
+        stats={[
+          {percentage: '98%', heading: 'Hired referred contractors'},
+          {percentage: '5000+', heading: 'Projects completed'},
+          {percentage: '5', heading: 'Years in business'},
+        ]}
+      />
+      <SectionBanner
+        title="Ready to Transform Your Business?"
+        subtitle="Unearth unparalleled insights and tailored strategies"
+        buttons={[{title: 'Get in touch', url: '/pages/contact'}]}
+      />
+      <LogoImage />
+      {/*   <CaseStudySection
+        title="Case study"
+        description="Success Stories Sculpted by Strategy. Unveil the narratives of
+                  transformation and triumph that underscore our partnership
+                  with global leaders. Dive into our case studies."
+        page={BlogPage.CaseStudy}
+      /> */}
+      {/*  <InsightsSection
+        title="Trending insights"
+        description="Navigate the Now with Next-Level Insights. Tap into the pulse of
+                industry innovation and future-forward strategies. Discover the
+                trends that will define tomorrow—today."
+        page={BlogPage.Insights}
+      /> */}
+      {/* <FaqSection /> */}
+      {/*  <CareersSection
+        title="Careers"
+        description="Helping businesses succeed requires people from a wide range of
+                disciplines and backgrounds. We’re always looking for curious
+                minds to join our team."
+      /> */}
     </div>
   );
 }

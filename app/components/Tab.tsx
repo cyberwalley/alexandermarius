@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {ServicesMetaobjectsQuery} from 'storefrontapi.generated';
 import {handleize} from '~/utils';
 
 interface TabProps {
@@ -12,9 +13,10 @@ interface TabProps {
   }[]; */
   tabs: any;
   title: string;
+  metaobjects: ServicesMetaobjectsQuery['metaobjects'];
 }
 
-const Tab = ({tabs, title}: TabProps) => {
+const Tab = ({tabs, title, metaobjects}: TabProps) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const [selected, setSelected] = useState(0);
@@ -31,6 +33,7 @@ const Tab = ({tabs, title}: TabProps) => {
       >
         {tabs?.edges?.map((blog: any) => {
           if (blog?.node?.handle === handleize(title)) {
+            console.log(title, 'blog?.node?.handle');
             return blog?.node?.articles?.edges.map((article, index) => {
               return (
                 <div
@@ -125,7 +128,7 @@ const Tab = ({tabs, title}: TabProps) => {
                     tabIndex={0}
                   >
                     <div
-                      className="rte"
+                      className="prose"
                       dangerouslySetInnerHTML={{
                         __html: article?.node?.contentHtml,
                       }}
@@ -136,6 +139,16 @@ const Tab = ({tabs, title}: TabProps) => {
           }
           return null;
         })}
+       {/*  {metaobjects?.edges.map((item) => {
+          if (item?.node?.type === 'business_restructuring') {
+            console.log(item?.node?.type, 'you');
+            return item?.node?.fields.map(
+              (field, index) =>
+                activeTab === index && <div key={index}>{field?.value}</div>,
+            );
+          }
+          return null;
+        })} */}
 
         {/* {tabs.map(
           ({id, title, subtitle, content}, index) =>

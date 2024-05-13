@@ -38,15 +38,16 @@ const MarqueItemHorizontal = ({
                   data={product?.node?.featuredImage || undefined}
                   aspectRatio="1/1"
                   sizes="50vw"
+                  className="inset-0 object-cover"
                 />
-                <div className="px-2 py-3">
+                {/*  <div className="px-2 py-3">
                   <p className="text-black font-normal text-sm">
                     {product?.node?.title}
                   </p>
                   <div className="text-gray-500 font-normal text-sm">
                     {product?.node?.description}
                   </div>
-                </div>
+                </div> */}
               </div>
             );
           })}

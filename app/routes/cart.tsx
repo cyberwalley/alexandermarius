@@ -5,9 +5,10 @@ import {CartForm} from '@shopify/hydrogen';
 import {type ActionArgs, json} from '@shopify/remix-oxygen';
 import type {CartApiQueryFragment} from 'storefrontapi.generated';
 import {CartMain} from '~/components/Cart';
+import {StaticLink} from '~/configs/links';
 
 export const meta: V2_MetaFunction = () => {
-  return [{title: `Hydrogen | Cart`}];
+  return [{title: `${StaticLink.SiteName} | Cart`}];
 };
 
 export async function action({request, context}: ActionArgs) {

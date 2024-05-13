@@ -4,10 +4,58 @@ import Button from '../components/Button';
 import type {loader} from '~/routes/_index';
 import type {AllBlogsQuery} from 'storefrontapi.generated';
 
-const CareersSection = () => {
+interface CareersSectionProps {
+  title: string;
+  description: string;
+}
+
+const CareersSection = ({title, description}: CareersSectionProps) => {
   const {blogs}: AllBlogsQuery = useLoaderData<typeof loader>();
   const SIZE = 4;
+
   return (
+    <section className="overflow-hidden px-[5%] py-16 md:py-24 lg:py-28">
+      <div className="container !h-full">
+        <div className="mb-12 md:mb-18 lg:mb-20 lg:max-w-[50vw]">
+          <Link
+            className="text-black no-underline hover:no-underline"
+            to="pages/careers"
+          >
+            <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+              {title}
+            </h2>
+          </Link>
+          <p className="md:text-md">{description}</p>
+        </div>
+        <div className="mx-auto max-w-[1536px] w-full grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem]">
+          <ul aria-label="Featured roles grid grid-flow-row auto-rows-max">
+            {blogs?.edges?.map((blog) => {
+              if (blog?.node?.handle === 'careers') {
+                return blog?.node?.articles?.edges
+                  ?.slice(0, SIZE)
+                  .map((article) => {
+                    return (
+                      <JobItem
+                        key={article?.node?.id}
+                        blogName={blog?.node?.handle}
+                        article={article}
+                      />
+                    );
+                  });
+              }
+              return null;
+            })}
+          </ul>
+          <div className="flex justify-center mt-10 md:mt-[4rem] mb-10">
+            <Button to="pages/careers" variant="secondary">
+              View all open roles
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+  /* return (
     <section className="bg-white px-[1rem]">
       <div className="grid gap-y-[4rem] px-4 pt-[3rem] md:pt-[7rem] pb-[3rem] md:pb-[7rem]">
         <div className="relative mx-auto max-w-[1536px] w-full grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-gutter gap-y-2xl">
@@ -56,7 +104,7 @@ const CareersSection = () => {
         </div>
       </div>
     </section>
-  );
+  ); */
 };
 
 export default CareersSection;
