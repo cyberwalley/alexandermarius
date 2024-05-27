@@ -11,7 +11,7 @@ const StatsSection = ({heading, description, stats}: StatsProps) => {
     <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-slate-100">
       <div className="container !h-full flex flex-col items-start">
         <div className="mb-12 grid grid-cols-1 items-start justify-between gap-5 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
-          <h3 className="text-4xl font-bold leading-[1.2] md:text-5xl lg:text-6xl text-brand-darkest">
+          <h3 className="font-bold leading-[1.2] text-brand-darkest text-[37px]">
             {heading}
           </h3>
           <p className="md:text-md text-brand-darkest">{description}</p>

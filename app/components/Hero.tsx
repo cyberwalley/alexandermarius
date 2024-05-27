@@ -16,10 +16,10 @@ const Hero = () => {
       style={{backgroundImage: `url(${image?.url})`, width: '100%'}}
     >
       <div className="mx-[5%] max-w-[40rem] justify-self-start lg:ml-[5vw] lg:mr-20 lg:justify-self-end">
-        <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl text-brand-darkest">
+        <h1 className="mb-5 text-6xl font-bold md:mb-6 text-[36px] text-brand-darkest">
           {collection.title}
         </h1>
-        <p className="md:text-md line-clamp-5 md:line-clamp-3">
+        <p className="line-clamp-5 md:line-clamp-3 text-[19px]">
           {collection.description}
         </p>
         <div className="mt-6 flex gap-x-4 md:mt-8">
