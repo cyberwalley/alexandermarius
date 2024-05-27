@@ -24,7 +24,7 @@ const ServiceSection = ({page, description}: ServiceSectionProps) => {
             {/* <p className="mb-3 font-semibold md:mb-4">{tagline}</p> */}
             <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
               <Link
-                className="text-white no-underline hover:no-underline"
+                className="text-white no-underline hover:no-underline text-[37px]"
                 to="pages/services"
               >
                 {page}

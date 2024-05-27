@@ -123,7 +123,7 @@ export default function Page() {
           <div>
             <img
               src={coverImage?.url}
-              className="w-full md:h-[50rem] object-cover"
+              className="w-full md:h-[30rem] object-cover"
               alt={page.title}
             />
           </div>

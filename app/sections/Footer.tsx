@@ -2,6 +2,8 @@ import {Facebook, Instagram, X, LinkedIn, YouTube} from '@relume_io/relume-ui';
 import type {ImageProps} from '@relume_io/relume-ui';
 import HeartIcon from '~/assets/svg/HeartIcon';
 import NewsletterForm from '~/components/NewsletterForm';
+import {StaticLink} from '~/configs/links';
+import {useLocation} from '@remix-run/react';
 
 type Links = {
   title: string;
@@ -114,14 +116,18 @@ export const Footer = () => {
   } = {
     ...Footer3Defaults,
   } as Props;
+  const {pathname} = useLocation();
+
   return (
     <footer className="px-[5%] py-12 md:py-18 lg:py-20 bg-background-alternative">
       <div className="container !h-full">
         <div className="grid grid-cols-1 gap-x-[4vw] gap-y-12 pb-12 md:gap-y-16 md:pb-18 lg:grid-cols-[1fr_0.5fr] lg:gap-y-4 lg:pb-20">
           <div>
-            <div className="mb-6 md:mb-8">
-              <NewsletterForm className="w-full lg:w-[90%] xl:w-[80%]" />
-            </div>
+            {pathname === StaticLink.Root && (
+              <div className="mb-6 md:mb-8">
+                <NewsletterForm className="w-full lg:w-[90%] xl:w-[80%]" />
+              </div>
+            )}
             <div className="grid grid-flow-col grid-cols-[max-content] items-start justify-center lg:justify-start gap-x-3 gap-y-0">
               {socialMediaLinks.map((link, index) => (
                 <a

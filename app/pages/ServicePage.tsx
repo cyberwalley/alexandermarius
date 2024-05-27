@@ -10,15 +10,15 @@ interface ServicePageProps {
 
 const ServicePage = ({blog}: ServicePageProps) => {
   return (
-    <section className="px-[1rem]">
+    <section className="px-[5%]">
       <div className="grid gap-y-[4rem] py-[3rem]  md:pt-[7rem] md:pb-[7rem]">
         <div className="mx-auto max-w-[1000px] w-full">
-          <div className="grid grid-cols-1 gap-10 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
             {blog?.articles?.edges.map((article) => {
               return (
                 <div
                   key={article?.node?.id}
-                  className="order-last flex flex-col items-stretch border border-gray-300 rounded-t-[12px] rounded-b-[12px] md:grid md:grid-cols-2 lg:order-none"
+                  className="order-last flex flex-col items-stretch border border-gray-300 rounded-t-[12px] rounded-b-[12px] md:grid md:grid-cols-1 lg:order-none"
                 >
                   <div className="flex w-full items-center justify-center">
                     <img
