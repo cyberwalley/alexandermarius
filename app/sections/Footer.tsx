@@ -121,8 +121,8 @@ export const Footer = () => {
   return (
     <footer className="px-[5%] py-12 md:py-18 lg:py-20 bg-background-alternative">
       <div className="container !h-full">
-        <div className="grid grid-cols-1 gap-x-[4vw] gap-y-12 pb-12 md:gap-y-16 md:pb-18 lg:grid-cols-[1fr_0.5fr] lg:gap-y-4 lg:pb-20">
-          <div>
+        <div className="grid grid-cols-1 gap-x-[4vw] gap-y-12 pb-12 md:gap-y-16 md:pb-18 lg:gap-y-4 lg:pb-20">
+          <div className="lg:flex lg:flex-col lg:items-center">
             {pathname === StaticLink.Root && (
               <div className="mb-6 md:mb-8">
                 <NewsletterForm className="w-full lg:w-[90%] xl:w-[80%]" />
