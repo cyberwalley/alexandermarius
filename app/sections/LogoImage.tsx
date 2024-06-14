@@ -34,6 +34,18 @@ const Logo3Defaults: Logo3Props = {
       src: 'https://cdn.shopify.com/s/files/1/0837/5717/0963/files/araba-logo.jpg?v=1713328941',
       alt: 'araba logo',
     },
+    {
+      src: 'https://cdn.shopify.com/s/files/1/0837/5717/0963/files/LAGOS-STATE-logo-1.jpg?v=1718341792',
+      alt: 'Lagos State Government logo',
+    },
+    {
+      src: 'https://cdn.shopify.com/s/files/1/0837/5717/0963/files/LAMATA-logo.jpg?v=1718341792',
+      alt: 'LAMATA logo',
+    },
+    {
+      src: 'https://cdn.shopify.com/s/files/1/0837/5717/0963/files/federal-govt-nigeria.jpg?v=1718341792',
+      alt: 'Federal Government of Nigeria logo',
+    },
   ],
 };
 const LogoImage = () => {
