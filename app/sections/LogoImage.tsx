@@ -46,6 +46,10 @@ const Logo3Defaults: Logo3Props = {
       src: 'https://cdn.shopify.com/s/files/1/0837/5717/0963/files/federal-govt-nigeria.jpg?v=1718341792',
       alt: 'Federal Government of Nigeria logo',
     },
+    {
+      src: 'https://cdn.shopify.com/s/files/1/0837/5717/0963/files/ottoman-turks-logo.png?v=1718399005',
+      alt: 'Ottoman Turks logo',
+    },
   ],
 };
 const LogoImage = () => {
