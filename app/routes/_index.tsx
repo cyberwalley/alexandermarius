@@ -63,9 +63,24 @@ export default function Homepage() {
         heading="Our (Constantly Growing) Statistics"
         description="We are real people that understand what it takes to hire the right people. We take a personalized approach to business, which means we take the time to understand you, your business and every candidate we introduce to you."
         stats={[
-          {percentage: '98%', heading: 'Hired referred contractors'},
-          {percentage: '5000+', heading: 'Projects completed'},
-          {percentage: '5', heading: 'Years in business'},
+          {percentage: '98%', heading: 'Client Satisfaction Rate'},
+          {percentage: '95%', heading: 'Talent Retention Rate'},
+          {
+            percentage: '>10K',
+            heading: 'Employee Training Hours',
+          },
+          {
+            percentage: '15%',
+            heading: 'Operational Cost Reduction for Clients',
+          },
+          {
+            percentage: '100%',
+            heading: 'Compliance Success Rate',
+          },
+          {
+            percentage: '^30%',
+            heading: 'Client Revenue Growth',
+          },
         ]}
       />
       <SectionBanner

@@ -12,7 +12,7 @@ const ServicePage = ({blog}: ServicePageProps) => {
   return (
     <section className="px-[5%]">
       <div className="grid gap-y-[4rem] py-[3rem]  md:pt-[7rem] md:pb-[7rem]">
-        <div className="mx-auto max-w-[1000px] w-full">
+        <div className="mx-auto w-full max-w-[57rem] lg:max-w-[1300px] ">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
             {blog?.articles?.edges.map((article) => {
               return (
