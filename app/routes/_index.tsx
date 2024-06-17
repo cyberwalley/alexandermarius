@@ -63,22 +63,40 @@ export default function Homepage() {
         heading="Our (Constantly Growing) Statistics"
         description="We are real people that understand what it takes to hire the right people. We take a personalized approach to business, which means we take the time to understand you, your business and every candidate we introduce to you."
         stats={[
-          {percentage: '98%', heading: 'Client Satisfaction Rate'},
-          {percentage: '95%', heading: 'Talent Retention Rate'},
           {
-            percentage: '>10K',
+            signBefore: null,
+            percentage: 98,
+            signAfter: '%',
+            heading: 'Client Satisfaction Rate',
+          },
+          {
+            signBefore: null,
+            percentage: 95,
+            signAfter: '%',
+            heading: 'Talent Retention Rate',
+          },
+          {
+            signBefore: '>',
+            percentage: 10,
+            signAfter: 'K',
             heading: 'Employee Training Hours',
           },
           {
-            percentage: '15%',
+            signBefore: '<',
+            percentage: 15,
+            signAfter: '%',
             heading: 'Operational Cost Reduction for Clients',
           },
           {
-            percentage: '100%',
+            signBefore: null,
+            percentage: 100,
+            signAfter: '%',
             heading: 'Compliance Success Rate',
           },
           {
-            percentage: '^30%',
+            signBefore: '^',
+            percentage: 30,
+            signAfter: '%',
             heading: 'Client Revenue Growth',
           },
         ]}
