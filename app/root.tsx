@@ -50,8 +50,23 @@ export function links() {
     {rel: 'stylesheet', href: appStyles},
     {
       rel: 'preconnect',
+      href: 'https://fonts.googleapis.com',
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
+      crossorigin: true,
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap',
+      type: 'text/css',
+    },
+    {
+      rel: 'preconnect',
       href: 'https://cdn.shopify.com',
     },
+
     {
       rel: 'preconnect',
       href: 'https://shop.app',
