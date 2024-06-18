@@ -31,7 +31,7 @@ const ServiceSection = ({page, description}: ServiceSectionProps) => {
               </Link>
             </h2>
             <p className="mb-6 md:mb-8 md:text-md text-white">{description}</p>
-            <div className="grid grid-cols-1 gap-6 py-2 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 py-2 xl:grid-cols-2">
               {/*  {subHeadings.map((subHeading, index) => (
                 <div key={article?.node?.id}>
                   <div className="mb-3 md:mb-4">
