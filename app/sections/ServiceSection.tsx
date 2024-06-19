@@ -6,6 +6,7 @@ import ConsultingIcon from '~/assets/svg/ConsultingIcon';
 import HumanCapitalIcon from '~/assets/svg/HumanCapitalIcon';
 import {Button, ChevronRight} from '@relume_io/relume-ui';
 import ChevronLeft from '~/assets/svg/ChevronLeft';
+import Typography from '~/components/Typography';
 
 interface ServiceSectionProps {
   page: string;
@@ -17,20 +18,22 @@ const ServiceSection = ({page, description}: ServiceSectionProps) => {
   const allPages = pages?.edges;
 
   return (
-    <section className="px-[5%] py-16 pb-0 md:py-24 lg:py-28 bg-brand-darkest relative overflow-hidden">
+    <section className="px-[5%] py-16 pb-0 md:py-24 lg:py-[12rem] bg-brand-darkest relative overflow-hidden">
       <div className="container !h-full ">
         <div className="grid grid-cols-1 gap-y-12 md:grid-flow-row md:grid-cols-2 md:items-center md:gap-x-12 lg:gap-x-20">
-          <div>
+          <div className="grid gap-4">
             {/* <p className="mb-3 font-semibold md:mb-4">{tagline}</p> */}
-            <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+            <Typography variant="h2" className="mb-5">
               <Link
-                className="text-white no-underline hover:no-underline text-[37px]"
+                className="text-white no-underline hover:no-underline"
                 to="pages/services"
               >
                 {page}
               </Link>
-            </h2>
-            <p className="mb-6 md:mb-8 md:text-md text-white">{description}</p>
+            </Typography>
+            <Typography variant="body1" className="mb-6 md:mb-8 text-white">
+              {description}
+            </Typography>
             <div className="grid grid-cols-1 gap-6 py-2 xl:grid-cols-2">
               {/*  {subHeadings.map((subHeading, index) => (
                 <div key={article?.node?.id}>
@@ -52,20 +55,23 @@ const ServiceSection = ({page, description}: ServiceSectionProps) => {
                 if (blog?.node?.handle === 'services') {
                   return blog?.node?.articles?.edges.map((article) => {
                     return (
-                      <div key={article?.node?.id}>
+                      <div key={article?.node?.id} className="mb-[1.5rem]">
                         <div className="mb-3 md:mb-4">
                           {article?.node.title?.includes('Manpower') ? (
-                            <HumanCapitalIcon className="w-16 h-16 mb-3 p-4 rounded-md bg-brand-primary md:mb-4 text-brand-darkest" />
+                            <HumanCapitalIcon className="w-[3rem] h-[3rem] p-4 rounded-md bg-brand-primary mb-[1.5rem] text-brand-darkest" />
                           ) : (
-                            <ConsultingIcon className="w-16 h-16 p-1 rounded-md bg-brand-primary mb-3 md:mb-4 text-brand-darkest" />
+                            <ConsultingIcon className="w-[3rem] h-[3rem] p-1 rounded-md bg-brand-primary mb-[1.5rem] text-brand-darkest" />
                           )}
                         </div>
-                        <h6 className="mb-3 text-md font-bold leading-[1.4] md:mb-4 md:text-xl text-white">
+                        <Typography variant="h3" className="mb-3 text-white">
                           {article?.node.title}
-                        </h6>
-                        <p className="text-white line-clamp-5 md:line-clamp-3">
+                        </Typography>
+                        <Typography
+                          variant="body1"
+                          className="text-white line-clamp-5 md:line-clamp-3"
+                        >
                           {article?.node.content}
-                        </p>
+                        </Typography>
                         <div className="mt-5 flex items-center gap-x-4 md:mt-6 text-white">
                           <Link
                             to={`pages/services/${article?.node.handle}`}

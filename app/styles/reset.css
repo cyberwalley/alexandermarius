@@ -1,6 +1,6 @@
 body {
-  font-family: 'Open Sans', sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI';
+  /* font-family: 'Open Sans', sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI'; */
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
@@ -117,4 +117,14 @@ code {
   border-radius: 4px;
   font-family: monospace;
   padding: 0.25rem;
+}
+
+.gradient-circle {
+  border: 8px solid transparent;
+  border-radius: 19rem;
+  padding: 2rem;
+  /* border-image: linear-gradient(to right, hsl(289, 65%, 64%), hsl(226, 78%, 67%)) 5; */
+  background-image: linear-gradient(90deg, white, white), linear-gradient(90deg, hsl(289, 65%, 64%), hsl(226, 78%, 67%));
+  /* background-clip: padding-box, border-box; */
+  background-origin: border-box;
 }

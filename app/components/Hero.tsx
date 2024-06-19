@@ -3,6 +3,7 @@ import type {loader} from '~/routes/_index';
 import NewsletterForm from './NewsletterForm';
 import MarqueCarousel from './MarqueCarousel';
 import Button from './Button';
+import Typography from './Typography';
 
 const Hero = () => {
   const {collection} = useLoaderData<typeof loader>();
@@ -16,12 +17,15 @@ const Hero = () => {
       style={{backgroundImage: `url(${image?.url})`, width: '100%'}}
     >
       <div className="mx-[5%] max-w-[40rem] justify-self-start lg:ml-[5vw] lg:mr-20 lg:justify-self-end">
-        <h1 className="mb-5 text-6xl font-bold md:mb-6 text-[36px] text-brand-darkest">
+        <Typography
+          variant="h1"
+          className="mb-5 font-bold md:mb-6 text-brand-darkest"
+        >
           {collection.title}
-        </h1>
-        <p className="line-clamp-5 md:line-clamp-3 text-[19px]">
+        </Typography>
+        <Typography variant="body1" className="line-clamp-5 md:line-clamp-3">
           {collection.description}
-        </p>
+        </Typography>
         <div className="mt-6 flex gap-x-4 md:mt-8">
           <Link to={'/pages/about-us'}>
             <Button variant="primary" shadow>

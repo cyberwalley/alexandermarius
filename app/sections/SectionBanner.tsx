@@ -1,5 +1,6 @@
 import {Link} from '@remix-run/react';
 import Button from '../components/Button';
+import Typography from '~/components/Typography';
 interface SectionBannerProps {
   title: string;
   subtitle?: string;
@@ -8,14 +9,16 @@ interface SectionBannerProps {
 
 const SectionBanner = ({title, subtitle, buttons}: SectionBannerProps) => {
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-brand-secondary">
-      <div className="container items-center grid !h-full w-full grid-cols-1 justify-between gap-6 md:grid-cols-[1fr_max-content] md:gap-x-12 md:gap-y-8 lg:gap-x-20">
+    <section className="px-[5%] py-16 md:py-24 lg:py-[12rem] bg-brand-secondary">
+      <div className="container grid !h-full w-full grid-cols-1 justify-items-center gap-6 md:gap-x-12 md:gap-y-8 lg:gap-x-20">
         <div className="md:mr-12 lg:mr-0">
-          <div className="w-full max-w-lg">
-            <h2 className="mb-3 text-4xl font-bold leading-[1.2] md:mb-4 md:text-5xl lg:text-6xl">
+          <div className="w-full ">
+            <Typography variant="title" className="mb-3 md:mb-4  text-center">
               {title}
-            </h2>
-            <p className="md:text-md">{subtitle}</p>
+            </Typography>
+            <Typography variant="body1" className="text-center md:text-md">
+              {subtitle}
+            </Typography>
           </div>
         </div>
         <div className="flex items-start justify-start gap-4">
