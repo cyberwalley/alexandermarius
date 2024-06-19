@@ -16,16 +16,16 @@ type TypographyVariant =
   | 'overline';
 
 const variantClasses: Record<TypographyVariant, string> = {
-  h1: 'text-4xl font-bold',
-  h2: 'text-3xl font-bold',
-  h3: 'text-2xl font-bold',
+  h1: 'font-sans text-[52px] leading-[64px] font-bold',
+  h2: 'text-[36px] font-bold',
+  h3: 'text-[18px] font-bold',
   h4: 'text-xl font-bold',
   h5: 'text-lg font-bold',
   h6: 'text-base font-bold',
-  title: 'text-4xl font-bold',
+  title: 'text-[52px] leading-[64px] font-bold',
   subtitle1: 'text-3xl font-bold',
   subtitle2: 'text-2xl font-bold',
-  body1: 'text-base',
+  body1: 'font-sans font-normal leading-[24px] text-[16px]',
   body2: 'text-sm',
   caption: 'text-xs',
   overline: 'text-xs uppercase',

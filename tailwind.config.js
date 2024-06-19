@@ -37,6 +37,25 @@ export default {
   content: ['./app/**/*.{js,ts,jsx,tsx}'],
   plugins: [formsPlugin, typographyPlugin],
   theme: {
+    fontFamily: {
+      sans: [
+        'sans-serif',
+        'system-ui',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+      ],
+      serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      mono: [
+        'Menlo',
+        'Monaco',
+        'Consolas',
+        '"Liberation Mono"',
+        '"Courier New"',
+        'monospace',
+      ],
+    },
     fontSize: {
       // | px   | no-break                                | md                    | lg
       xs: ['0.75rem', {lineHeight: '1.5'}], // | 12px | text-size-tiny                          | text-size-tiny        | text-size-tiny

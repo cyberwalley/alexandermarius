@@ -39,10 +39,6 @@ const Logo3Defaults: Logo3Props = {
       alt: 'Lagos State Government logo',
     },
     {
-      src: 'https://cdn.shopify.com/s/files/1/0837/5717/0963/files/LAMATA-logo.jpg?v=1718341792',
-      alt: 'LAMATA logo',
-    },
-    {
       src: 'https://cdn.shopify.com/s/files/1/0837/5717/0963/files/federal-govt-nigeria.jpg?v=1718341792',
       alt: 'Federal Government of Nigeria logo',
     },
@@ -57,7 +53,7 @@ const LogoImage = () => {
     ...Logo3Defaults,
   } as Props;
   return (
-    <section className="overflow-hidden py-12 md:py-16 lg:py-20">
+    <section className="overflow-hidden py-12 md:py-16 lg:py-[12rem]">
       {/* <div className="container !h-full mx-auto mb-8 w-full max-w-lg px-[5%] md:mb-10 lg:mb-12">
         <h2 className=" text-4xl font-bold leading-[1.2] md:text-5xl lg:text-6xl text-center text-[2rem]  md:leading-[1.2] mb-16">
           {heading}

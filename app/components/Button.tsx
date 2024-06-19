@@ -36,7 +36,7 @@ const Button = ({
             : ''
         } ${className} ${
           icon ? 'flex gap-1' : ''
-        } hover:underline inline-block self-center overflow-hidden max-w-full px-5 py-[0.9rem] ring-inset rounded-full text-base border-black font-bold tracking-tight transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-state-focus focus-visible:outline hover:ring-1 disabled:hover-ring-0 md:px-6 md:py-3 md:text-lg`}
+        } hover:underline inline-block self-center overflow-hidden max-w-full px-5 py-[0.9rem] ring-inset rounded-full border-black font-bold tracking-tight transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-state-focus focus-visible:outline hover:ring-1 disabled:hover-ring-0 md:px-6 md:py-3`}
       >
         {children}
         {icon ? icon : null}
@@ -56,7 +56,7 @@ const Button = ({
             : ''
         } ${className} ${
           icon ? 'flex gap-1' : ''
-        } inline-block self-center overflow-hidden max-w-full px-5 py-[0.9rem] ring-inset rounded-full text-base border-black font-bold tracking-tight transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-state-focus focus-visible:outline hover:ring-1 disabled:hover-ring-0 md:px-6 md:py-3 md:text-lg`}
+        } text-[16px] inline-block self-center overflow-hidden max-w-full px-5 py-[0.9rem] ring-inset rounded-full border-black font-bold tracking-tight transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-state-focus focus-visible:outline hover:ring-1 disabled:hover-ring-0 md:px-6 md:py-3`}
       >
         {children}
         {icon ? icon : null}
