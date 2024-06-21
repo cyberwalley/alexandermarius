@@ -85,7 +85,7 @@ export default function Homepage() {
             signBefore: '<',
             percentage: 15,
             signAfter: '%',
-            heading: 'Operational Cost Reduction for Clients',
+            heading: 'Operational Cost Reduction',
           },
           {
             signBefore: null,

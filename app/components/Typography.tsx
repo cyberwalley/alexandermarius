@@ -17,18 +17,18 @@ type TypographyVariant =
 
 const variantClasses: Record<TypographyVariant, string> = {
   h1: 'font-sans text-[52px] leading-[64px] font-bold',
-  h2: 'text-[36px] font-bold',
-  h3: 'text-[18px] font-bold',
-  h4: 'text-xl font-bold',
-  h5: 'text-lg font-bold',
-  h6: 'text-base font-bold',
-  title: 'text-[52px] leading-[64px] font-bold',
-  subtitle1: 'text-3xl font-bold',
-  subtitle2: 'text-2xl font-bold',
+  h2: 'font-sans text-[36px] font-bold',
+  h3: 'font-sans text-[18px] font-bold',
+  h4: 'font-sans text-xl font-bold',
+  h5: 'font-sans text-lg font-bold',
+  h6: 'font-sans text-base font-bold',
+  title: 'font-sans text-[52px] leading-[64px] font-bold',
+  subtitle1: 'font-sans text-3xl font-bold',
+  subtitle2: 'font-sans text-2xl font-bold',
   body1: 'font-sans font-normal leading-[24px] text-[16px]',
-  body2: 'text-sm',
-  caption: 'text-xs',
-  overline: 'text-xs uppercase',
+  body2: 'font-sans text-sm',
+  caption: 'font-sans text-xs',
+  overline: 'font-sans text-xs uppercase',
 };
 
 const variantElements: Record<TypographyVariant, keyof JSX.IntrinsicElements> =

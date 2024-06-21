@@ -41,13 +41,13 @@ const StatsSection = ({heading, description, stats}: StatsProps) => {
                 key={`${stat.heading}-${index}`}
                 className="w-full md:border-l border-gray-300 md:pl-8 text-center"
               >
-                <span className="flex justify-center items-center mb-2 text-10xl text-center font-bold leading-[1.3] text-[70px] text-brand-primary">
-                  <small className="text-[2.25rem]">{stat.signBefore}</small>
+                <span className="flex justify-center items-center mb-2 text-center font-bold leading-[1.3] text-[50px] md:text-[70px] text-brand-primary">
+                  <small className="text-[1.9rem]">{stat.signBefore}</small>
                   {counterOn && (
                     <CountUp
                       start={0}
                       end={Number(stat.percentage)}
-                      duration={2}
+                      duration={4}
                       delay={0}
                     />
                   )}
@@ -55,7 +55,7 @@ const StatsSection = ({heading, description, stats}: StatsProps) => {
                 </span>
                 <Typography
                   variant="body1"
-                  className="text-brand-darkest !font-bold"
+                  className="text-brand-darkest"
                 >
                   {stat.heading}
                 </Typography>
