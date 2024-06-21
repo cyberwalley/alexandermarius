@@ -4,6 +4,7 @@ import {Link} from '@remix-run/react';
 import Button from '../components/Button';
 import {SitePage} from '~/configs/links';
 import AccordionItem from '~/components/AccordionItem';
+import Typography from '~/components/Typography';
 
 interface FaqPageProps {
   blog: BlogsOnPageQuery['blog'];
@@ -24,11 +25,13 @@ const FaqPage = ({blog, footerHeading, footerDescription}: FaqPageProps) => {
             />
           ))}
         </div>
-        <div className="mx-auto mt-12 max-w-md text-center md:mt-18 lg:mt-20">
-          <h4 className="mb-3 text-2xl font-bold md:mb-4 md:text-3xl md:leading-[1.3] lg:text-4xl">
+        <div className="mx-auto mt-12 max-w-xl text-center md:mt-18 lg:mt-20">
+          <Typography variant="title" className="mb-3">
             {footerHeading}
-          </h4>
-          <p className="md:text-md">{footerDescription}</p>
+          </Typography>
+          <Typography variant="body1" className="mb-3">
+            {footerDescription}
+          </Typography>
           <div className="mt-6 md:mt-8">
             <Link to={SitePage.Contact}>
               <Button variant="primary" shadow>

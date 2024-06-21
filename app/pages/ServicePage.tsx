@@ -3,6 +3,7 @@ import {Link} from '@remix-run/react';
 import ServicePageItem from './ServicePageItem';
 import type {BlogsOnPageQuery} from 'storefrontapi.generated';
 import {Button, ChevronRight} from '@relume_io/relume-ui';
+import Typography from '~/components/Typography';
 
 interface ServicePageProps {
   blog: BlogsOnPageQuery['blog'];
@@ -29,10 +30,12 @@ const ServicePage = ({blog}: ServicePageProps) => {
                   </div>
                   <div className="block flex-col justify-center p-6 md:flex">
                     <div>
-                      <h3 className="mb-2 text-xl font-bold md:text-2xl">
+                      <Typography variant="h3" className="mb-2">
                         {article?.node.title}
-                      </h3>
-                      <p>{article?.node.content}</p>
+                      </Typography>
+                      <Typography variant="body1">
+                        {article?.node.content}
+                      </Typography>
                     </div>
                     <div className="mt-5 flex items-center gap-4 md:mt-6">
                       <Link

@@ -4,6 +4,7 @@ import HeartIcon from '~/assets/svg/HeartIcon';
 import NewsletterForm from '~/components/NewsletterForm';
 import {StaticLink} from '~/configs/links';
 import {useLocation} from '@remix-run/react';
+import Typography from '~/components/Typography';
 
 type Links = {
   title: string;
@@ -143,13 +144,15 @@ export const Footer = () => {
         </div>
         <div className="h-px w-full bg-gray-500" />
         <div className="flex flex-col gap-6 md:gap-0 items-start justify-between pt-6 text-sm md:flex-row md:items-center md:pt-8">
-          <p className="mt-8 md:mt-0 text-white text-sm">{footerText}</p>
+          <Typography variant="body2" className="mt-8 md:mt-0 text-white">
+            {footerText}
+          </Typography>
           <ul className="grid grid-flow-row grid-cols-[max-content] justify-center gap-x-0 gap-y-4 text-sm md:grid-flow-col md:gap-x-6 md:gap-y-0">
             {footerLinks.map((link, index) => (
               <li key={`${link.title}-${index}`} className="underline">
                 <a
                   href={link?.url}
-                  className="text-white ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-primary focus-visible:ring-offset-2"
+                  className="font-sans text-sm text-white ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-primary focus-visible:ring-offset-2"
                 >
                   {link?.title}
                 </a>
@@ -157,7 +160,7 @@ export const Footer = () => {
             ))}
           </ul>
           <div className="mt-6 md:mt-0">
-            <p className="text-white text-sm">
+            <Typography variant="body2" className="text-white">
               Made with{' '}
               <HeartIcon
                 fill="red"
@@ -172,7 +175,7 @@ export const Footer = () => {
               >
                 <span className="sr-only">Love</span> AxDigital
               </a>
-            </p>
+            </Typography>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import ServicePage from '~/pages/ServicePage';
 import ContactPage from '~/pages/ContactPage';
 import {useMemo} from 'react';
 import FaqPage from '~/pages/FaqPage';
+import Typography from '~/components/Typography';
 
 export const meta: V2_MetaFunction = ({data}) => {
   return [{title: `${data.page.title} | Alexander Marius`}];
@@ -114,10 +115,12 @@ export default function Page() {
       </header> */}
       <header className="px-[5%] py-16 md:py-24 lg:py-28 bg-brand-darkest">
         <div className="container !h-full !mb-[5rem] grid grid-cols-1 items-start justify-between gap-x-12 gap-y-8 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
-          <h3 className="text-4xl font-bold leading-[1.2] md:text-5xl lg:text-6xl text-white">
+          <Typography variant="h2" className="text-white">
             {page.title}
-          </h3>
-          <p className="md:text-md text-white">{subtitle}</p>
+          </Typography>
+          <Typography variant="body1" className="text-white">
+            {subtitle}
+          </Typography>
         </div>
         {coverImage && (
           <div>

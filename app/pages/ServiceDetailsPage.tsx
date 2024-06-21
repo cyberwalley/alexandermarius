@@ -6,6 +6,7 @@ import type {
   ServicesMetaobjectsQuery,
 } from 'storefrontapi.generated';
 import Tab from '~/components/Tab';
+import Typography from '~/components/Typography';
 
 interface ServiceDetailsPageProps {
   //@ts-ignore
@@ -61,13 +62,15 @@ const ServiceDetailsPage = ({
             <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 pt-xl">
               <div className="text-left text-white">
                 <div>
-                  <Link className="text-white" to={`/pages/${parentPage}`}>
-                    <div className="capitalize">{parentPage}</div>
-                  </Link>
+                  <Typography variant="body1" className="text-white mb-3">
+                    <Link className="text-white capitalize" to={`/pages/${parentPage}`}>
+                      {parentPage}
+                    </Link>
+                  </Typography>
                 </div>
-                <h1 className="text-[3rem] font-[900] leading-[3.5rem]">
+                <Typography variant="h2" className="text-white">
                   {title}
-                </h1>
+                </Typography>
                 <div>{seo.description}</div>
                 <div className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem]">
                   {excerpt}

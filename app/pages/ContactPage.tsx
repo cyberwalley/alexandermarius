@@ -1,6 +1,7 @@
 import type {PageQuery} from 'storefrontapi.generated';
 import {BiEnvelope, BiMessageDetail, BiPhone} from 'react-icons/bi';
 import {Location} from '@relume_io/relume-ui';
+import Typography from '~/components/Typography';
 
 interface ContactPageProps {
   page: PageQuery['page'];
@@ -37,7 +38,7 @@ const Contact24Defaults: Contact24Props = {
     {
       icon: (
         <BiEnvelope
-          className="size-12 w-12 h-12 p-2 rounded-md bg-brand-primary"
+          className="size-12 w-10 h-10 p-2 rounded-md bg-brand-primary"
           width="2rem"
         />
       ),
@@ -52,7 +53,7 @@ const Contact24Defaults: Contact24Props = {
     {
       icon: (
         <BiPhone
-          className="size-12 w-12 h-12 p-2 rounded-md bg-brand-primary"
+          className="size-12 w-10 h-10 p-2 rounded-md bg-brand-primary"
           width="3rem"
         />
       ),
@@ -68,7 +69,7 @@ const Contact24Defaults: Contact24Props = {
     {
       icon: (
         <Location
-          className="size-12 w-12 h-12 p-2 rounded-md bg-brand-primary"
+          className="size-12 w-10 h-10 p-2 rounded-md bg-brand-primary"
           width="1em"
         />
       ),
@@ -94,14 +95,13 @@ const ContactPage = () => {
             {contacts.map((contact, index) => (
               <div key={`${contact.title}-${index}`}>
                 <div className="mb-5 md:mb-6">{contact.icon}</div>
-                <h3 className="mb-3 text-2xl font-bold md:mb-4 md:text-3xl md:leading-[1.3] lg:text-4xl">
+                <Typography variant="h3" className="mb-3">
                   {contact.title}
-                </h3>
-                <p className="mb-5 md:mb-6">{contact.description}</p>
-                <a
-                  className="underline ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-primary focus-visible:ring-offset-2"
-                  href={contact.link.url}
-                >
+                </Typography>
+                <Typography variant="body1" className="mb-5 md:mb-6">
+                  {contact.description}
+                </Typography>
+                <Typography variant="body1">
                   <a
                     href={
                       contact.title === 'Email'
@@ -115,7 +115,8 @@ const ContactPage = () => {
                   >
                     {contact.link.label}
                   </a>
-                  <br />
+                </Typography>
+                <Typography variant="body1">
                   <a
                     href={
                       contact.title === 'Phone'
@@ -125,7 +126,7 @@ const ContactPage = () => {
                   >
                     {contact.link.label && contact.link.label2}
                   </a>
-                </a>
+                </Typography>
               </div>
             ))}
           </div>

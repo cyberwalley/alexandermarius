@@ -3,6 +3,7 @@ import {motion, AnimatePresence} from 'framer-motion';
 import PlusIcon from '~/assets/svg/PlusIcon';
 import MinusIcon from '~/assets/svg/MinusIcon';
 import type {AllBlogsQuery} from 'storefrontapi.generated';
+import Typography from './Typography';
 
 const AccordionItem = ({
   title,
@@ -18,20 +19,20 @@ const AccordionItem = ({
   };
 
   return (
-    <div className="border-b-black border-b-2 last:border-0">
+    <div className="border-b-black border-b-[1px] last:border-0">
       <button
-        className="w-full text-left flex justify-between gap-10 align-center relative md:pr-16 items-center md:px-6 focus:outline-none pt-8 py-xl pb-8 md:p-10 leading-[1.6] "
+        className="w-full text-left flex justify-between gap-10 align-center relative md:pr-16 items-center md:px-6 focus:outline-none pt-[1rem] py-xl pb-[1rem] leading-[1.6] "
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <h3 className="text-left font-bold text-xl leading-[1.925rem] md:text-[1.475rem] md:w-4/5 md:leading-9">
+        <Typography variant="h3" className="text-left">
           {title}
-        </h3>
+        </Typography>
         <span className="text-lg">
           {isOpen ? (
-            <MinusIcon className="w-10 h-10 border-2 rounded-full border-black p-1 bg-black text-white" />
+            <MinusIcon className="w-8 h-8 border-2 rounded-full border-black p-1 bg-black text-white" />
           ) : (
-            <PlusIcon className="w-10 h-10 border-2 rounded-full border-black p-1" />
+            <PlusIcon className="w-8 h-8 border-2 rounded-full border-black p-1" />
           )}
         </span>
       </button>
@@ -46,9 +47,9 @@ const AccordionItem = ({
             style={{overflow: 'hidden'}}
             aria-hidden={!isOpen}
           >
-            <div className=" py-xl  md:px-10 pb-10 md:mr-16 text-xl leading-7 md:text-[1.125rem] md:leading-[1.625rem] richtext">
+            <Typography variant="body1" className="py-xl md:px-10 pb-10 md:mr-16">
               {content}
-            </div>
+            </Typography>
           </motion.div>
         )}
       </AnimatePresence>
