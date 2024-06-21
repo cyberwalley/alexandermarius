@@ -25,8 +25,8 @@ const variantClasses: Record<TypographyVariant, string> = {
   title: 'font-sans text-[52px] leading-[64px] font-bold',
   subtitle1: 'font-sans text-3xl font-bold',
   subtitle2: 'font-sans text-2xl font-bold',
-  body1: 'font-sans font-normal leading-[24px] text-[16px]',
-  body2: 'font-sans text-sm',
+  body1: 'font-sans font-normal leading-[27px] text-[16px]',
+  body2: 'font-sans text-sm leading-[27px]',
   caption: 'font-sans text-xs',
   overline: 'font-sans text-xs uppercase',
 };
