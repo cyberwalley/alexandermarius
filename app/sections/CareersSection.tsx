@@ -3,6 +3,8 @@ import JobItem from './JobItem';
 import Button from '../components/Button';
 import type {loader} from '~/routes/_index';
 import type {AllBlogsQuery} from 'storefrontapi.generated';
+import Typography from '~/components/Typography';
+import {Section, SitePage} from '~/configs/links';
 
 interface CareersSectionProps {
   title: string;
@@ -14,9 +16,9 @@ const CareersSection = ({title, description}: CareersSectionProps) => {
   const SIZE = 4;
 
   return (
-    <section className="overflow-hidden px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="overflow-hidden px-[5%] py-16 md:py-24 lg:py-[12rem]">
       <div className="container !h-full">
-        <div className="mb-12 md:mb-18 lg:mb-20 lg:max-w-[50vw]">
+        {/*  <div className="mb-12 md:mb-18 lg:mb-20 lg:max-w-[50vw]">
           <Link
             className="text-black no-underline hover:no-underline"
             to="pages/careers"
@@ -26,6 +28,19 @@ const CareersSection = ({title, description}: CareersSectionProps) => {
             </h2>
           </Link>
           <p className="md:text-md">{description}</p>
+        </div> */}
+        <div className="mb-12 grid grid-cols-1 items-start justify-between gap-4 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
+          <Link
+            className="text-black no-underline hover:no-underline"
+            to={SitePage.Careers}
+          >
+            <Typography variant="h2" className="text-brand-darkest">
+              {Section.Careers}
+            </Typography>
+          </Link>
+          <Typography variant="body1" className="text-brand-darkest">
+            {description}
+          </Typography>
         </div>
         <div className="mx-auto max-w-[1536px] w-full grid grid-cols-1 gap-x-[1.5rem] gap-y-[2.5rem]">
           <ul aria-label="Featured roles grid grid-flow-row auto-rows-max">

@@ -1,4 +1,5 @@
 import type {ImageProps} from '@relume_io/relume-ui';
+import Typography from '~/components/Typography';
 
 type Props = {
   heading: string;
@@ -53,30 +54,41 @@ const LogoImage = () => {
     ...Logo3Defaults,
   } as Props;
   return (
-    <section className="overflow-hidden py-12 md:py-16 lg:py-[12rem]">
+    <section className="overflow-hidden py-16 md:py-24 lg:py-[12rem]">
       {/* <div className="container !h-full mx-auto mb-8 w-full max-w-lg px-[5%] md:mb-10 lg:mb-12">
         <h2 className=" text-4xl font-bold leading-[1.2] md:text-5xl lg:text-6xl text-center text-[2rem]  md:leading-[1.2] mb-16">
           {heading}
         </h2>
       </div> */}
-      <div className="flex items-center pt-[28px] md:pt-0">
-        {Array(2)
-          .fill(0)
-          .map((_, index) => (
-            <div
-              key={index}
-              className="flex shrink-0 animate-loop-horizontally items-center"
-            >
-              {images.map((logo, index) => (
-                <img
-                  key={`${logo.alt}-${index}`}
-                  className="mx-[28px] max-h-12 shrink-0 md:mx-10 md:max-h-14"
-                  src={logo.src}
-                  alt={logo.alt}
-                />
-              ))}
-            </div>
-          ))}
+      <div className="px-[5%]">
+        <div className="container !h-full flex flex-col items-start">
+          <div className="mb-12 grid grid-cols-1 items-start justify-between gap-4 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
+            <Typography variant="h2" className="text-brand-darkest">
+              Our Clients
+            </Typography>
+          </div>
+        </div>
+      </div>
+      <div className="container !h-full flex flex-col items-start">
+        <div className="flex items-center pt-[28px] md:pt-0">
+          {Array(2)
+            .fill(0)
+            .map((_, index) => (
+              <div
+                key={index}
+                className="flex shrink-0 animate-loop-horizontally items-center"
+              >
+                {images.map((logo, index) => (
+                  <img
+                    key={`${logo.alt}-${index}`}
+                    className="mx-[28px] max-w-[10rem] shrink-0 md:mx-10"
+                    src={logo.src}
+                    alt={logo.alt}
+                  />
+                ))}
+              </div>
+            ))}
+        </div>
       </div>
     </section>
   );

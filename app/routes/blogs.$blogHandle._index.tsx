@@ -4,6 +4,8 @@ import {Image, Pagination, getPaginationVariables} from '@shopify/hydrogen';
 import type {ArticleItemFragment} from 'storefrontapi.generated';
 import Button from '~/components/Button';
 import ArrowRight from '~/assets/svg/ArrowRight';
+import {StaticLink} from '~/configs/links';
+import Typography from '~/components/Typography';
 
 export const meta: V2_MetaFunction = ({data}) => {
   return [{title: `${data.blog.title} | Alexander Marius`}];
@@ -48,13 +50,18 @@ export default function Blog() {
             <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 pt-xl">
               <div className="text-left text-white">
                 <div>
-                  <Link className="text-white" to="/">
-                    <div className="capitalize">Home</div>
+                  <Link className="text-white" to={StaticLink.Root}>
+                    <Typography
+                      variant="body1"
+                      className="text-white capitalize"
+                    >
+                      Home
+                    </Typography>
                   </Link>
                 </div>
-                <h1 className="text-[3rem] font-[900] leading-[3.5rem]">
+                <Typography variant="h2" className="text-white">
                   {blog.title}
-                </h1>
+                </Typography>
                 <div className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem] line-clamp-3">
                   {blog.metafield?.value}
                 </div>

@@ -114,20 +114,20 @@ export default function Homepage() {
                   with global leaders. Dive into our case studies."
         page={BlogPage.CaseStudy}
       /> */}
-      {/*  <InsightsSection
+      <InsightsSection
         title="Trending insights"
         description="Navigate the Now with Next-Level Insights. Tap into the pulse of
                 industry innovation and future-forward strategies. Discover the
                 trends that will define tomorrow—today."
         page={BlogPage.Insights}
-      /> */}
+      />
       {/* <FaqSection /> */}
-      {/*  <CareersSection
+      <CareersSection
         title="Careers"
         description="Helping businesses succeed requires people from a wide range of
                 disciplines and backgrounds. We’re always looking for curious
                 minds to join our team."
-      /> */}
+      />
     </div>
   );
 }

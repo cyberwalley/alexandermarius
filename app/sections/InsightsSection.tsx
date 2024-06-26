@@ -7,6 +7,7 @@ import {BlogPage, Section, SitePage} from '~/configs/links';
 import {Button as RelumeButton, ChevronRight} from '@relume_io/relume-ui';
 import ChevronLeft from '~/assets/svg/ChevronLeft';
 import Button from '../components/Button';
+import Typography from '~/components/Typography';
 
 interface InsightsSectionProps {
   title: string;
@@ -19,9 +20,9 @@ const InsightsSection = ({title, description, page}: InsightsSectionProps) => {
   const SIZE = 6;
 
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section className="px-[5%] py-16 md:py-24 lg:py-[12rem] bg-slate-100">
       <div className="container !h-full">
-        <div className="grid grid-cols-1 items-start justify-start gap-y-8 md:grid-cols-[1fr_max-content] md:items-end md:justify-between md:gap-x-12 md:gap-y-4">
+        {/* <div className="grid grid-cols-1 items-start justify-start gap-y-8 md:grid-cols-[1fr_max-content] md:items-end md:justify-between md:gap-x-12 md:gap-y-4">
           <div className="mb-12 md:mb-18 lg:mb-20 lg:max-w-[50vw]">
             <Link
               to={BlogPage.Insights}
@@ -33,6 +34,19 @@ const InsightsSection = ({title, description, page}: InsightsSectionProps) => {
             </Link>
             <p className="md:text-md">{description}</p>
           </div>
+        </div> */}
+        <div className="mb-12 grid grid-cols-1 items-start justify-between gap-4 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
+          <Link
+            to={BlogPage.Insights}
+            className="text-black no-underline hover:no-underline"
+          >
+            <Typography variant="h2" className="text-brand-darkest">
+              {Section.Insights}
+            </Typography>
+          </Link>
+          <Typography variant="body1" className="text-brand-darkest">
+            {description}
+          </Typography>
         </div>
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16 lg:grid-cols-3">
           {blogs?.edges?.map((blog) => {

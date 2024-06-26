@@ -1,6 +1,7 @@
 import {Link} from '@remix-run/react';
 import type {AllBlogsQuery} from 'storefrontapi.generated';
 import ExternalLinkIcon from '~/assets/svg/ExternalLinkIcon';
+import Typography from '~/components/Typography';
 
 interface JobItemProps {
   blogName: string;
@@ -16,9 +17,12 @@ const JobItem = ({blogName, article}: JobItemProps) => {
             to={`pages/${blogName}/${article?.node?.handle}`}
             className="group inline-block text-left"
           >
-            <h3 className="text-[1.125rem] text-left font-semibold  group-hover:underline underline-transparent underline-thickness-1 underline-offset-2 group-hover:underline-text-primary">
+            <Typography
+              variant="h3"
+              className="mb-2 line-clamp-1 group-hover:underline underline-transparent underline-thickness-1 underline-offset-2"
+            >
               {article?.node?.title}
-            </h3>
+            </Typography>
             <span className="text-[1.125rem] text-left hover:no-underline">
               {article?.node?.metafields?.[0]?.value}
             </span>
