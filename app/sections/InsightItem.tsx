@@ -3,6 +3,7 @@ import type {Image} from '@shopify/hydrogen';
 import type {Article, Maybe} from '@shopify/hydrogen/storefront-api-types';
 import type {AllBlogsQuery} from 'storefrontapi.generated';
 import {Button as RelumeButton, ChevronRight} from '@relume_io/relume-ui';
+import Typography from '~/components/Typography';
 
 interface InsightItemProps {
   direction?: 'row-reverse' | 'row';
@@ -20,7 +21,7 @@ const InsightItem = ({
   return (
     <div
       key={article?.node?.id}
-      className="flex h-full w-full flex-col items-center justify-start border border-gray-300 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-primary focus-visible:ring-offset-2 rounded-t-[12px] rounded-b-[12px]"
+      className="flex h-full w-full flex-col items-center justify-start border border-gray-300 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-primary focus-visible:ring-offset-2 rounded-t-[12px] rounded-b-[12px] bg-white"
     >
       <div className="relative w-full overflow-hidden pt-[66%]">
         <img
@@ -30,25 +31,15 @@ const InsightItem = ({
         />
       </div>
       <div className="flex w-full flex-1 flex-col justify-between px-5 py-6 md:p-6">
-        <div className="mb-4 flex items-center">
-          <Link to={`blogs/${blog}`}>
-            <p className="mr-4 bg-background-secondary px-2 py-1 text-sm font-semibold">
-              {blogPage}
-            </p>
-          </Link>
-        </div>
-
         <div className="flex w-full flex-col items-start justify-start">
-          <h2 className="mb-2 text-xl font-bold md:text-2xl line-clamp-1">
-            {article?.node?.title}
-          </h2>
-          <p className="line-clamp-2">{article?.node?.content}</p>
+        <Typography variant="h3" className="mb-2 line-clamp-1">  {article?.node?.title}</Typography>
+          <Typography variant="body1" className="line-clamp-2">{article?.node?.content}</Typography>
           <Link to={`blogs/${blog}/${article?.node?.handle}`}>
             <RelumeButton
               variant="link"
               size="link"
               iconRight={<ChevronRight />}
-              className="rounded-full border p-2 border-gray-300 mt-6 flex items-center justify-center gap-x-1"
+              className="mt-6 flex items-center justify-center gap-x-1"
             >
               Read more
             </RelumeButton>

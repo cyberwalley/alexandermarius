@@ -3,6 +3,7 @@ import {Image} from '@shopify/hydrogen';
 import type {ArticleCareerPageQuery} from 'storefrontapi.generated';
 import ExternalLinkIcon from '~/assets/svg/ExternalLinkIcon';
 import Button from '~/components/Button';
+import Typography from '~/components/Typography';
 
 interface CareerPageJobDetailsProps {
   //@ts-ignore
@@ -25,12 +26,14 @@ const CareerPageJobDetails = ({
               <div className="text-left text-white">
                 <div>
                   <Link className="text-white" to={`/pages/${parentPage}`}>
-                    <div className="capitalize">{parentPage}</div>
+                    <Typography variant="body1" className="text-white capitalize">
+                      {parentPage}
+                    </Typography>
                   </Link>
                 </div>
-                <h1 className="text-[3rem] font-[900] leading-[3.5rem]">
+                <Typography variant="h2" className="text-white">
                   {title}
-                </h1>
+                </Typography>
                 <div className="text-[1.375rem] tracking-[-0.02em] leading-[2rem] pt-[1rem] line-clamp-3">
                   {metafields?.[0]?.value}
                 </div>
