@@ -53,10 +53,7 @@ const StatsSection = ({heading, description, stats}: StatsProps) => {
                   )}
                   {stat.signAfter}
                 </span>
-                <Typography
-                  variant="body1"
-                  className="text-brand-darkest"
-                >
+                <Typography variant="body1" className="text-brand-darkest">
                   {stat.heading}
                 </Typography>
               </div>

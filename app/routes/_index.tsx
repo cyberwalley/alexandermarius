@@ -23,7 +23,10 @@ import InsightsSection from '~/sections/InsightsSection';
 import CaseStudySection from '~/sections/CaseStudySection';
 import CareersSection from '~/sections/CareersSection';
 import FaqSection from '~/sections/FaqSection';
-import type {CustomerCreateMutation} from 'storefrontapi.generated';
+import type {
+  AllBlogsQuery,
+  CustomerCreateMutation,
+} from 'storefrontapi.generated';
 import type {ImageProps, ButtonProps} from '@relume_io/relume-ui';
 import LogoImage from '~/sections/LogoImage';
 import {BlogPage} from '~/configs/links';
@@ -48,6 +51,19 @@ export async function loader({context}: LoaderArgs) {
 }
 
 export default function Homepage() {
+  const {blogs}: AllBlogsQuery = useLoaderData<typeof loader>();
+  const isInsights = blogs?.edges.find(
+    (blog) => blog.node.handle === 'insights',
+  );
+  const isInsightsAvailable = isInsights
+    ? isInsights.node.articles.edges.length > 0
+    : false;
+
+  const isCareers = blogs?.edges.find((blog) => blog.node.handle === 'careers');
+  const isCareersAvailable = isCareers
+    ? isCareers.node.articles.edges.length > 0
+    : false;
+
   return (
     <div className="home">
       <Hero />
@@ -114,20 +130,25 @@ export default function Homepage() {
                   with global leaders. Dive into our case studies."
         page={BlogPage.CaseStudy}
       /> */}
-      <InsightsSection
-        title="Trending insights"
-        description="Navigate the Now with Next-Level Insights. Tap into the pulse of
-                industry innovation and future-forward strategies. Discover the
-                trends that will define tomorrow—today."
-        page={BlogPage.Insights}
-      />
+      {isInsightsAvailable && (
+        <InsightsSection
+          title="Trending insights"
+          description="Navigate the Now with Next-Level Insights. Tap into the pulse of
+                 industry innovation and future-forward strategies. Discover the
+                 trends that will define tomorrow—today."
+          page={BlogPage.Insights}
+        />
+      )}
+
       {/* <FaqSection /> */}
-      <CareersSection
-        title="Careers"
-        description="Helping businesses succeed requires people from a wide range of
-                disciplines and backgrounds. We’re always looking for curious
-                minds to join our team."
-      />
+      {isCareersAvailable && (
+        <CareersSection
+          title="Careers"
+          description="Helping businesses succeed requires people from a wide range of
+                 disciplines and backgrounds. We’re always looking for curious
+                 minds to join our team."
+        />
+      )}
     </div>
   );
 }
