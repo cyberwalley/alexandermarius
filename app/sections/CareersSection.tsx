@@ -46,6 +46,11 @@ const CareersSection = ({title, description}: CareersSectionProps) => {
           <ul aria-label="Featured roles grid grid-flow-row auto-rows-max">
             {blogs?.edges?.map((blog) => {
               if (blog?.node?.handle === 'careers') {
+                if(blog?.node?.articles?.edges?.length === 0) return (
+                  <div className="flex justify-center mt-10 md:mt-[4rem] mb-10">
+                    <Typography variant="body1">No Job Openings</Typography>
+                  </div>
+                );
                 return blog?.node?.articles?.edges
                   ?.slice(0, SIZE)
                   .map((article) => {

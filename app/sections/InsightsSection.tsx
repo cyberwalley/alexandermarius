@@ -16,8 +16,12 @@ interface InsightsSectionProps {
 }
 
 const InsightsSection = ({title, description, page}: InsightsSectionProps) => {
-  const {blogs}: AllBlogsQuery = useLoaderData<typeof loader>();
   const SIZE = 6;
+  const {blogs}: AllBlogsQuery = useLoaderData<typeof loader>();
+
+  const isInsights = blogs?.edges.find(
+    (blog) => blog.node.handle === 'insights',
+  );
 
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-[12rem] bg-slate-100">
@@ -51,6 +55,8 @@ const InsightsSection = ({title, description, page}: InsightsSectionProps) => {
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16 lg:grid-cols-3">
           {blogs?.edges?.map((blog) => {
             if (blog?.node?.handle === 'insights') {
+              if (blog?.node?.articles?.edges.length === 0)
+                return <Typography variant="body1">Coming soon!</Typography>;
               return blog?.node?.articles?.edges
                 .slice(0, SIZE)
                 .map((article, _index) => (

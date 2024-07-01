@@ -88,6 +88,16 @@ export default function Blog() {
                             </span>
                           )}
                         </PreviousLink>
+                        {nodes.length === 0 && (
+                          <div className="text-center">
+                            <Typography variant="h2">Coming soon!</Typography>
+                            <p>
+                              <Link to={StaticLink.Root}>
+                                <Button variant="primary">Back to home</Button>
+                              </Link>
+                            </p>
+                          </div>
+                        )}
                         {nodes.map((article, index) => {
                           return (
                             <ArticleItem
