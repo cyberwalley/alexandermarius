@@ -1,5 +1,6 @@
 import {json, type LoaderArgs} from '@shopify/remix-oxygen';
 import {
+  useFetcher,
   useLoaderData,
   useLocation,
   type V2_MetaFunction,
@@ -13,6 +14,58 @@ import ContactPage from '~/pages/ContactPage';
 import {useMemo} from 'react';
 import FaqPage from '~/pages/FaqPage';
 import Typography from '~/components/Typography';
+
+import {ActionFunction} from '@shopify/remix-oxygen';
+import {useActionData, Form} from '@remix-run/react';
+
+import {Resend} from 'resend';
+import Button from '~/components/Button';
+
+const resend = new Resend('re_Lzd2Pgby_LUJ9JZEbvH8tHVNMQCe2cCYz');
+//const resend = new Resend(process.env.RESEND_API_KEY);
+const recaptchaSecretKey = '6Ldz9Q8qAAAAAMHKnMTMrxxtqZnaoNrdxkg8lCwG'
+
+export async function action({request}) {
+  const formData = await request.formData();
+  console.log(formData, 'formData1');
+
+  const recaptchaResponse = formData.get('g-recaptcha-response');
+
+  // Verify CAPTCHA response with Google
+  const captchaResponse = await fetch(
+    'https://www.google.com/recaptcha/api/siteverify',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${recaptchaSecretKey}Y&response=${recaptchaResponse}`,
+    },
+  );
+  const captchaData = await captchaResponse.json();
+
+  if (!captchaData.success) {
+    return {error: 'CAPTCHA failed, please try again.'};
+  }
+
+  // Extract form fields
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const message = formData.get('message');
+
+  const {data, error} = await resend.emails.send({
+    from: 'Acme <onboarding@resend.dev>',
+    to: ['delivered@resend.dev'],
+    subject: `New Contact Message from ${name}`,
+    html: `<strong>Name:</strong> ${name}<br/><strong>Email:</strong> ${email}<br/><strong>Message:</strong> ${message}`,
+  });
+
+  if (error) {
+    return json({message: 'Failed to send email. Please try again.'}, 400);
+  }
+
+  return json({message: 'Your message has been sent successfully!'}, 200);
+}
 
 export const meta: V2_MetaFunction = ({data}) => {
   return [{title: `${data.page.title} | Alexander Marius`}];

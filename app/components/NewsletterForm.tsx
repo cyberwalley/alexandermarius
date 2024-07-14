@@ -27,15 +27,10 @@ const NewsletterForm = ({className}: NewsletterFormProps) => {
     if (formState === 'error') {
       inputRef.current?.focus();
     }
-    if (formState === 'idle' && mounted.current) {
-      inputRef.current?.select();
-    }
 
     if (formState === 'success') {
       successRef.current?.focus();
     }
-
-    mounted.current = true;
   }, [formState]);
 
   return (
@@ -81,8 +76,6 @@ const NewsletterForm = ({className}: NewsletterFormProps) => {
               autoComplete="off"
               spellCheck="false"
               ref={inputRef}
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
             />
           </div>
           <div className="mt-6 sm:mt-10">
