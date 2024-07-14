@@ -2,6 +2,12 @@ import type {PageQuery} from 'storefrontapi.generated';
 import {BiEnvelope, BiMessageDetail, BiPhone} from 'react-icons/bi';
 import {Location} from '@relume_io/relume-ui';
 import Typography from '~/components/Typography';
+import ContactForm from '~/components/ContactForm';
+import {useActionData, Form} from '@remix-run/react';
+import {json, type LoaderArgs} from '@shopify/remix-oxygen';
+import NewContactForm from '~/components/NewContactForm';
+import { Resend } from 'resend';
+const resend = new Resend('re_Lzd2Pgby_LUJ9JZEbvH8tHVNMQCe2cCYz');
 
 interface ContactPageProps {
   page: PageQuery['page'];
@@ -87,48 +93,58 @@ const ContactPage = () => {
   const {tagline, heading, description, contacts} = {
     ...Contact24Defaults,
   } as Props;
+
+  const actionData = useActionData();
+  console.log(actionData, 'actionData3');
+
   return (
     <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container !h-full">
         <div className="mx-auto w-full max-w-[57rem] lg:max-w-[1300px] items-center">
-          <div className="grid grid-cols-1 items-start justify-start gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16 lg:grid-cols-4">
-            {contacts.map((contact, index) => (
-              <div key={`${contact.title}-${index}`}>
-                <div className="mb-5 md:mb-6">{contact.icon}</div>
-                <Typography variant="h3" className="mb-3">
-                  {contact.title}
-                </Typography>
-                <Typography variant="body1" className="mb-5 md:mb-6">
-                  {contact.description}
-                </Typography>
-                <Typography variant="body1">
-                  <a
-                    href={
-                      contact.title === 'Email'
-                        ? `mailto:${contact.link.label}`
-                        : contact.title === 'Phone'
-                        ? `tel:${contact.link.label}`
-                        : contact.title === 'Office'
-                        ? `https://www.google.com/maps/search/?api=1&query=${contact.link.label}`
-                        : null
-                    }
-                  >
-                    {contact.link.label}
-                  </a>
-                </Typography>
-                <Typography variant="body1">
-                  <a
-                    href={
-                      contact.title === 'Phone'
-                        ? `tel:${contact.link.label2}`
-                        : null
-                    }
-                  >
-                    {contact.link.label && contact.link.label2}
-                  </a>
-                </Typography>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+              {contacts.map((contact, index) => (
+                <div key={`${contact.title}-${index}`}>
+                  <div className="mb-5 md:mb-6">{contact.icon}</div>
+                  <Typography variant="h3" className="mb-3">
+                    {contact.title}
+                  </Typography>
+                  <Typography variant="body1" className="mb-5 md:mb-6">
+                    {contact.description}
+                  </Typography>
+                  <Typography variant="body1">
+                    <a
+                      //@ts-ignore
+                      href={
+                        contact.title === 'Email'
+                          ? `mailto:${contact.link.label}`
+                          : contact.title === 'Phone'
+                          ? `tel:${contact.link.label}`
+                          : contact.title === 'Office'
+                          ? `https://www.google.com/maps/search/?api=1&query=${contact.link.label}`
+                          : null
+                      }
+                    >
+                      {contact.link.label}
+                    </a>
+                  </Typography>
+                  <Typography variant="body1">
+                    <a
+                      //@ts-ignore
+                      href={
+                        contact.title === 'Phone'
+                          ? `tel:${contact.link.label2}`
+                          : null
+                      }
+                    >
+                      {contact.link.label && contact.link.label2}
+                    </a>
+                  </Typography>
+                </div>
+              ))}
+            </div>
+           {/*  {actionData?.message && <p>{actionData.message}</p>} */}
+            <NewContactForm />
           </div>
         </div>
       </div>
