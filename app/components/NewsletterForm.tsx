@@ -49,8 +49,6 @@ const NewsletterForm = ({className}: NewsletterFormProps) => {
               required
               autoComplete="off"
               ref={inputRef}
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
             />
             <Button submit variant="primary">
               Get insights

@@ -23,7 +23,7 @@ import Button from '~/components/Button';
 
 const resend = new Resend('re_Lzd2Pgby_LUJ9JZEbvH8tHVNMQCe2cCYz');
 //const resend = new Resend(process.env.RESEND_API_KEY);
-const recaptchaSecretKey = '6Ldz9Q8qAAAAAMHKnMTMrxxtqZnaoNrdxkg8lCwG'
+const recaptchaSecretKey = '6Ldz9Q8qAAAAAMHKnMTMrxxtqZnaoNrdxkg8lCwG';
 
 export async function action({request}) {
   const formData = await request.formData();
@@ -166,20 +166,20 @@ export default function Page() {
           </div>
         </div>
       </header> */}
-      <header className="px-[5%] py-16 md:py-24 lg:py-28 bg-brand-darkest">
-        <div className="container !h-full !mb-[5rem] grid grid-cols-1 items-start justify-between gap-x-12 gap-y-8 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
-          <Typography variant="h2" className="text-white">
+      <header className=" bg-brand-primary flex flex-col lg:flex-row  lg:h-[30rem]">
+        <div className="container px-[11%] py-16 md:py-24 lg:py-28 !h-full !mb-[5rem] grid grid-cols-1 items-start content-center justify-between gap-x-12 gap-y-2 md:mb-18 md:gap-x-12  lg:mb-20">
+          <Typography variant="h2" className="text-brand-darkest">
             {page.title}
           </Typography>
-          <Typography variant="body1" className="text-white">
+          <Typography variant="body1" className="text-brand-darkest">
             {subtitle}
           </Typography>
         </div>
         {coverImage && (
-          <div>
+          <div className="lg:w-[80%]">
             <img
               src={coverImage?.url}
-              className="w-full md:h-[30rem] object-cover"
+              className="w-full h-full object-cover"
               alt={page.title}
             />
           </div>

@@ -130,3 +130,7 @@ code {
   /* background-clip: padding-box, border-box; */
   background-origin: border-box;
 }
+
+.service-details-heading {
+  color: #fff;
+}

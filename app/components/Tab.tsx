@@ -28,7 +28,7 @@ const Tab = ({tabs, title, metaobjects}: TabProps) => {
   return (
     <div className="mt-0 mx-auto max-w-[1300px] px-4 pt-[3rem] md:pt-[7rem] pb-[3rem] md:pb-[7rem]">
       <div
-        className="flex justify-center border-b-2 mt-0 border-slate-200 sm:space-x-10 md:gap-x-4 md:space-x-0 mb-10"
+        className="flex justify-center sm:space-x-10 md:gap-x-4 md:space-x-0 mb-10"
         role="tablist"
       >
         {tabs?.edges?.map((blog: any) => {
@@ -40,8 +40,8 @@ const Tab = ({tabs, title, metaobjects}: TabProps) => {
                   key={article?.node?.id}
                   className={`relative -mt-[2px] border-b-2 pb-6 pt-4 px-6 text-center md:pb-10 md:pt-8  ${
                     activeTab === index
-                      ? 'border-b-2 border-black'
-                      : 'border-transparent hover:border-black hover:bg-slate-100'
+                      ? 'border-b-2'
+                      : 'border-transparent hover:border-white'
                   }`}
                 >
                   <button
@@ -55,12 +55,14 @@ const Tab = ({tabs, title, metaobjects}: TabProps) => {
                     //@ts-ignore
                     tabIndex={`${index === 0 ? '0' : '-1'}`}
                     className={`py-2 text-left whitespace-nowrap leading-7 font-semibold absolute w-full h-full inset-0 ${
-                      activeTab === index ? ' text-black' : null
+                      activeTab === index ? ' text-brand-primary' : null
                     }`}
                   ></button>
                   <h3
                     className={`text-center text-[1.3rem] ${
-                      activeTab === index ? 'text-black' : 'text-slate-500'
+                      activeTab === index
+                        ? 'text-brand-primary'
+                        : 'text-slate-500'
                     }`}
                   >
                     {article?.node?.title}
@@ -128,7 +130,7 @@ const Tab = ({tabs, title, metaobjects}: TabProps) => {
                     tabIndex={0}
                   >
                     <div
-                      className="prose"
+                      className="prose !text-brand-white border-2 border-white rounded-xl p-12"
                       dangerouslySetInnerHTML={{
                         __html: article?.node?.contentHtml,
                       }}
@@ -139,7 +141,7 @@ const Tab = ({tabs, title, metaobjects}: TabProps) => {
           }
           return null;
         })}
-       {/*  {metaobjects?.edges.map((item) => {
+        {/*  {metaobjects?.edges.map((item) => {
           if (item?.node?.type === 'business_restructuring') {
             console.log(item?.node?.type, 'you');
             return item?.node?.fields.map(
