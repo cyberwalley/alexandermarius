@@ -11,9 +11,9 @@ interface ServicePageProps {
 
 const ServicePage = ({blog}: ServicePageProps) => {
   return (
-    <section className="px-[5%]">
+    <section className="px-[5%] bg-brand-darkest">
       <div className="grid gap-y-[4rem] py-[3rem]  md:pt-[7rem] md:pb-[7rem]">
-        <div className="mx-auto w-full max-w-[57rem] lg:max-w-[1300px] ">
+        <div className="mx-auto w-full max-w-[57rem] lg:max-w-[1000px] ">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 ">
             {blog?.articles?.edges.map((article) => {
               return (
@@ -30,10 +30,10 @@ const ServicePage = ({blog}: ServicePageProps) => {
                   </div>
                   <div className="block flex-col justify-center p-6 md:flex">
                     <div>
-                      <Typography variant="h3" className="mb-2">
+                      <Typography variant="h3" className="mb-2 text-white">
                         {article?.node.title}
                       </Typography>
-                      <Typography variant="body1">
+                      <Typography variant="body1" className="text-white line-clamp-2">
                         {article?.node.content}
                       </Typography>
                     </div>
@@ -46,7 +46,7 @@ const ServicePage = ({blog}: ServicePageProps) => {
                           variant="link"
                           size="link"
                           iconRight={<ChevronRight />}
-                          className="flex items-center justify-center"
+                          className="flex items-center justify-center text-white"
                         >
                           Read more
                         </Button>
