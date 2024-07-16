@@ -130,7 +130,11 @@ const Tab = ({tabs, title, metaobjects}: TabProps) => {
                     tabIndex={0}
                   >
                     <div
-                      className="prose !text-brand-white border-2 border-white rounded-xl p-12"
+                      className="prose bg-contain bg-repeat md:bg-no-repeat"
+                      style={{
+                        backgroundImage: `url(https://cdn.shopify.com/s/files/1/0837/5717/0963/collections/alexander-marius-bg-image.webp?v=1710705579)`,
+                        width: '100%',
+                      }}
                       dangerouslySetInnerHTML={{
                         __html: article?.node?.contentHtml,
                       }}

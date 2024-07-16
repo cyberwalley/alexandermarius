@@ -166,12 +166,12 @@ export default function Page() {
           </div>
         </div>
       </header> */}
-      <header className=" bg-brand-primary flex flex-col lg:flex-row  lg:h-[30rem]">
+      <header className=" bg-brand-darkest flex flex-col lg:flex-row  lg:h-[30rem]">
         <div className="container px-[11%] py-16 md:py-24 lg:py-28 !h-full !mb-[5rem] grid grid-cols-1 items-start content-center justify-between gap-x-12 gap-y-2 md:mb-18 md:gap-x-12  lg:mb-20">
-          <Typography variant="h2" className="text-brand-darkest">
+          <Typography variant="h2" className="text-white">
             {page.title}
           </Typography>
-          <Typography variant="body1" className="text-brand-darkest">
+          <Typography variant="body1" className="text-white">
             {subtitle}
           </Typography>
         </div>

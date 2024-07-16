@@ -56,7 +56,7 @@ const ServiceDetailsPage = ({
 
   return (
     <div>
-      <header className="bg-[--color-main] bg-brand-primary px-[1rem]">
+      <header className="bg-[--color-main] bg-brand-darkest px-[1rem]">
         <div className="grid gap-y-[4rem] px-4 pt-[3rem] pb-[3rem] md:pt-[7rem] md:pb-[7rem]">
           <div className="mx-auto max-w-[1536px] w-full grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-[2.5rem] gap-y-[2.5rem]">
             <div className="col-span-4 xs:col-span-4 sm:col-span-8 md:col-span-6 col-start-1 pt-xl">
@@ -64,17 +64,17 @@ const ServiceDetailsPage = ({
                 <div>
                   <Typography
                     variant="body1"
-                    className="text-brand-darkest mb-3"
+                    className="text-white mb-3"
                   >
                     <Link
-                      className="text-brand-darkest capitalize"
+                      className="text-white capitalize"
                       to={`/pages/${parentPage}`}
                     >
                       {parentPage}
                     </Link>
                   </Typography>
                 </div>
-                <Typography variant="h2" className="text-brand-darkest">
+                <Typography variant="h2" className="text-white">
                   {title}
                 </Typography>
                 <div>{seo.description}</div>
@@ -100,7 +100,7 @@ const ServiceDetailsPage = ({
           </div>
         </div>
       </header>
-      <div className="bg-brand-darkest">
+      <div className="">
         {blogs && <Tab metaobjects={metaobjects} tabs={blogs} title={title} />}
       </div>
       {/*    <main className="article">

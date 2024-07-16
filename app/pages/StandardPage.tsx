@@ -5,11 +5,11 @@ interface StandardPageProps {
 }
 const StandardPage = ({page}: StandardPageProps) => {
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-brand-darkest">
+    <section className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container !h-full">
         <div className="mx-auto w-full max-w-[57rem] lg:max-w-[1300px] items-center">
           <div
-            className="prose text-white"
+            className="prose"
             dangerouslySetInnerHTML={{
               __html: page?.body || '',
             }}
