@@ -32,7 +32,7 @@ export async function action({request}) {
   const recaptchaResponse = formData.get('g-recaptcha-response');
 
   // Verify CAPTCHA response with Google
-  const captchaResponse = await fetch(
+/*   const captchaResponse = await fetch(
     'https://www.google.com/recaptcha/api/siteverify',
     {
       method: 'POST',
@@ -46,7 +46,7 @@ export async function action({request}) {
 
   if (!captchaData.success) {
     return {error: 'CAPTCHA failed, please try again.'};
-  }
+  } */
 
   // Extract form fields
   const name = formData.get('name');
@@ -166,7 +166,7 @@ export default function Page() {
           </div>
         </div>
       </header> */}
-      <header className=" bg-brand-darkest flex flex-col lg:flex-row  lg:h-[30rem]">
+      <header className=" bg-brand-darkest flex flex-col lg:flex-row h-full  lg:h-[30rem]">
         <div className="container px-[11%] py-16 md:py-24 lg:py-28 !h-full !mb-[5rem] grid grid-cols-1 items-start content-center justify-between gap-x-12 gap-y-2 md:mb-18 md:gap-x-12  lg:mb-20">
           <Typography variant="h2" className="text-white">
             {page.title}
