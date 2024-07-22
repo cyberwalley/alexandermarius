@@ -151,7 +151,7 @@ aside li {
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
-  align-items:flex-start;
+  align-items:center;
 }
 
 .header-menu-desktop {
